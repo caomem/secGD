@@ -1,2 +1,5 @@
-# latex
-This is the default repository for my personal workings with latex
+# SecGD
+This repository is an introdutory latex section in portuguese about Euclidean Distance Geometry.
+
+
+## TO DO

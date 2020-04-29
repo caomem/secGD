@@ -24,38 +24,25 @@
 \newtheorem{definicao}{Definição}[section]
 \newtheorem{teorema}{Teorema}[section]
 
-\title{Titulo Legal}
+\title{Geometria de Distâncias}
 \author{Guilherme Philippi}
 \begin{document}
 \maketitle
 \tableofcontents
 
-\section{Introdução}
+\section{Geometria de Distâncias Euclidianas}
+Apresenta-se nesta seção uma introdução a \textit{Geometria de Distâncias Euclidianas}. O nome ``Geometria de Distâncias'' diz respeito ao conceito desta ser uma geometria que se baseia em distâncias ao invés de pontos. A palavra ``Euclidiana'' é importante para caracterizar as arestas --- elementos fundamentais associados as distâncias --- como segmentos, sem restringir seus ângulos de incidência \cite{libertiEDG}.
 
-Este relatório tem como objetivo apresentar soluções de exercícios envolvendo grafos.
+\subsection{Começo}
 
-Utilizou-se o software PIPE (Platform Independent Petri net Editor) \cite{dias2007ferramentas} para modelar e simular as soluções propostas, assim como segue na próxima seção.
+Os primeiros conceitos geométricos usando apenas distâncias --- em contrapartida com o ponto de vista original de Euclides, por volta de 300 AC, que descreveu a geometria baseado em pontos e linhas \cite{elementosEuclides} --- costumam estar associados aos trabalhos de Heron (10 a 80 DC) \cite{libertiEDG}, com o desenvolvimento de um teorema que leva seu nome, o \textit{Teorema de Heron}: Sejam $s$ o \textit{semiperímetro} de um triângulo (se $p$ é o perímetro, $s = \frac{p}{2}$) e $a$, $b$ e $c$ os comprimentos dos três lados deste triangulo. Então, a área $A$ do triângulo é
 
-\section{Desenvolvimento}
-Descrever de forma mais detalhada o problema.
-Apresentar a solução proposta pela equipe.
-Discorrer sobre a solução (por exemplo, explicar com detalhes os pontos mais
-importantes).
+\begin{equation}\tag{Fórmula de Heron}
+A = \sqrt{s(s-a)(s-b)(s-c)}.
+\label{eq:heron}
+\end{equation}
 
-\begin{figure}[H]
-	\begin{center}
-		\includegraphics[width=0.4\linewidth]{img.png}
-	\end{center}
-	\caption{Transformação linear composta BA}
-	\label{fig:compfunc}
-\end{figure}
-
-Atenção: Se mais de uma ou atividade foi realizada no laboratório repetir a sequência
-anterior (da Seção 3) para cada atividade.
-
-\section{Considerações Finais}
-Apresentar as considerações finais sobre o trabalho. Se o objetivo foi alcançado ou não,
-o que foi aprendido, dificuldades encontradas, etc.
+Algumas centenas de anos depois, em 1841, Arthur Cayley (1821 a 1895) generalizou a~\ref{eq:heron}, através da construção de um determinante que carrega seu nome \cite{cayley1841HaronGD}.
 
 \phantomsection
 \addcontentsline{toc}{section}{Referências}

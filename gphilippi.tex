@@ -31,18 +31,40 @@
 \tableofcontents
 
 \section{Geometria de Distâncias Euclidianas}
-Apresenta-se nesta seção uma introdução a \textit{Geometria de Distâncias Euclidianas}. O nome ``Geometria de Distâncias'' diz respeito ao conceito desta ser uma geometria que se baseia em distâncias ao invés de pontos. A palavra ``Euclidiana'' é importante para caracterizar as arestas --- elementos fundamentais associados as distâncias --- como segmentos, sem restringir seus ângulos de incidência \cite{libertiEDG}.
+Apresenta-se nesta seção uma introdução a \textit{Geometria de Distâncias Euclidianas}. O nome ``Geometria de Distâncias'' diz respeito ao conceito desta geometria basear-se em distâncias ao invés de pontos. A palavra ``Euclidiana'' é importante para caracterizar as arestas --- elementos fundamentais associados as distâncias --- como segmentos, sem restringir seus ângulos de incidência \cite{libertiEDG}.
 
 \subsection{Começo}
 
-Os primeiros conceitos geométricos usando apenas distâncias --- em contrapartida com o ponto de vista original de Euclides, por volta de 300 AC, que descreveu a geometria baseado em pontos e linhas \cite{elementosEuclides} --- costumam estar associados aos trabalhos de Heron (10 a 80 DC) \cite{libertiEDG}, com o desenvolvimento de um teorema que leva seu nome, o \textit{Teorema de Heron}: Sejam $s$ o \textit{semiperímetro} de um triângulo (se $p$ é o perímetro, $s = \frac{p}{2}$) e $a$, $b$ e $c$ os comprimentos dos três lados deste triangulo. Então, a área $A$ do triângulo é
+Por volta de 300 AC, Euclides de Alexandria organizou o conhecimento de sua época acerca da Geometria em uma obra composta por treze volumes, onde construiu, a partir de um pequeno conjunto de axiomas fortemente baseado nos conceitos de pontos e linhas, a chamada \textit{Geometria Euclidiana} \cite{elementosEuclides}. Em contraponto a visão original de Euclides, os primeiros conceitos geométricos \textit{usando apenas distâncias} costumam estar associados aos trabalhos de Heron de Alexandria (10 a 80 DC) \cite{libertiEDG}, com o desenvolvimento de um teorema que leva seu nome, o \textit{Teorema de Heron}: Sejam $s$ o \textit{semiperímetro} de um triângulo (se $p$ é o perímetro, $s = \frac{p}{2}$) e $a$, $b$ e $c$ os comprimentos dos três lados deste triangulo. Então, a área $A$ do triângulo é
 
 \begin{equation}\tag{Fórmula de Heron}
 A = \sqrt{s(s-a)(s-b)(s-c)}.
 \label{eq:heron}
 \end{equation}
+Pode-se dizer que esse foi o nascimento da Geometria de Distâncias (GD).
 
-Algumas centenas de anos depois, em 1841, Arthur Cayley (1821 a 1895) generalizou a~\ref{eq:heron}, através da construção de um determinante que carrega seu nome \cite{cayley1841HaronGD}.
+Algumas centenas de anos depois, em 1841, Arthur Cayley (1821 a 1895) generalizou a~\ref{eq:heron} através da construção de um determinante que calcula o conteúdo (volume $n$-dimensional) de um \textit{simplex}\footnote{Um simplex é uma generalização do conceito de triangulo a outras dimensões, i.e.: O \textit{0-simples} é um ponto, \textit{1-simplex} é um segmento de reta, \textit{2-simplex} é um triangulo e o \textit{3-simplex} é um tetraedro.} em qualquer dimensão \cite{cayley1841HaronGD}. Um século depois, Karl Menger (1902 a 1985) organizou o trabalho de Cayley tentou desenvolver uma construção axiomática da geometria através de distâncias \cite{mengerDeterminante} --- por isso, o determinante de Cayley hoje é chamado ``\textit{Determinante de Cayley-Menger}''.  
+
+\begin{center}
+	\begin{minipage}{0.9 \linewidth}
+		\textbf{Definição:} Sejam $A_0, A_1, \dots, A_n$ $n + 1$ pontos que definem os vértices de um $n$-simplex em um espaço euclidiano $k$-dimensional, onde $n\leq k$, e $d_{ij}$ a distância entre os vértices $A_i$ e $A_j$, onde $0\leq i < j \leq n$. Então, o conteúdo $v_n$ desse $n$-simplex é
+	\end{minipage}
+\end{center} 
+
+\vspace{-0.5cm}
+
+\begin{equation}\tag{Determinante de Cayley-Menger}
+v_n^2 = \frac{(-1)^{n+1}}{(n!)^22^n}
+\begin{bmatrix}
+0 & d^2_{01} &  d^2_{02} & \ldots & d^2_{0n} & 1\\ 
+d^2_{01} & 0 & d^2_{12} & \ldots & d^2_{1n} & 1\\ 
+d^2_{02} & d^2_{12} &  0 & \ldots & d^2_{2n} & 1\\ 
+\vdots & \vdots &  \vdots & \ddots & \vdots & \vdots\\ 
+d^2_{0n} & d^2_{1n} & d^2_{2n}  & \ldots & 0 & 1\\ 
+1 & 1 & 1  & \ldots & 1 & 0\\ 
+\end{bmatrix}.
+\label{determinanteCayleyMenger}
+\end{equation}
 
 \phantomsection
 \addcontentsline{toc}{section}{Referências}

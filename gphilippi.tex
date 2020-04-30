@@ -53,7 +53,7 @@ Algumas centenas de anos depois, em 1841, Arthur Cayley (1821 a 1895) generalizo
 
 \begin{center}
 	\begin{minipage}{0.9 \linewidth}
-		\textbf{Definição:} Sejam $A_0, A_1, \dots, A_n$ $n + 1$ pontos que definem os vértices de um $n$-simplex em um espaço euclidiano $k$-dimensional, onde $n\leq k$, e seja $d_{ij}$ a distância entre os vértices $A_i$ e $A_j$, onde $0\leq i < j \leq n$. Então, o conteúdo $v_n$ desse $n$-simplex é
+		\textbf{Definição:} Sejam $A_0, A_1, \dots, A_n$ $n + 1$ pontos que definem os vértices de um $n$-simplex em um espaço euclidiano $K$-dimensional, onde $n\leq K$, e seja $d_{ij}$ a distância entre os vértices $A_i$ e $A_j$, onde $0\leq i < j \leq n$. Então, o conteúdo $v_n$ desse $n$-simplex é
 	\end{minipage}
 \end{center} 
 
@@ -72,9 +72,16 @@ d^2_{0n} & d^2_{1n} & d^2_{2n}  & \ldots & 0 & 1\\
 \label{determinanteCayleyMenger}
 \end{equation}
 
-Mas foi só com Leonard Blumenthal (1901 - 1984) que, em 1953, o termo Geometria de Distâncias foi cunhado --- com a publicação de seu livro \textit{``Theory and Applications of Distance Geometry''} \cite{Blumenthal:53}.
-Blumenthal dedicou sua vida de trabalho para clarificar, organizar e traduzir as obras originais em alemão \cite{libertiEDG}. Ele acreditava que o problema mais importante nesta área era o \textit{``Problema de Subconjunto''} (ou \textit{Subset Problem}, originalmente), que consistia em encontrar condições necessárias e suficientes a fim de decidir quando uma matriz simétrica era, de fato, uma \textit{matriz de distâncias}\footnote{Seja o par $(\mathcal{X}, d)$ um \textit{espaço métrico} (vide Apêndice~\ref{ap:metric}), onde $\mathcal{X} = \{x_1, \dots, x_n\}$. Uma \textit{matriz de distância sobre $\mathcal{X}$} é uma matriz quadrada $D_{n\times n} = (d_{uv})$ onde, para todo $u,v \leq n$, temos $d_{uv} = d(x_u,x_v)$ \cite{carlileGDandAplications}.}
+Mas foi só com Leonard Blumenthal (1901 a 1984) que, em 1953, o termo Geometria de Distâncias foi cunhado --- com a publicação de seu livro \textit{``Theory and Applications of Distance Geometry''} \cite{Blumenthal:53}.
+Blumenthal dedicou sua vida de trabalho para clarificar, organizar e traduzir as obras originais em alemão \cite{libertiEDG}. Ele acreditava que o problema mais importante nesta área era o \textit{``Problema de Subconjunto''} (ou \textit{Subset Problem}, originalmente), que consistia em encontrar condições necessárias e suficientes a fim de decidir quando uma matriz simétrica era, de fato, uma \textit{matriz de distâncias}\footnote{Seja o par $(\mathcal{X}, d)$ um \textit{espaço métrico} (vide Apêndice~\ref{ap:metric}), onde $\mathcal{X} = \{x_1, \dots, x_n\}$. Uma \textit{matriz de distância sobre $\mathcal{X}$} é uma matriz quadrada $D_{n\times n} = (d_{uv})$ onde, para todo $u,v \leq n$, temos $d_{uv} = d(x_u,x_v)$ \cite{carlileGDandAplications}.} \cite{carlileGDandAplications}. Uma restrição desse problema à métrica euclidiana chama-se \textit{Problema de Matrizes de Distâncias Euclidianas} (ou EDMP, do inglês \textit{Euclidean Distance Matrix Problem}), como segue definida:
 
+\begin{center}
+	\begin{minipage}{0.9 \linewidth}
+		\textbf{Problema de Matrizes de Distâncias Euclidianas:} Determinar se, para uma dada matriz quadrada $D_{n\times n} = (d_{ij})$, existe um inteiro $K$ e um conjunto $\{p_1, \dots, p_n \}$ de pontos em $\mathbb{R}^K$ tal que $d_{ij} = \lVert p_i - p_j\rVert$ para todo $i,j \leq n$.
+	\end{minipage}
+\end{center} 
+
+Condições necessárias e suficientes para que uma matriz seja, de fato, uma matriz de distância euclidiana são dados em \cite{EDMPResolucao}. Para isso, apresenta-se um teorema onde se utiliza o~\ref{determinanteCayleyMenger} na criação de duas condições afirmando que, afim de $D_{n\times n}$ ser uma matriz de distâncias euclidianas, deve haver um $K$-simplex $S$ de referência com conteúdo $v_K \neq 0$ em $\mathbb{R}^K$ e que todos os $(K+1)$-simplex e $(K+2)$-simplex contendo S como uma das faces devem estar contidos em $\mathbb{R}^K$ \cite{carlileGDandAplications}.
 
 \newpage
 \phantomsection
@@ -91,7 +98,7 @@ Blumenthal dedicou sua vida de trabalho para clarificar, organizar e traduzir as
 Como esse texto utiliza fortemente o conceito de distância, é necessário e bem vindo que se gaste algum espaço para uma construção formal dessa ideia. A noção de distância está relacionada com o conceito de \textit{métrica}, como segue.
 \\
 
-Seja $\mathcal{X}$ um espaço vetorial $k$-dimensional sobre $\mathbb{R}$. \textit{Métrica} é uma função de dois argumentos que mapeia pares ordenados de elementos em $\mathcal{X}$ para um número real não negativo. Precisamente, para todo $x, y$ e $z$ $\in \mathcal{X}$, uma função $d(\cdot,\cdot): \mathcal{X} \times \mathcal{X} \longrightarrow \mathbf{R}$ é uma métrica se satisfaz os seguintes axiomas:
+Seja $\mathcal{X}$ um espaço vetorial $K$-dimensional sobre $\mathbb{R}$. \textit{Métrica} é uma função de dois argumentos que mapeia pares ordenados de elementos em $\mathcal{X}$ para um número real não negativo. Precisamente, para todo $x, y$ e $z$ $\in \mathcal{X}$, uma função $d(\cdot,\cdot): \mathcal{X} \times \mathcal{X} \longrightarrow \mathbf{R}$ é uma métrica se satisfaz os seguintes axiomas:
 
 \begin{enumerate}
 	\item $d(x,y) = 0$ se, e somente se, $x = y$; 
@@ -103,7 +110,7 @@ Seja $\mathcal{X}$ um espaço vetorial $k$-dimensional sobre $\mathbb{R}$. \text
 Nesse trabalho, sempre que não é especificado qual métrica se está usando, fica implícita a utilização da \textit{Métrica Euclidiana}, definida in função da \textit{Norma Euclidiana}:
 
 \begin{equation}\tag{Norma Euclidiana}
-\forall x, y \in \mathcal{X}, d(x,y) = \lVert x-y \rVert_2 = \sqrt{\langle x, y\rangle} = \sqrt{\sum_{i = 1}^{k} (x_i-y_i)^2}.
+\forall x, y \in \mathcal{X}, d(x,y) = \lVert x-y \rVert_2 = \sqrt{\langle x, y\rangle} = \sqrt{\sum_{i = 1}^{K} (x_i-y_i)^2}.
 \label{eq:normaEuclidiana}
 \end{equation}
 \\

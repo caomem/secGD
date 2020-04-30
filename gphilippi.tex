@@ -21,6 +21,7 @@
 \usepackage{amsfonts}
 \usepackage[english, ruled, linesnumbered]{algorithm2e}
 \usepackage{algorithmic}
+\usepackage[toc,page]{appendix}
 \newtheorem{definicao}{Definição}[section]
 \newtheorem{teorema}{Teorema}[section]
 
@@ -33,21 +34,26 @@
 \section{Geometria de Distâncias Euclidianas}
 Apresenta-se nesta seção uma introdução a \textit{Geometria de Distâncias Euclidianas}. O nome ``Geometria de Distâncias'' diz respeito ao conceito desta geometria basear-se em distâncias ao invés de pontos. A palavra ``Euclidiana'' é importante para caracterizar as arestas --- elementos fundamentais associados as distâncias --- como segmentos, sem restringir seus ângulos de incidência \cite{libertiEDG}.
 
-\subsection{Começo}
+\subsection{Como tudo Começou}
 
-Por volta de 300 AC, Euclides de Alexandria organizou o conhecimento de sua época acerca da Geometria em uma obra composta por treze volumes, onde construiu, a partir de um pequeno conjunto de axiomas fortemente baseado nos conceitos de pontos e linhas, a chamada \textit{Geometria Euclidiana} \cite{elementosEuclides}. Em contraponto a visão original de Euclides, os primeiros conceitos geométricos \textit{usando apenas distâncias} costumam estar associados aos trabalhos de Heron de Alexandria (10 a 80 DC) \cite{libertiEDG}, com o desenvolvimento de um teorema que leva seu nome, o \textit{Teorema de Heron}: Sejam $s$ o \textit{semiperímetro} de um triângulo (se $p$ é o perímetro, $s = \frac{p}{2}$) e $a$, $b$ e $c$ os comprimentos dos três lados deste triangulo. Então, a área $A$ do triângulo é
-
-\begin{equation}\tag{Fórmula de Heron}
-A = \sqrt{s(s-a)(s-b)(s-c)}.
-\label{eq:heron}
-\end{equation}
+Por volta de 300 AC, Euclides de Alexandria organizou o conhecimento de sua época acerca da Geometria em uma obra composta por treze volumes, onde construiu, a partir de um pequeno conjunto de axiomas fortemente baseado nos conceitos de pontos e linhas, a chamada \textit{Geometria Euclidiana} \cite{elementosEuclides}. Em contraponto a visão original de Euclides, os primeiros conceitos geométricos usando \textit{apenas distâncias} costumam estar associados aos trabalhos de Heron de Alexandria (10 a 80 DC) \cite{libertiEDG}, com o desenvolvimento de um teorema que leva seu nome, como segue: 
+\begin{center}
+	\begin{minipage}{0.9 \linewidth}
+		\textbf{\textit{Teorema de Heron}:} Sejam $s$ o \textit{semiperímetro} de um triângulo (se $p$ é o perímetro, $s = \frac{p}{2}$) e $a$, $b$ e $c$ os comprimentos dos três lados deste triangulo. Então, a área $A$ do triângulo é
+		
+		\begin{equation}\tag{Fórmula de Heron}
+		A = \sqrt{s(s-a)(s-b)(s-c)}.
+		\label{eq:heron}
+		\end{equation}
+	\end{minipage}
+\end{center} 
 Pode-se dizer que esse foi o nascimento da Geometria de Distâncias (GD).
 
-Algumas centenas de anos depois, em 1841, Arthur Cayley (1821 a 1895) generalizou a~\ref{eq:heron} através da construção de um determinante que calcula o conteúdo (volume $n$-dimensional) de um \textit{simplex}\footnote{Um simplex é uma generalização do conceito de triangulo a outras dimensões, i.e.: O \textit{0-simples} é um ponto, \textit{1-simplex} é um segmento de reta, \textit{2-simplex} é um triangulo e o \textit{3-simplex} é um tetraedro.} em qualquer dimensão \cite{cayley1841HaronGD}. Um século depois, Karl Menger (1902 a 1985) organizou o trabalho de Cayley tentou desenvolver uma construção axiomática da geometria através de distâncias \cite{mengerDeterminante} --- por isso, o determinante de Cayley hoje é chamado ``\textit{Determinante de Cayley-Menger}''.  
+Algumas centenas de anos depois, em 1841, Arthur Cayley (1821 a 1895) generalizou a~\ref{eq:heron} através da construção de um determinante que calcula o conteúdo (volume $n$-dimensional) de um \textit{simplex}\footnote{Um simplex é uma generalização do conceito de triangulo a outras dimensões, i.e.: O \textit{0-simples} é um ponto, \textit{1-simplex} é um segmento de reta, \textit{2-simplex} é um triangulo e o \textit{3-simplex} é um tetraedro.} em qualquer dimensão \cite{cayley1841HaronGD}. Um século depois, em 1928, o matemático austríaco Karl Menger (1902 a 1985) re-organizou as ideias de Cayley e trabalhou em uma construção axiomática da geometria através de distâncias \cite{mengerDeterminante} --- donde a alteração no nome do determinante de Cayley para como é conhecido hoje: ``\textit{Determinante de Cayley-Menger}''.  
 
 \begin{center}
 	\begin{minipage}{0.9 \linewidth}
-		\textbf{Definição:} Sejam $A_0, A_1, \dots, A_n$ $n + 1$ pontos que definem os vértices de um $n$-simplex em um espaço euclidiano $k$-dimensional, onde $n\leq k$, e $d_{ij}$ a distância entre os vértices $A_i$ e $A_j$, onde $0\leq i < j \leq n$. Então, o conteúdo $v_n$ desse $n$-simplex é
+		\textbf{Definição:} Sejam $A_0, A_1, \dots, A_n$ $n + 1$ pontos que definem os vértices de um $n$-simplex em um espaço euclidiano $k$-dimensional, onde $n\leq k$, e seja $d_{ij}$ a distância entre os vértices $A_i$ e $A_j$, onde $0\leq i < j \leq n$. Então, o conteúdo $v_n$ desse $n$-simplex é
 	\end{minipage}
 \end{center} 
 
@@ -55,16 +61,19 @@ Algumas centenas de anos depois, em 1841, Arthur Cayley (1821 a 1895) generalizo
 
 \begin{equation}\tag{Determinante de Cayley-Menger}
 v_n^2 = \frac{(-1)^{n+1}}{(n!)^22^n}
-\begin{bmatrix}
+\begin{vmatrix}
 0 & d^2_{01} &  d^2_{02} & \ldots & d^2_{0n} & 1\\ 
 d^2_{01} & 0 & d^2_{12} & \ldots & d^2_{1n} & 1\\ 
 d^2_{02} & d^2_{12} &  0 & \ldots & d^2_{2n} & 1\\ 
 \vdots & \vdots &  \vdots & \ddots & \vdots & \vdots\\ 
 d^2_{0n} & d^2_{1n} & d^2_{2n}  & \ldots & 0 & 1\\ 
 1 & 1 & 1  & \ldots & 1 & 0\\ 
-\end{bmatrix}.
+\end{vmatrix}.
 \label{determinanteCayleyMenger}
 \end{equation}
+
+Mas foi só com Leonard Blumenthal (1901 - 1984) que, em 1953, o termo Geometria de Distâncias foi cunhado --- com a publicação de seu livro \textit{``Theory and Applications of Distance Geometry''} \cite{Blumenthal:53}.
+Blumenthal, que dedicou sua vida de trabalho para clarificar e traduzir os trabalhos originais em alemão \cite{libertiEDG}, acreditava que o problema mais importante nesta área era o \textit{``Problema de Subconjunto''} (ou \textit{Subset Problem}, originalmente), que consistia em encontrar condições necessárias e suficientes a fim de decidir quando uma matriz simétrica era, de fato, uma \textit{matriz de distâncias}\footnote{Dado um espaço vetorial $X$ monido de uma função métrica (veja o Apêndice~\ref{ap:metric}) a Uma \textit{matriz de distância} para um dado espaço vetorial } \cite{carlileGDandAplications}.
 
 \phantomsection
 \addcontentsline{toc}{section}{Referências}
@@ -72,4 +81,18 @@ d^2_{0n} & d^2_{1n} & d^2_{2n}  & \ldots & 0 & 1\\
 \bibliographystyle{unsrt}
 \bibliography{references}
 
+\begin{appendices}
+	
+%\newpage
+%\phantomsection
+%\addcontentsline{toc}{section}{Apêndice A - Métricas}
+
+\section{Métricas}
+\label{ap:metric}
+
+Como este texto utiliza fortemente o conceito de distância, é necessário e válida que se gaste um espaço para uma construção formal matematicamente desta ideia. 
+	
+\end{appendices}
+
 \end{document}
+

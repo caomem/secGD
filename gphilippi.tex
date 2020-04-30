@@ -112,7 +112,47 @@ Uma \textit{realização} é uma função que mapeia um conjunto de vértices de
 	\end{minipage}
 \end{center}
 
-Desde que uma realização seja encontrada, também dá-se a ela o nome de \textit{solução} do DGP.
+Desde que uma realização seja encontrada, também dá-se a ela o nome de \textit{solução} do DGP. Por simplicidade --- claramente um abuso de notação ---, pode-se escrever $x_u$ e $d_{uv}$ no lugar de $x(u)$ e $d(u,v)$, respectivamente.
+
+A principal diferença desta definição para o EDMP está acerca de que uma matriz de distância essencialmente representa um \textit{grafo ponderado completo}. Em contraponto, o DGP não empoe qualquer estrutura em $G$\footnote{A menos, é claro, no que diz respeito a seus vértices estarem conectados. Porém, caso $G$ não seja conectado, então ele consiste de um conjunto de diferentes subgrafos conectados, donde, a fim de solucionar o DGP, pode-se realizar cada subgrafo separadamente \cite{libertiEDG}.}, seguindo o conceito de matriz esparsa estabelecido por Yemini.
+
+Por fim, na equação~\ref{eq:DGP}, utiliza-se a norma euclidiana $\lVert$ $\cdot$ $\rVert$ como métrica (ver Apêndice~\ref{ap:metric}), donde pode-se reescrever esta equação como
+
+\begin{equation*}
+	\forall \{u,v\} \in E, \hspace{0.5cm} \sqrt{\sum_{i=1}^{K}(x_{ui} - x_{vi})^2} = d_{uv}.
+\end{equation*}
+
+Como a definição de métrica garante a positividade das distâncias, pode-se esconder a raiz quadrada na equação acima, i.e.
+
+\begin{equation}
+\forall \{u,v\} \in E, \hspace{0.5cm} \sum_{i=1}^{K}(x_{ui} - x_{vi})^2 = d_{uv}^2.
+\end{equation}
+
+\subsection{Sobre os Diferentes Problemas em GD}
+
+Em 2014, Leo Liberti \textit{et al.} publicaram um ótimo compendio sobre a \textit{Geometria de Distâncias Euclidianas e suas Aplicações} \cite{carlileGDandAplications} e, em particular, desenvolveram um estudo  taxonômico muito interessante sobre os problemas clássicos da área. No que se segue, devido a grande quantidade de siglas e variações dentro de GD, apresenta-se parte desse estudo, visando organizar os conceitos. 
+\\
+
+As principais aplicações em GD são no \textit{calculo de estruturas moleculares} \cite{crippen:DistancesAndMolecularConformation}, em \textit{rede de sensores sem fio} (\textit{Wireless Sensor Network}, ou WSN) \cite{yemini1978positioning}, em \textit{cinemática inversa} (\textit{Inverse Kinematic}, ou IK) \cite{cinematicaInversa} e em \textit{escalonamento multidimensional} (\textit{Multidimensional Scaling}, ou MDS) \cite{multidimensionalScaling}.
+
+\subsubsection{Conformações Moleculares}
+
+Existe uma relação muito forte com a forma geométrica das moléculas e suas funções em organismos vivos \cite{bioquimicaLehninger}. Projetar drogas para curar uma doença específica se trata basicamente de conhecer o que uma certa proteína pode fazer em um organismo \cite{libertiEDG}. Proteínas se ligam em outras moléculas através do equilíbrio de forças agindo entre elas\footnote{Ou seja, o equilíbrio da energia potencial das moléculas, proporcional, principalmente, as variações nos comprimentos das ligações covalentes, as variações nos ângulos entre duas ligações covalentes consecutivas, as rotações sobre as ligações covalentes e as interações de van der Waals e interações eletrostáticas entre átomos \cite{carlileTese}.}, por tanto, suas ligações dependem do seu formato. 
+
+Proteínas são constituídas por um grande conjunto de átomos e, alguns pares destes, trocam ligações químicas --- sabe-se quais são esses átomos através de experimentos de cristalografia \cite{ramachandran1974MolStructure}. Então, se os átomos de uma molécula forem rotulados da forma $1,3,4,\dots,n$, então é possível inferir: 
+\begin{itemize}
+	\item O conjunto de ligações $\{u,v\}$, onde $u,v$ são átomos em $\{1,\dots,n\}$;
+	\item A distância entre $u$ e $v$ (para cara par ligado);
+	\item O ângulo interno $\theta_v$ definido por duas ligações $\{u,v\}$ e $\{v,w\}$, com um átomo $v$ em comum. (veja o Apêndice~\ref{ap:cos})
+\end{itemize} 
+
+Além desses dados, também é possível obter informações a partir de experimentos mais sofisticados, como a \textit{Ressonância Magnética Nuclear} (RMN). Neste experimento é escolhida uma faixa de radiofrequência para bombardear uma amostra que está imersa em um campo magnético bastante intenso. Dependendo da radiofrequência utilizada (costuma-se usar a do hidrogênio), alguns núcleos atômicos irão absorver energia e outros não. Caso atinja-se uma frequência exata de ressonância dentro destes núcleos atômicos, é possível medir essa ressonância como um sinal de radiofrequência enviado dos núcleos atômicos --- para calcular distâncias entre átomos próximos, com distâncias menores que 5\AA.
+
+De posse dessas informações, deseja-se realizar (localizar) todos os átomos da molécula. Esse problema, com todas as informações moleculares disponíveis, denomina-se \textit{Estrutura Proteica a partir de Dados Brutos} (\textit{Protein Structure from Raw Data}, ou PSRD)
+
+Em particular, como as coordenadas atômicas pertencem ao $\mathbb{R}^3$, há uma particularização do DGP para o caso molecular, chamado \textit{Problema de Geometria de Distâncias Moleculares} (\textit{Molecular DGP}, ou MDGP). Trata-se do DGP com $K = 3$ fixo.
+
+\subsubsection{Localização de Sensores}
 
 \newpage
 \phantomsection
@@ -147,5 +187,87 @@ Nesse trabalho, quando não é especificado qual métrica se está usando, fica 
 \\
 
 O par ($\mathcal{X}, d$) é chamado \textit{espaço métrico}. A noção de métrica não depende de espaços vetoriais, donde pode ser facilmente generalizada fazendo $\mathcal{X}$ um conjunto qualquer.
+
+\addcontentsline{toc}{section}{Apêndice A - Lei dos Cossenos e Ângulos Entre dois Vetores no $\mathbb{R}^3$}
+
+\section{Lei dos Cos e Ângulos Entre dois Vetores no $\mathbb{R}^3$}
+\label{ap:cos}
+A lei dos cossenos é uma propriedade trigonométrica válida para qualquer triângulo, permitindo encontrar o valor de um dos seus lados conhecendo apenas os outros lados e um ângulo. Porém, aqui utilizaremos a ideia reversa, onde, nesse caso, saberemos os lados e queremos descobrir os ângulos.
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=0.50\linewidth]{figures/triangulo.png}
+	\end{center}
+	\caption{Triângulo para ilustrar a lei dos cossenos.}
+	\label{fig:coslaw}
+\end{figure}
+\begin{itemize}
+	\item \textbf{Demonstração Leis dos Cossenos:}
+	
+	Dado um triângulo qualquer, traça-se uma altura relativa ao lado $a$. Aplicando o \textit{Teorema de Pitágoras} no $\Delta ABD$:
+	
+	\begin{equation}
+	c^{2}=m^{2}+h^{2} \rightarrow h^{2}=c^{2}-m^{2}
+	\label{eq:tri1}
+	\end{equation}
+	
+	Aplicando novamente \textit{Pitágoras}, porém, em $\Delta ADC$, obtemos:
+	\begin{equation}
+	b^{2}=h^{2}+(a-m)^{2}
+	\label{eq:tri2}
+	\end{equation}
+	Substituindo na equação ~\ref{eq:tri2} o valor de $h^{2}$ obtido em ~\ref{eq:tri1}:
+	$$
+	b^{2}=c^{2}-m^{2}+a^{2}-2am+m^{2}
+	$$
+	$$
+	b^{2}=c^{2}+a^{2}-2am
+	$$
+	Analisando a 
+	Figura ~\ref{fig:coslaw}, pode-se perceber que $\frac{m}{c}=\cos\beta$, então:
+	$$
+	b^{2}=c^{2}+a^{2}-2ac\cos\beta
+	$$
+	Analogamente, obtém-se:
+	$$
+	c^{2}=a^{2}+b^{2}-2ab\cos\gamma
+	$$
+	$$
+	a^{2}=b^{2}+c^{2}-2bc\cos\alpha
+	$$
+	Note também que se o argumento dos cossenos for $\frac{\pi}{2}$ recaímos no Teorema de Pitágoras. $\hfill\blacksquare$
+	\item \textbf{Ângulos Entre 2 Vetores:}
+	
+	Sejam dois vetores $\overrightarrow{u}$ e $\overrightarrow{v} \in \mathbb{R}^2$, representados na Figura ~\ref{fig:diffbtvet}
+	\begin{figure}[H]
+		\begin{center}
+			\includegraphics[width=0.4\linewidth]{figures/Angulovetoresnovo.png}
+		\end{center}
+		\caption{Diferença entre vetores $u$ e $v$}
+		\label{fig:diffbtvet}
+	\end{figure}
+	Para encontrarmos o angulo $\theta$ utilizaremos a lei dos cossenos aplicada a $\Delta ABC$:
+	\begin{equation}
+	\|\overrightarrow{u}-\overrightarrow{v}\|^{2}=\|\overrightarrow{u}\|^{2} + \|\overrightarrow{v}\|^{2} - 2\|\overrightarrow{u}\|\|\overrightarrow{v}\|\cos\theta
+	\label{eq:ang1}
+	\end{equation}
+	Utilizando a definição do produto escalar \cite{GASteinbruch}
+	\begin{equation}
+	\|\overrightarrow{u}-\overrightarrow{v}\|^{2}=\|\overrightarrow{u}\|^{2} + \|\overrightarrow{v}\|^{2} - 2\overrightarrow{u}\overrightarrow{v}
+	\label{eq:ang2}
+	\end{equation}
+	Comparando a equação ~\ref{eq:ang1} com a ~\ref{eq:ang2}, obtemos trivialmente
+	$$
+	\|\overrightarrow{u}\|^{2} + \|\overrightarrow{v}\|^{2} - 2\|\overrightarrow{u}\|\|\overrightarrow{v}\|\cos\theta = \|\overrightarrow{u}\|^{2} + \|\overrightarrow{v}\|^{2} - 2\overrightarrow{u}\overrightarrow{v}
+	$$
+	$$
+	\overrightarrow{u}\overrightarrow{v} = \|\overrightarrow{u}\|\|\overrightarrow{v}\|\cos\theta
+	$$
+	Logo,
+	$$
+	\cos\theta = \frac{\overrightarrow{u}\overrightarrow{v}}{\|\overrightarrow{u}\|\|\overrightarrow{v}\|} 
+	$$
+	$\hfill\blacksquare$
+\end{itemize}
+
 \end{document}
 

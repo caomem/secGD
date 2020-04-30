@@ -4,7 +4,7 @@ This repository is an introductory latex section in portuguese about Euclidean D
 
 ## TO DO
 
-1. [ ] Write an introductory section on the great minds behind this theory
+1. [X] Write an introductory section on the great minds behind this theory
 2. [ ] Write an apresentation about the fundamental problem in DG and define it
 3. [ ] Write a little definition of metric spaces as apendice suction
 4. [ ] Write about taxonomy of problems in DG and aplications

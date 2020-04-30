@@ -133,7 +133,7 @@ Como a definição de métrica garante a positividade das distâncias, pode-se e
 Em 2014, Leo Liberti \textit{et al.} publicaram um ótimo compendio sobre a \textit{Geometria de Distâncias Euclidianas e suas Aplicações} \cite{carlileGDandAplications} e, em particular, desenvolveram um estudo  taxonômico muito interessante sobre os problemas clássicos da área. No que se segue, devido a grande quantidade de siglas e variações dentro de GD, apresenta-se parte desse estudo, visando organizar os conceitos. 
 \\
 
-As principais aplicações em GD são no \textit{calculo de estruturas moleculares} \cite{crippen:DistancesAndMolecularConformation}, em \textit{rede de sensores sem fio} (\textit{Wireless Sensor Network}, ou WSN) \cite{yemini1978positioning}, em \textit{cinemática inversa} (\textit{Inverse Kinematic}, ou IK) \cite{cinematicaInversa} e em \textit{escalonamento multidimensional} (\textit{Multidimensional Scaling}, ou MDS) \cite{multidimensionalScaling}.
+As principais aplicações em GD são no \textit{calculo de estruturas moleculares} \cite{crippen:DistancesAndMolecularConformation}, na \textit{localização de sensores em rede sem fio} (\textit{Wireless Sensor Network Localization}, ou WSNL) \cite{yemini1978positioning}, em \textit{cinemática inversa} (\textit{Inverse Kinematic}, ou IK) \cite{cinematicaInversa} e em \textit{escalonamento multidimensional} (\textit{Multidimensional Scaling}, ou MDS) \cite{multidimensionalScaling}.
 
 \subsubsection{Conformações Moleculares}
 
@@ -153,6 +153,20 @@ De posse dessas informações, deseja-se realizar (localizar) todos os átomos d
 Em particular, como as coordenadas atômicas pertencem ao $\mathbb{R}^3$, há uma particularização do DGP para o caso molecular, chamado \textit{Problema de Geometria de Distâncias Moleculares} (\textit{Molecular DGP}, ou MDGP). Trata-se do DGP com $K = 3$ fixo.
 
 \subsubsection{Localização de Sensores}
+
+O \textit{Problema de Localização de Sensores em Rede sem Fio} (ou \textit{WSNL Problem}) surge quando é necessário localizar um conjunto de objetos equipados com sensores eletrônicos capazes de medir distâncias entre si, geograficamente distribuídos, usando apenas medidas de distâncias entre pares destes objetos \cite{yemini1978positioning}. 
+
+Por exemplo, \textit{smartphones} com WIFI ativo podem criar uma rede conhecida por \textit{Rede Ad-Hoc}, \textit{i.e.}, eles conseguem criar uma rede para comunicar-se entre si, de forma \textit{peer-to-peer}, sem a necessidade de uma torre central --- cada aparelho funciona como uma pequena torre, de forma que a distância entre os aparelhos não pode ser excessiva.
+Dessa forma, os \textit{smartphones} podem estimar a distância $r$ de emparelhamento das suas conexões ao medir, por exemplo, qual a potência de transmissão do sinal, uma vez que sabe-se que a potência $P$ de uma transmissão eletromagnética cai da forma 
+\begin{equation}
+	P = \frac{X}{r^n},
+\end{equation}
+onde $X$ e $n$ são constantes e dependem muito das condições do experimento, sendo obtidas experimentalmente \cite{savvides2001dynamic}.
+
+Em essência, um problema do tipo WSNL segue a mesma definição do DGP, porém, com um subconjunto $A\subset V$ de vértices (chamados \textit{âncoras}), onde os elementos de $A$ tem uma posição em $\mathbb{R}^k$ dada a priori --- isso é feito pois, normalmente, interessa saber a posição relativa de um objeto a outro, como é o caso do Sistema de Posicionamento Global, onde temos os satélites como âncoras e desejamos saber a posição dos aparelhos GPS em relação aos satélites.
+
+Por motivos práticos --- semelhantes ao caso molecular --- as variações de interesse desse problema tem o $K$ fixo em $K= 2$ ou $K=3$.
+
 
 \newpage
 \phantomsection
@@ -187,8 +201,6 @@ Nesse trabalho, quando não é especificado qual métrica se está usando, fica 
 \\
 
 O par ($\mathcal{X}, d$) é chamado \textit{espaço métrico}. A noção de métrica não depende de espaços vetoriais, donde pode ser facilmente generalizada fazendo $\mathcal{X}$ um conjunto qualquer.
-
-\addcontentsline{toc}{section}{Apêndice A - Lei dos Cossenos e Ângulos Entre dois Vetores no $\mathbb{R}^3$}
 
 \section{Lei dos Cos e Ângulos Entre dois Vetores no $\mathbb{R}^3$}
 \label{ap:cos}

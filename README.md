@@ -9,5 +9,5 @@ This repository is an introductory latex section in portuguese about Euclidean D
 3. [X] Write a little definition of metric spaces as apendice section
 4. [ ] Write about taxonomy of problems in DG and aplications
 5. [ ] Write on the solution set of a DGP (remember of mencion about the infinit solutions for rigid moves)
-6. [ ] Define the WSNL (wireless sensor networks localization) and cite the MDGP as possible aplication in WSNL 
+6. [X] Define the WSNL (wireless sensor networks localization) and cite the MDGP as possible aplication in WSNL 
 7. [ ] Introduce the DVOP and define the DDGP, DDGPk and DMDGPk

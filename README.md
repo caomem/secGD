@@ -6,6 +6,7 @@ This repository is an introductory latex section in portuguese about Euclidean D
 
 1. [X] Write an introductory section on the great minds behind this theory
 2. [X] Write an apresentation about the fundamental problem in DG and define it
-3. [X] Define the WSNL (wireless sensor networks localization) and cite the MDGP as possible aplication in WSNL 4. [X] Write a brief list of classical problems in the GD
+3. [X] Define the WSNL (wireless sensor networks localization) and cite the MDGP as possible aplication in WSNL
+4. [X] Write a brief list of classical problems in the GD
 4. [X] Write a little definition of metric spaces as apendice section
 5. [ ] Write on the solution set of a DGP (Intersection of spheres and numer of solutions)

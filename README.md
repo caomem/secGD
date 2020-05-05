@@ -10,3 +10,4 @@ This repository is an introductory latex section in portuguese about Euclidean D
 4. [ ] Write on the solution set of a DGP (Intersection of spheres and numer of solutions)
 5. [X] Define the WSNL (wireless sensor networks localization)
 6. [X] Write a little definition of metric spaces as apendice section
+7. [ ] Rewrite the appendix B using only distances

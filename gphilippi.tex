@@ -21,6 +21,7 @@
 \usepackage{amsfonts}
 \usepackage[english, ruled, linesnumbered]{algorithm2e}
 \usepackage{algorithmic}
+\usepackage{systeme}
 %\usepackage[toc,page]{appendix}
 \newtheorem{definicao}{Definição}[section]
 \newtheorem{teorema}{Teorema}[section]
@@ -207,13 +208,71 @@ Por tanto, a equação~\ref{eq:DGPminEuclid} tem como objetivo a minimização d
 
 Um dos desafios da Otimização Global é que muitos dos métodos existentes --- em especial, os mais eficientes --- não garantem que uma otimização global será encontrada \cite{libertiEDG}. Isso se dá pois, dependendo do comportamento da função que se deseja otimizar, existem muitos ótimos locais e os métodos não conseguem diferenciá-los de um global. Em DG, a distribuição geometria dos vértices do grafo está intimamente ligada com o comportamento da função objetivo --- donde, por exemplo, em WSNL, é interessante o estudo de como distribuir os sensores afim de otimizar a busca por ótimos globais \cite{eren2004rigidity}.
 
-\subsection{A Quantidade de Soluções}
+\subsubsection{A Quantidade de Soluções}
 Pode-se verificar que, dada uma solução de um DGP, obtêm-se facilmente uma quantidade infinita (não enumerável!) de outras realizações válidas, distintas, através de rotações e translações desta solução inicial \cite{carlileBook31Coloquio} --- Para que não se tenha tais soluções redundantes, costuma-se fixar a realização dos três primeiros vértices.
+
+Para um DGP definido em um espaço de dimensão $K$, a classe de problemas mais simples de resolver são dos grafos $(K+1)$-cliques, isto é, dos grafos completos com $K+1$ vértices \cite{libertiEDG}.
 
 \subsubsection{Realização de Grafos Completos}
 
-Para DGP definido em um espaço de dimensão $K$, a classe de problemas mais simples de resolver são dos grafos $(K+1)$-cliques, isto é, dos grafos completos com $K+1$ vértices \cite{libertiEDG}.
+Em um espaço unidimensional --- ou seja, uma linha ---, tem-se $K+1 = 2$. O grafo completo em dois vértices é $K_2 = (\{v_1,v_2\}, \{\{v_1,v_2\}\})$, ou seja, o grafo é dois vértices com uma ares entre eles --- uma linha (veja a Figura~\ref{fig:grafoCompleto}). No espaço bidimensional, o grafo completo é um triangulo e, no tridimensional, um tetraedro.
 
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=0.55\linewidth]{figures/grafoCompleto.png}
+	\end{center}
+	\caption{Em ordem: 2-clique; 3-clique; 4-clique.}
+	\label{fig:grafoCompleto}
+\end{figure}
+
+No geral, se um $(K+1)$-clique tem uma realização em $\mathbb{R}^{K-1}$, ela é única a menos de rotações e translações \cite{libertiEDG}. É trivial, por tanto, que um $(K+2)$-clique tem, no máximo, uma realização no espaço $\mathbb{R}^K$ --- caracterizado como solução do DGP. Por tanto, dependendo da geometria do grafo que define um DGP --- isto é, se ele possuir cliques suficientes ---, pode-se utilizar estas estruturas como ``blocos básicos de construção'' para planejar uma realização interativa do grafo como um todo \cite{libertiEDG}.
+
+Considere um 3-clique com $V = \{1,2,3\}$, onde $d_{12} = d_{23} = 1$ e $d_{13} = 2$. Então, uma possível realização sobre a linha real $\mathbb{R}$ que satisfaça todas as distâncias é $x_1 = 0$, $x_2 = 1$ e $x_3 = 2$. Uma forma de obter o valor de $x_3$ dado os valores de $x_1$ e $x_2$ e as distâncias $d_{13}$ e $d_{23}$ é a \textit{trilateração}: sabendo que $d_{13} = \lVert x_3 - x_1\rVert = 2$ e $d_{23} = \lVert x_3 - x_2 \rVert = 1$, tem-se
+
+\begin{equation}
+	x_3^2 - 2x_1x_3 +x_1^2 = 4 \quad \textrm{e}
+	\label{eq:trilateration1}
+\end{equation}
+\begin{equation}
+x_3^2 - 2x_2x_3 +x_2^2 = 1. \quad
+\label{eq:trilateration2}
+\end{equation}
+
+Subtraindo a equação~\ref{eq:trilateration2} da~\ref{eq:trilateration1}, obtêm-se
+
+\begin{equation*}
+	2x_3(x_1-x_2) = x_1^2 - x_2^2 - 3 \ \Rightarrow \ 2x_3 = 4 \ \Rightarrow \ x_3 = 2.
+\end{equation*}
+
+E pode-se generalizar esse exemplo facilmente para $(K+1)$-cliques em $\mathbb{R}^{K-1}$ \cite{libertiEDG}: Precisa-se conhecer a posição de $K$ vértices e as distâncias destes ao $(K+1)$-ésimo vértice, assim, pode-se realizar o $(K+1)$-ésimo vértice, em tempo linear, resolvendo um sistema de $K$ equações como acima.
+
+Isto é, sejam $x_1, \dots, x_k \in \mathbb{R}^{K-1}$ as posições para $K$ vértices de um $(K+1)$-clique e, para todo $j\leq K$, seja $d_{j,K+1}$ a distância associada com a aresta $\{j, K+1\}$. Seja $y \in \mathbb{R}^{K-1}$ a posição do $(K+1)$-ésimo vértice; então, $y$ deve respeitar as $K$ equações quadráticas $\forall j\leq K$, $\lVert y-x_j\rVert^2 = d_{j,K+1}^2$, com $K-1$ incógnitas  $y_1, \dots,y_{k-1}$:
+
+\begin{equation}
+	\begin{cases} 
+		\lVert y \rVert^2 -2x_1y + \lVert x_1\rVert^2 \ = \ d^2_{1,K+1}
+		\\
+		\qquad\qquad\qquad\quad\qquad \!\vdots
+		\\
+		\lVert y \rVert^2 -2x_ky + \lVert x_k\rVert^2 \ = \ d^2_{K,K+1}
+	\end{cases}
+	\label{eq:DGPsistemaEquacoes1}
+\end{equation}
+
+Para qualquer $h\leq K$. seja $e_h$ a $h$-ésima equação no sistema de equações~\ref{eq:DGPsistemaEquacoes1}: pode-se tomas as diferenças e formar um novo sistema $\forall\; h<K$ $(e_h-e_K)$ contendo $K-1$ equações com $K-1$ incógnitas:
+
+\begin{equation}
+\begin{cases} 
+2(x_1-x_K) \quad\cdot y \ = \ \lVert x_1\rVert^2 - \lVert x_K\rVert^2 - d^2_{1,K+1} + d^2_{K,K+1} 
+\\
+\qquad\qquad\qquad\qquad\!\!\!\vdots
+\\
+2(x_{K-1}-x_K) \cdot y \ = \ \lVert x_{K-1}\rVert^2 - \lVert x_K\rVert^2 - d^2_{K-1,K+1} + d^2_{K,K+1} 
+\end{cases}
+\label{eq:DGPsistemaEquacoes2}
+\end{equation}
+
+Note que o sistema de equações~\ref{eq:DGPsistemaEquacoes2} é um \textit{sistema linear} da forma $Ay = b$, onde $A = (2a_{ij})$ é uma matriz quadrada $(K-1) \times (K-1)$ com $a_{ij} = x_{ij} - x_{Kj}$ para todo $i,j < K$, e $b = (b_1, \dots, b_{K-1})^T$ com $b_i = \lVert x_i\rVert^2 - \lVert x_K\rVert^2 - d^2_{K,K+1}$ para todo $i<K$. 
 
 
 Note que um $K$-simplex é uma realização de um $(K+1)$-clique em $\mathbb{R}^K$. No geral, 

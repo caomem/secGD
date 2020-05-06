@@ -47,7 +47,7 @@ Por volta de 300 AC, Euclides de Alexandria organizou o conhecimento de sua épo
 		\end{equation}
 	\end{minipage}
 \end{center} 
-Pode-se dizer que esse foi o nascimento da Geometria de Distâncias (GD).
+Pode-se dizer que esse foi o nascimento da \textit{Geometria de Distâncias} (\textit{Distance Geometry}, ou DG).
 
 Algumas centenas de anos depois, em 1841, Arthur Cayley (1821 a 1895) generalizou a~\ref{eq:heron} através da construção de um determinante que calcula o conteúdo (volume $n$-dimensional) de um \textit{simplex}\footnote{Um simplex é uma generalização do conceito de triangulo a outras dimensões, i.e.: O \textit{0-simples} é um ponto, \textit{1-simplex} é um segmento de reta, \textit{2-simplex} é um triangulo e o \textit{3-simplex} é um tetraedro.} em qualquer dimensão \cite{cayley1841HaronGD}. Um século depois, em 1928, o matemático austríaco Karl Menger (1902 a 1985) re-organizou as ideias de Cayley e trabalhou em uma construção axiomática da geometria através de distâncias \cite{mengerDeterminante} --- donde a alteração no nome do determinante de Cayley para como é conhecido hoje: ``\textit{Determinante de Cayley-Menger}''.  
 
@@ -126,14 +126,15 @@ Como a definição de métrica garante a positividade das distâncias, pode-se e
 
 \begin{equation}
 \forall \{u,v\} \in E, \hspace{0.5cm} \sum_{i=1}^{K}(x_{ui} - x_{vi})^2 = d_{uv}^2.
+\label{eq:DGPSistemaQuadratico}
 \end{equation}
 
-\subsection{Sobre os Diferentes Problemas em GD}
+\subsection{Os Diferentes Problemas em DG}
 
-Em 2014, Leo Liberti \textit{et al.} publicaram um ótimo compendio sobre a \textit{Geometria de Distâncias Euclidianas e suas Aplicações} \cite{carlileGDandAplications} e, em particular, desenvolveram um estudo  taxonômico muito interessante sobre os problemas clássicos da área. No que se segue, devido a grande quantidade de siglas e variações dentro de GD, apresenta-se parte desse estudo, visando organizar os conceitos. 
+Em 2014, Leo Liberti \textit{et al.} publicaram um ótimo compendio sobre a \textit{Geometria de Distâncias Euclidianas e suas Aplicações} \cite{carlileGDandAplications} e, em particular, desenvolveram um estudo  taxonômico muito interessante sobre os problemas clássicos da área. No que se segue, devido a grande quantidade de siglas e variações dentro de DG, apresenta-se parte desse estudo, visando organizar os conceitos. 
 \\
 
-As principais aplicações em GD são no \textit{calculo de estruturas moleculares} \cite{crippen:DistancesAndMolecularConformation}, na \textit{localização de sensores em rede sem fio} (\textit{Wireless Sensor Network Localization}, ou WSNL) \cite{yemini1978positioning}, em \textit{cinemática inversa} (\textit{Inverse Kinematic}, ou IK) \cite{cinematicaInversa} e em \textit{escalonamento multidimensional} (\textit{Multidimensional Scaling}, ou MDS) \cite{multidimensionalScaling}.
+As principais aplicações em DG são no \textit{calculo de estruturas moleculares} \cite{crippen:DistancesAndMolecularConformation}, na \textit{localização de sensores em rede sem fio} (\textit{Wireless Sensor Network Localization}, ou WSNL) \cite{yemini1978positioning}, em \textit{cinemática inversa} (\textit{Inverse Kinematic}, ou IK) \cite{cinematicaInversa} e em \textit{escalonamento multidimensional} (\textit{Multidimensional Scaling}, ou MDS) \cite{multidimensionalScaling}.
 
 \subsubsection{Conformações Moleculares}
 
@@ -169,7 +170,7 @@ Por motivos práticos --- semelhantes ao caso molecular --- as variações de in
 
 \subsubsection{Dinâmicas em Cinemática Inversa}
 
-Muito utilizada em robótica e animação computadorizada, a cinemática inversa cerne sobre mecanismos e seus movimentos rígidos, onde restringe-se os movimentos de forma a preservar a geometria do sistema. Sem o auxilio computacional e matemático a manipulação de mecanismos com muitos graus de liberdade  pode ser inviável: Imagine a manipulação manual de cem vértices em uma haste simulando o comportamento de um braço articulado em uma animação. Com o auxílio da GD, um animador pode apenas configurar a posição final de um pequeno grupo de vértices (como os da extremidade da aresta, por exemplo) e um algorítimo de cinemática inversa é capaz de verificar se aquela posição é ou não viável e, se viável, qual a realização de todo o conjunto de vértices em razão da posição configurada \cite{cinematicaInversa}.
+Muito utilizada em robótica e animação computadorizada, a cinemática inversa cerne sobre mecanismos e seus movimentos rígidos, onde restringe-se os movimentos de forma a preservar a geometria do sistema. Sem o auxilio computacional e matemático a manipulação de mecanismos com muitos graus de liberdade  pode ser inviável: Imagine a manipulação manual de cem vértices em uma haste simulando o comportamento de um braço articulado em uma animação. Com o auxílio da DG, um animador pode apenas configurar a posição final de um pequeno grupo de vértices (como os da extremidade da aresta, por exemplo) e um algorítimo de cinemática inversa é capaz de verificar se aquela posição é ou não viável e, se viável, qual a realização de todo o conjunto de vértices em razão da posição configurada \cite{cinematicaInversa}.
 
 Visando tal restrição mecânica, define-se o \textit{Problema de Cinemática Inversa} (\textit{Inverse Kinematic Problem}, ou IKP) como uma variação do WSNL --- logo, tem o objetivo de descobrir posições em relação a certos pontos previamente realizados --- com uma restrição no grafo que define o problema: deve ser um caminho simples com seus vértices finais sempre sendo âncoras \cite{carlileGDandAplications}.
 
@@ -179,6 +180,44 @@ O problema de \textit{Escalonamento Multidimensional} (\textit{Multidimensional 
 é definido como \cite{carlileGDandAplications}: Dado um conjunto $X$ de vetores, encontre um conjunto $Y$ de vetores com menor dimensão (com $|X| = |Y|$) tal que a distância entre cada $i$-ésimo e $j$-ésimo vetores de $Y$ tenham, aproximadamente, a mesma distância que seus pares de vetores correspondentes em $X$.
 
 Esse problema é muito aplicado na analise de dados em Big Data \cite{libertiEDG}. É um meio de facilitar a visualização do nível de similaridade entre casos individuais --- que não necessariamente precisam ter uma conexão aparente --- em um conjunto de dados. Pode-se usá-lo, por exemplo, para visualizar em uma escala bidimensional ($\mathbb{R}^2$) a evolução da locomoção de animais no espaço tridimensional utilizando dados de séries temporais (espaço em diferentes tempos, logo, dados em $\mathbb{R}^4$).
+
+\subsection{A Busca de uma Solução}
+
+A abordagem mais simples, pode-se pensar, para encontrar um conjunto de soluções que satisfação a equação~\ref{eq:DGPSistemaQuadratico} é resolver o sistema de equações diretamente \cite{carlileBook31Coloquio}. Infelizmente, para $K \geq 2$, há evidencias de que uma solução de forma fechada onde todo componente de $x$ é expresso por raízes, não é possível \cite{libertiEDG}. 
+
+No entanto, pode-se re-formular o problema como um problema de otimização global \cite{libertiEDG}, onde o objetivo é minimizar a soma dos erros\footnote{Em otimização, vê-se a equação~\ref{eq:DGP} de forma não exata: $\lVert x_u - x_v \rVert = d_{uv} + \varepsilon$, onde $\varepsilon$ é chamado \textit{erro}. Ou seja, para minimizar o erro, precisa-se minimizar a expressão $f(x_u,x_v) = \lVert x_u - x_v \rVert - d_{uv}$.} entre as distâncias dadas a priori e as calculadas. Para isso, pode-se considerar uma única expressão que englobe todos os $n$ erros, da forma
+\begin{equation}
+	f(x_1,\dots,x_n) = \sum_{(i,j)\in E} \left(\lVert x_i - x_j \rVert - d_{ij}\right)^2.
+\end{equation}
+
+Fica claro que encontrar uma solução para o DGP é equivalente a encontrar realizações $x_i \in \mathbb{R}^3$, $i=1,\dots,n$, se e somente se $f(x_1,\dots,x_n) = 0$ \cite{libertiEDG}. Pela definição de métrica (vide Apêndice~\ref{ap:metric}), 0 é o menor valor possível para $f$, donde diz-se que deseja-se \textit{minimizar a função} $f: \mathbb{R}^n \longrightarrow \mathbb{R}$ \cite{carlileBook31Coloquio}. Ou seja,
+\begin{equation}
+	\min_{x_i \in \mathbb{R}^n} f(x_1,\dots,x_n).
+\end{equation}
+
+Donde, no caso da métrica euclidiana \cite{libertiEDG}, temos
+
+\begin{equation}
+ \min_{x_j \in \mathbb{R}^n} \sum_{(u,v)\in E} \left(\sum_{i=1}^{K}(x_{ui} - x_{vi})^2 - d_{uv}^2\right)^2
+ \label{eq:DGPminEuclid}
+\end{equation}
+
+Por tanto, a equação~\ref{eq:DGPminEuclid} tem como objetivo a minimização de um polinômio de múltiplas variáveis de grau quatro. 
+\\
+
+Um dos desafios da Otimização Global é que muitos dos métodos existentes --- em especial, os mais eficientes --- não garantem que uma otimização global será encontrada \cite{libertiEDG}. Isso se dá pois, dependendo do comportamento da função que se deseja otimizar, existem muitos ótimos locais e os métodos não conseguem diferenciá-los de um global. Em DG, a distribuição geometria dos vértices do grafo está intimamente ligada com o comportamento da função objetivo --- donde, por exemplo, em WSNL, é interessante o estudo de como distribuir os sensores afim de otimizar a busca por ótimos globais \cite{eren2004rigidity}.
+
+\subsection{A Quantidade de Soluções}
+Pode-se verificar que, dada uma solução de um DGP, obtêm-se facilmente uma quantidade infinita (não enumerável!) de outras realizações válidas, distintas, através de rotações e translações desta solução inicial \cite{carlileBook31Coloquio} --- Para que não se tenha tais soluções redundantes, costuma-se fixar a realização dos três primeiros vértices.
+
+\subsubsection{Realização de Grafos Completos}
+
+Para DGP definido em um espaço de dimensão $K$, a classe de problemas mais simples de resolver são dos grafos $(K+1)$-cliques, isto é, dos grafos completos com $K+1$ vértices \cite{libertiEDG}.
+
+
+
+Note que um $K$-simplex é uma realização de um $(K+1)$-clique em $\mathbb{R}^K$. No geral, 
+
 
 \newpage
 \phantomsection

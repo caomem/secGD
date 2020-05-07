@@ -5,10 +5,12 @@ This repository is an introductory latex section in portuguese about Euclidean D
 ## TO DO
 
 1. [X] Write an introductory section on the great minds behind this theory
-2. [X] Write an apresentation about the fundamental problem in DG and define it
-3. [X] Write a brief list with some classical applications in the GD
-4. [ ] Write on the solution set of a DGP (Intersection of spheres --- geometric interpretation --- and numer of solutions)
+2. [X] Write a little definition of metric spaces as apendice section
+3. [X] Write an apresentation about the fundamental problem in DG and define it
+4. [X] Write a brief list with some classical applications in the GD
 5. [X] Define the WSNL (wireless sensor networks localization)
-6. [X] Write a little definition of metric spaces as apendice section
-7. [ ] Rewrite the appendix B using only distances
-8. [X] Write about realization of complete graphs 
+6. [X] Write about realization of complete graphs 
+7. [ ] Write on the solution set of a DGP (Intersection of spheres --- geometric interpretation --- and numer of solutions)
+8. [ ] Write a subsubsection about the unique realization (glabal rigity) in WSNL (see section 4.1.1 in the Leo's SIAM paper)
+9. [ ] Rewrite the appendix B using only distances (?)
+10. [ ] Write a subsection about the soluction of the linear system in trilateration topics (?)

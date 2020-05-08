@@ -19,7 +19,7 @@
 \newcommand\Mark[1]{\textsuperscript#1}
 \usepackage{pgfplots}
 \usepackage{amsfonts}
-\usepackage[english, ruled, linesnumbered]{algorithm2e}
+\usepackage[portuguese, ruled, linesnumbered]{algorithm2e}
 \usepackage{algorithmic}
 \usepackage{systeme}
 %\usepackage[toc,page]{appendix}
@@ -208,7 +208,7 @@ Por tanto, a equação~\ref{eq:DGPminEuclid} tem como objetivo a minimização d
 
 Um dos desafios da Otimização Global é que muitos dos métodos existentes --- em especial, os mais eficientes --- não garantem que uma otimização \textit{global} será encontrada \cite{libertiEDG}. Isso se dá pois, dependendo do comportamento da função, existem muitos ótimos locais e os métodos não conseguem diferenciá-los de um global. %Em DG, a distribuição geométrica dos vértices do grafo está intimamente ligada com o comportamento da função objetivo --- donde, por exemplo, em WSNL, é interessante o estudo da distribuição geométrica dos sensores afim de melhorar a busca por ótimos globais \cite{eren2004rigidity}.
 
-Infelizmente, essa abordagem via otimização é custosa do ponto de vista computacional \cite{libertiEDG}. Saxe demonstrou em 1979 \cite{Saxe:79} que resolver um DGP para qualquer dimensão --- i.e., para qualquer valor de $K$ --- tem a complexidade computacional da classe \textbf{NP}-Hard. Em outras palavras, isso significa que resolver um DGP pode exigir um custo computacional da proporcional a $2^{|V|}$. 
+Infelizmente, essa abordagem via otimização é custosa do ponto de vista computacional \cite{libertiEDG}. Saxe demonstrou em 1979 \cite{Saxe:79} que resolver um DGP para qualquer dimensão --- i.e., para qualquer valor de $K$ --- tem a complexidade computacional da classe \textbf{NP}-Hard. Em outras palavras, isso significa que a quantidade de mínimos locais de um DGP cresce exponencialmente proporcional a $|V|$ \cite{carlileIntroductionMDGP}. 
 
 \subsubsection{A Quantidade de Soluções do Problema}
 Pode-se verificar que, dada uma solução de um DGP, obtêm-se facilmente uma quantidade infinita (não enumerável!) de outras realizações válidas, distintas, através de rotações e translações desta solução inicial \cite{carlileBook31Coloquio} --- infelizmente, essas costumam não serem soluções de interesse.
@@ -307,8 +307,40 @@ Também, se $K = 3$, a singularidade de $A$ implica que o triangulo definido por
 
 Deve-se mencionar que, a partir da equação~\ref{eq:DGPsistemaEquacoes1}, podemos chegar no sistema linear~\ref{eq:DGPLinearSystem}, mas a volta não é verdadeira \cite{libertiEDG}. Em particular, se o sistema~\ref{eq:DGPsistemaEquacoes1} tem uma solução, então o sistema~\ref{eq:DGPLinearSystem} tem a mesma solução. Porém, mesmo que o sistema~\ref{eq:DGPsistemaEquacoes1} não tenha solução, o sistema~\ref{eq:DGPLinearSystem} sempre terá uma solução única --- desde que $A$ não seja singular. Por tanto, para verificar a factibilidade de uma solução $x_{K+1}$ advinda do sistema linear~\ref{eq:DGPLinearSystem}, deve ser verificar se as distâncias aos $K$ vértices foram respeitadas --- ou seja, se $\lVert x_{K+1} - x_i\rVert = d_{i,(K+1)}$, para todo $i\leq K$. 
 
-Note que um $K$-simplex é uma realização de um $(K+1)$-clique em $\mathbb{R}^K$. No geral, 
+\subsubsection{Realização Iterativa de Grafos Completos}
 
+Uma característica interessante nos grafos completos é que, se $(V,E)$ é um grafo completo, dado qualquer grafo induzido $\langle V'\rangle$ com $V'\subset V$, o subgrafo $\langle V' \rangle$ também é completo. Unindo esse princípio com a trilateração, nessa seção apresenta-se um algorítimo adaptado de \cite{libertiEDG} para a realização de grafos completos.\\
+
+Primeiro, assume-se que exista um $(K+1)$-clique $K(G)$ em $G$, chamada clique inicial, que conhecemos a realização --- em WSNL, por exemplo, comumente se utiliza nós ancoras como clique inicial \cite{libertiEDG}. Sem perda de generalidade, seja $\{1,\dots,K+1\}$ o conjunto dos vértices os que formam a clique inicial, com realização $\{x_1, \dots,x_{K+1}\}$. Seja, também, $N(i)$ o conjunto de vértices adjacentes ao $i$-ésimo vértice. 
+\\
+
+\begin{algorithm}[H]
+	\label{alg:realizacaoIterativa}
+	\tcp{Realize os próximos vértices iterativamente}
+	\For{$i\in \{K+2,\dots,n\}$}{
+		\tcc{Utilize a $(K+1)$-clique dos $(K+1)$ antecessores imediatos de $i$ para calcular a realização $x_i$. Trilateracao() deve retornar $\emptyset$ caso o sistema não tenha solução}
+		$x_i =$ Trilateracao$(x_{i-K-1},\dots,x_{i-1})$\;
+		\tcp{verifique se $x_i$ é factível com relação as outras distâncias}
+		\For{$\{j\in N(i)\ ; \ j<i\}$}{
+			\If{$\lVert x_i - x_j\rVert \ne d_{ij}$}{
+				\tcp{Se não, marcar como não factível e sair do loop}
+				$x_i = \emptyset$\;
+				\textbf{break}\;
+			}
+		} 
+		\If{$x_i = \emptyset$}{
+			\tcp{Retornar que não foi possível concluir a realização}
+			\textbf{return} $\emptyset$\;
+		}
+		\tcp{Retornar a realização factível}
+		\textbf{return} $x$\;
+	}
+	\caption{$x =$ RealizacaoIterativa$(G,d, K, x)$ \cite{libertiEDG}}
+\end{algorithm}
+\vspace{0.5cm}
+Uma informação muito importante sobre o Algorítimo~\ref{alg:realizacaoIterativa} é que a complexidade de seu pior caso é $O(K^3n)$ --- para cada $n$ vértices, deve-se resolver um sistema linear $K\times K$. Se não existir realização factível para $G$ em $\mathbb{R}^K$, Algorítimo~\ref{alg:realizacaoIterativa} retorna $\emptyset$.
+
+Esse processo de trilateração em $\mathbb{R}^K$ é chamado $K$-\textit{lateração} \cite{eren2004rigidity, libertiEDG}.
 
 \newpage
 \phantomsection

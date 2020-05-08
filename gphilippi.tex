@@ -206,17 +206,26 @@ E, no caso da métrica euclidiana \cite{libertiEDG}, temos
 Por tanto, a equação~\ref{eq:DGPminEuclid} tem como objetivo a minimização de um polinômio de múltiplas variáveis de grau quatro. 
 \\
 
-Um dos desafios da Otimização Global é que muitos dos métodos existentes --- em especial, os mais eficientes --- não garantem que uma otimização \textit{global} será encontrada \cite{libertiEDG}. Isso se dá pois, dependendo do comportamento da função, existem muitos ótimos locais e os métodos não conseguem diferenciá-los de um global. Em DG, a distribuição geometria dos vértices do grafo está intimamente ligada com o comportamento da função objetivo --- donde, por exemplo, em WSNL, é interessante o estudo da distribuição geométrica dos sensores afim de melhorar a busca por ótimos globais \cite{eren2004rigidity}.
+Um dos desafios da Otimização Global é que muitos dos métodos existentes --- em especial, os mais eficientes --- não garantem que uma otimização \textit{global} será encontrada \cite{libertiEDG}. Isso se dá pois, dependendo do comportamento da função, existem muitos ótimos locais e os métodos não conseguem diferenciá-los de um global. %Em DG, a distribuição geométrica dos vértices do grafo está intimamente ligada com o comportamento da função objetivo --- donde, por exemplo, em WSNL, é interessante o estudo da distribuição geométrica dos sensores afim de melhorar a busca por ótimos globais \cite{eren2004rigidity}.
 
-\subsubsection{A Quantidade de Soluções}
-Pode-se verificar que, dada uma solução de um DGP, obtêm-se facilmente uma quantidade infinita (não enumerável!) de outras realizações válidas, distintas, através de rotações e translações desta solução inicial \cite{carlileBook31Coloquio}. Infelizmente, essas costumam não serem soluções de interesse. Pode-se, no entanto, driblar esse problema ao fixar no espaço uma quantidade de vértices iniciais proporcionais a dimensão do espaço de realização.
-\\
+Infelizmente, essa abordagem via otimização é custosa do ponto de vista computacional \cite{libertiEDG}. Saxe demonstrou em 1979 \cite{Saxe:79} que resolver um DGP para qualquer dimensão --- i.e., para qualquer valor de $K$ --- tem a complexidade computacional da classe \textbf{NP}-Hard. Em outras palavras, isso significa que resolver um DGP pode exigir um custo computacional da proporcional a $2^{|V|}$. 
 
-Analisar o espaço de busca formado por instâncias do problema pode dar algumas pistas sobre a quantidade possível de soluções de um DGP. Para um DGP definido em um espaço de dimensão $K$, a classe de problemas mais simples de resolver são dos grafos $(K+1)$-cliques, isto é, dos grafos completos com $K+1$ vértices \cite{libertiEDG}.
+\subsubsection{A Quantidade de Soluções do Problema}
+Pode-se verificar que, dada uma solução de um DGP, obtêm-se facilmente uma quantidade infinita (não enumerável!) de outras realizações válidas, distintas, através de rotações e translações desta solução inicial \cite{carlileBook31Coloquio} --- infelizmente, essas costumam não serem soluções de interesse.
+
+Contudo, se for desconsiderado essas soluções advindas de translações e rotações, a quantidade de soluções do DGP depende da estrutura geométrica do grafo que a define: podem não haver nenhuma realização; uma única realização; uma quantidade finita (não única) de realizações; ou, um número incontável de realizações \cite{libertiEDG}. Perceba que o conjunto solução de um DGP, curiosamente, somente não pode ser um número infinito enumerável --- resultado obtido através da \textit{Geometria Algébrica Real} \cite{benedettireal}.\\
+ 
+Por tanto, supondo que o conjunto solução de um DGP seja não vazio, sabe-se que ele é não enumerável ou finito. Se for finito, além de aplicar os métodos de Otimização Global --- já definidos como custosos coputacionalmente ---, pode-se explorar outras abordagens, como a Otimização Combinatória \cite{carlileBook31Coloquio}. 
+
+\subsection{Combinatória do DGP}
+
+Nesta seção, analisando o espaço de busca por uma solução, faz-se um estudo sobre as condições que garantem a finitude do conjunto solução do problema. 
+
+Em particular, para um DGP definido em um espaço de dimensão $K$, a classe de problemas mais simples de resolver são dos grafos $(K+1)$-cliques, isto é, dos grafos completos com $K+1$ vértices \cite{libertiEDG}.
 
 \subsubsection{Realização de Grafos Completos}
 
-Em um espaço unidimensional --- ou seja, uma linha ---, tem-se $K+1 = 2$. O grafo completo em dois vértices é $K_2 = (\{v_1,v_2\}, \{\{v_1,v_2\}\})$, ou seja, o grafo é dois vértices com uma ares entre eles --- uma linha (veja a Figura~\ref{fig:grafoCompleto}). No espaço bidimensional, o grafo completo é um triangulo e, no tridimensional, um tetraedro.
+Em um espaço unidimensional, i.e., uma reta, tem-se $K+1 = 2$. O grafo completo em dois vértices é $K_2 = (\{v_1,v_2\}, \{\{v_1,v_2\}\})$, ou seja, o grafo é dois vértices com uma ares entre eles --- uma linha (veja a Figura~\ref{fig:grafoCompleto}). No espaço bidimensional, o grafo completo é um triangulo e, no tridimensional, um tetraedro.
 
 \begin{figure}[H]
 	\begin{center}
@@ -278,7 +287,7 @@ Para qualquer $h\leq K$. seja $e_h$ a $h$-ésima equação no sistema de equaç�
 Note que o sistema de equações~\ref{eq:DGPsistemaEquacoes2} é um \textit{sistema linear} da forma $Ay = b$, onde $A = (2a_{ij})$ é uma matriz quadrada $(K-1) \times (K-1)$ com $a_{ij} = x_{ij} - x_{Kj}$ para todo $i,j < K$, e $b = (b_1, \dots, b_{K-1})^T$ com $b_i = \lVert x_i\rVert^2 - \lVert x_K\rVert^2 - d^2_{K,K+1}$ para todo $i<K$. 
 \\
 
-Diferentes métodos para solução de sistemas lineares como esse são encontrados na bibliografia \cite{AlgebraLinearElon, libertiEDG} --- no geral, a escolha do melhor depende de propriedades da matriz $A$, como sua esparsidade. 
+Diferentes métodos para solução de sistemas lineares como esse são encontrados na bibliografia \cite{AlgebraLinearElon, libertiEDG} --- no geral, a escolha do melhor depende de propriedades da matriz $A$, como, por exemplo, quão esparsa ela é 	. 
 
 Em especial, se $A$ não é uma matriz singular, então ela possui uma inversa $A^{-1}$. Logo, podemos obter a posição do $(K+1)$-ésimo vértice da forma
 

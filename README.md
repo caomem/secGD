@@ -12,6 +12,7 @@ This repository is an introductory latex section in portuguese about Euclidean D
 6. [X] Write about realization of complete graphs 
 7. [X] Write a subsection about the soluction of the linear system in trilateration topics
 8. [X] Write on the solution set of a DGP (Intersection of spheres --- geometric interpretation --- and numer of solutions)
-9. [ ] Write a subsubsection about the unique realization (glabal rigity) in WSNL (see section 4.1.1 in the Leo's SIAM paper)
+9. [ ] Write a subsubsection about the unique realization (glabal rigity) in WSNL (see section 4.1.1 in the Leo's SIAM paper)?
 10. [ ] Rewrite the appendix B using only distances (?)
-11. [ ] Write about Trilateration Orders, Trilaterative DGP? (important in WSNL aplication) 
+11. [ ] Write about realization of (K+1)-cliques in R^K? (not only is a unique solution possible, but it analyzes the necessary uniqueness criteria --- zero k-simplex volume and flat simplices)
+12. [ ] Write about Trilateration Orders, Trilaterative DGP? (important in WSNL aplication. For example, if a graph has a K-tralateration order, then it is globally rigid) 

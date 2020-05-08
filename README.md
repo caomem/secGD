@@ -10,7 +10,7 @@ This repository is an introductory latex section in portuguese about Euclidean D
 4. [X] Write a brief list with some classical applications in the GD
 5. [X] Define the WSNL (wireless sensor networks localization)
 6. [X] Write about realization of complete graphs 
-7. [ ] Write on the solution set of a DGP (Intersection of spheres --- geometric interpretation --- and numer of solutions)
-8. [ ] Write a subsubsection about the unique realization (glabal rigity) in WSNL (see section 4.1.1 in the Leo's SIAM paper)
-9. [ ] Rewrite the appendix B using only distances (?)
-10. [ ] Write a subsection about the soluction of the linear system in trilateration topics (?)
+7. [X] Write a subsection about the soluction of the linear system in trilateration topics
+8. [ ] Write on the solution set of a DGP (Intersection of spheres --- geometric interpretation --- and numer of solutions)
+9. [ ] Write a subsubsection about the unique realization (glabal rigity) in WSNL (see section 4.1.1 in the Leo's SIAM paper)
+10. [ ] Rewrite the appendix B using only distances (?)

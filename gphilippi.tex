@@ -283,24 +283,29 @@ Para qualquer $h\leq K$. seja $e_h$ a $h$-ésima equação no sistema de equaç�
 \end{cases}
 \label{eq:DGPsistemaEquacoes2}
 \end{equation}
-
-Note que o sistema de equações~\ref{eq:DGPsistemaEquacoes2} é um \textit{sistema linear} da forma $Ay = b$, onde $A = (2a_{ij})$ é uma matriz quadrada $(K-1) \times (K-1)$ com $a_{ij} = x_{ij} - x_{Kj}$ para todo $i,j < K$, e $b = (b_1, \dots, b_{K-1})^T$ com $b_i = \lVert x_i\rVert^2 - \lVert x_K\rVert^2 - d^2_{K,K+1}$ para todo $i<K$. 
 \\
 
-Diferentes métodos para solução de sistemas lineares como esse são encontrados na bibliografia \cite{AlgebraLinearElon, libertiEDG} --- no geral, a escolha do melhor depende de propriedades da matriz $A$, como, por exemplo, quão esparsa ela é 	. 
+Note que o sistema de equações~\ref{eq:DGPsistemaEquacoes2} é um \textit{sistema linear} da forma 
+\begin{equation}
+	Ay=b,
+	\label{eq:DGPLinearSystem}
+\end{equation}
+onde $A = (2a_{ij})$ é uma matriz quadrada $(K-1) \times (K-1)$ com $a_{ij} = x_{ij} - x_{Kj}$ para todo $i,j < K$, e $b = (b_1, \dots, b_{K-1})^T$ com $b_i = \lVert x_i\rVert^2 - \lVert x_K\rVert^2 - d^2_{K,K+1}$ para todo $i<K$. 
+\\
+
+Diferentes métodos para solução de sistemas lineares como esse são encontrados na bibliografia \cite{AlgebraLinearElon, libertiEDG} --- no geral, a escolha do melhor depende de propriedades da matriz $A$, como, por exemplo, quão esparsa ela é. 
 
 Em especial, se $A$ não é uma matriz singular, então ela possui uma inversa $A^{-1}$. Logo, podemos obter a posição do $(K+1)$-ésimo vértice da forma
 
 \begin{equation}
 	Ay = b \quad \Rightarrow \quad A^{-1}Ay = A^{-1}b \quad \Rightarrow \quad x_{K+1} = y = A^{-1}b.
 \end{equation}
-\\
 
-Porém, se A é singular, isso quer dizer que as linhas $a_i = x_i - x_K$ (para $i<K$) não são todas linearmente independentes \cite{AlgebraLinearElon}. Essa situação mostra algumas propriedades geométricas interessantes \cite{libertiEDG}. Por exemplo, se $K=2$, significa que $x_1 - x_2 = 0 \ \Rightarrow \  x_i = x_K$, ou seja, que o segmento entre $x_1$ e $x_2$ é um simples ponto. Se estamos imersos no $\mathbb{R}^{K-1} = \mathbb{R}$ (i.e., a reta real), geometricamente, a situação é que $x_3$ está posicionado ou a direita ou a esquerda de $x_1 = x_2$, mas não se pode escolher.
+Porém, se A é singular, isso quer dizer que as linhas $a_i = x_i - x_K$ (para $i<K$) não são todas linearmente independentes \cite{AlgebraLinearElon}. Essa situação mostra algumas propriedades geométricas interessantes \cite{libertiEDG}. Por exemplo, se $K=2$, significa que $x_1 - x_2 = 0 \ \Rightarrow \  x_1 = x_K$, ou seja, que o segmento entre $x_1$ e $x_2$ é um simples ponto. Se estamos imersos no $\mathbb{R}^{K-1} = \mathbb{R}$ (i.e., a reta real), geometricamente, a situação é que $x_3$ está posicionado ou a direita ou a esquerda de $x_1 = x_2$, mas não se pode escolher.
 
-Também, se $K = 3$, a singularidade de $A$ implica que o triangulo definido por $x_1$, $x_2$ e $x_3$ é um apenas um segmento no plano (caso o rank de $A$ é 1) ou um simples ponto (caso o rank for 0). Nesse primeiro caso, $x_4$ pode estar posicionado em ambos os lados da linha que contém o segmento e, no segundo caso, $x_4$ pode estar em qualquer um dos pontos formados pela circunferência com centro $x_1 = x_2 = x_3$ e raio $d_{14} = d_{24} = d_{34}$. Essa característica geométrica vale para valores maiores de $K$ \cite{libertiEDG}: a singularidade de $A$ implica que há sempre múltiplas soluções para $x_{K+1}$.
+Também, se $K = 3$, a singularidade de $A$ implica que o triangulo definido por $x_1$, $x_2$ e $x_3$ é um apenas um segmento no plano (caso o rank de $A$ é 1) ou um simples ponto (caso o rank for 0). Nesse primeiro caso, $x_4$ pode estar posicionado em ambos os lados da linha que contém o segmento e, no segundo caso, $x_4$ pode estar em qualquer um dos pontos formados pela circunferência com centro $x_1 = x_2 = x_3$ e raio $d_{14} = d_{24} = d_{34}$. Essa característica geométrica vale para valores maiores de $K$ \cite{libertiEDG}: a singularidade de $A$ implica que há sempre múltiplas soluções para $x_{K+1}$.\\
 
-
+Deve-se mencionar que, a partir da equação~\ref{eq:DGPsistemaEquacoes1}, podemos chegar no sistema linear~\ref{eq:DGPLinearSystem}, mas a volta não é verdadeira \cite{libertiEDG}. Em particular, se o sistema~\ref{eq:DGPsistemaEquacoes1} tem uma solução, então o sistema~\ref{eq:DGPLinearSystem} tem a mesma solução. Porém, mesmo que o sistema~\ref{eq:DGPsistemaEquacoes1} não tenha solução, o sistema~\ref{eq:DGPLinearSystem} sempre terá uma solução única --- desde que $A$ não seja singular. Por tanto, para verificar a factibilidade de uma solução $x_{K+1}$ advinda do sistema linear~\ref{eq:DGPLinearSystem}, deve ser verificar se as distâncias aos $K$ vértices foram respeitadas --- ou seja, se $\lVert x_{K+1} - x_i\rVert = d_{i,(K+1)}$, para todo $i\leq K$. 
 
 Note que um $K$-simplex é uma realização de um $(K+1)$-clique em $\mathbb{R}^K$. No geral, 
 

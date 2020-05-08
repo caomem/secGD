@@ -167,7 +167,7 @@ onde $X$ e $n$ são constantes e dependem muito das condições do experimento, 
 
 Em essência, um problema do tipo WSNL segue a mesma definição do DGP, porém, com um subconjunto $A\subset V$ de vértices (chamados \textit{âncoras}), onde os elementos de $A$ tem uma posição em $\mathbb{R}^k$ dada a priori --- isso é feito pois, normalmente, interessa saber a posição relativa de um objeto a outro, como é o caso do Sistema de Posicionamento Global, onde temos os satélites como âncoras e desejamos saber a posição dos aparelhos GPS em relação aos satélites.
 
-Por motivos práticos --- semelhantes ao caso molecular --- as variações de interesse desse problema tem o $K$ fixo em $K= 2$ ou $K=3$.
+Por motivos práticos --- semelhantes ao caso molecular --- as variações de interesse desse problema tem o $K$ fixo em $K= 2$ ou $K=3$. É comum, também, que se defina um WSNL como \textit{solucionável} somente se seu grafo possua uma única realização válida \cite{libertiEDG} --- noção conhecida como \textit{globalmente rígido}: Diz-se que um grafo é \textit{globalmente rígido} quando ele possui uma realização genérica $x$ e, para todas as outras realizações $x'$, $x$ é congruente a $x'$. 
 
 \subsubsection{Dinâmicas em Cinemática Inversa}
 
@@ -196,22 +196,23 @@ Fica claro que encontrar uma solução para o DGP é equivalente a encontrar rea
 	\min_{x_i \in \mathbb{R}^n} f(x_1,\dots,x_n).
 \end{equation}
 
-Donde, no caso da métrica euclidiana \cite{libertiEDG}, temos
+E, no caso da métrica euclidiana \cite{libertiEDG}, temos
 
 \begin{equation}
- \min_{x_j \in \mathbb{R}^n} \sum_{(u,v)\in E} \left(\sum_{i=1}^{K}(x_{ui} - x_{vi})^2 - d_{uv}^2\right)^2
+ \min_{x_j \in \mathbb{R}^n} \sum_{(u,v)\in E} \left(\sum_{i=1}^{K}(x_{ui} - x_{vi})^2 - d_{uv}^2\right)^2.
  \label{eq:DGPminEuclid}
 \end{equation}
 
 Por tanto, a equação~\ref{eq:DGPminEuclid} tem como objetivo a minimização de um polinômio de múltiplas variáveis de grau quatro. 
 \\
 
-Um dos desafios da Otimização Global é que muitos dos métodos existentes --- em especial, os mais eficientes --- não garantem que uma otimização global será encontrada \cite{libertiEDG}. Isso se dá pois, dependendo do comportamento da função que se deseja otimizar, existem muitos ótimos locais e os métodos não conseguem diferenciá-los de um global. Em DG, a distribuição geometria dos vértices do grafo está intimamente ligada com o comportamento da função objetivo --- donde, por exemplo, em WSNL, é interessante o estudo de como distribuir os sensores afim de otimizar a busca por ótimos globais \cite{eren2004rigidity}.
+Um dos desafios da Otimização Global é que muitos dos métodos existentes --- em especial, os mais eficientes --- não garantem que uma otimização \textit{global} será encontrada \cite{libertiEDG}. Isso se dá pois, dependendo do comportamento da função, existem muitos ótimos locais e os métodos não conseguem diferenciá-los de um global. Em DG, a distribuição geometria dos vértices do grafo está intimamente ligada com o comportamento da função objetivo --- donde, por exemplo, em WSNL, é interessante o estudo da distribuição geométrica dos sensores afim de melhorar a busca por ótimos globais \cite{eren2004rigidity}.
 
 \subsubsection{A Quantidade de Soluções}
-Pode-se verificar que, dada uma solução de um DGP, obtêm-se facilmente uma quantidade infinita (não enumerável!) de outras realizações válidas, distintas, através de rotações e translações desta solução inicial \cite{carlileBook31Coloquio} --- Para que não se tenha tais soluções redundantes, costuma-se fixar a realização dos três primeiros vértices.
+Pode-se verificar que, dada uma solução de um DGP, obtêm-se facilmente uma quantidade infinita (não enumerável!) de outras realizações válidas, distintas, através de rotações e translações desta solução inicial \cite{carlileBook31Coloquio}. Infelizmente, essas costumam não serem soluções de interesse. Pode-se, no entanto, driblar esse problema ao fixar no espaço uma quantidade de vértices iniciais proporcionais a dimensão do espaço de realização.
+\\
 
-Para um DGP definido em um espaço de dimensão $K$, a classe de problemas mais simples de resolver são dos grafos $(K+1)$-cliques, isto é, dos grafos completos com $K+1$ vértices \cite{libertiEDG}.
+Analisar o espaço de busca formado por instâncias do problema pode dar algumas pistas sobre a quantidade possível de soluções de um DGP. Para um DGP definido em um espaço de dimensão $K$, a classe de problemas mais simples de resolver são dos grafos $(K+1)$-cliques, isto é, dos grafos completos com $K+1$ vértices \cite{libertiEDG}.
 
 \subsubsection{Realização de Grafos Completos}
 
@@ -227,6 +228,8 @@ Em um espaço unidimensional --- ou seja, uma linha ---, tem-se $K+1 = 2$. O gra
 
 No geral, se um $(K+1)$-clique tem uma realização em $\mathbb{R}^{K-1}$, ela é única a menos de rotações e translações \cite{libertiEDG}. É trivial, por tanto, que um $(K+2)$-clique tem, no máximo, uma realização no espaço $\mathbb{R}^K$ --- caracterizado como solução do DGP. Por tanto, dependendo da geometria do grafo que define um DGP --- isto é, se ele possuir cliques suficientes ---, pode-se utilizar estas estruturas como ``blocos básicos de construção'' para planejar uma realização interativa do grafo como um todo \cite{libertiEDG}.
 
+\subsubsection{Trilateração}
+
 Considere um 3-clique com $V = \{1,2,3\}$, onde $d_{12} = d_{23} = 1$ e $d_{13} = 2$. Então, uma possível realização sobre a linha real $\mathbb{R}$ que satisfaça todas as distâncias é $x_1 = 0$, $x_2 = 1$ e $x_3 = 2$. Uma forma de obter o valor de $x_3$ dado os valores de $x_1$ e $x_2$ e as distâncias $d_{13}$ e $d_{23}$ é a \textit{trilateração}: sabendo que $d_{13} = \lVert x_3 - x_1\rVert = 2$ e $d_{23} = \lVert x_3 - x_2 \rVert = 1$, tem-se
 
 \begin{equation}
@@ -241,7 +244,7 @@ x_3^2 - 2x_2x_3 +x_2^2 = 1. \quad
 Subtraindo a equação~\ref{eq:trilateration2} da~\ref{eq:trilateration1}, obtêm-se
 
 \begin{equation*}
-	2x_3(x_1-x_2) = x_1^2 - x_2^2 - 3 \ \Rightarrow \ 2x_3 = 4 \ \Rightarrow \ x_3 = 2.
+	2(x_1-x_2)x_3 = x_1^2 - x_2^2 - 3 \ \Rightarrow \ 2x_3 = 4 \ \Rightarrow \ x_3 = 2.
 \end{equation*}
 
 E pode-se generalizar esse exemplo facilmente para $(K+1)$-cliques em $\mathbb{R}^{K-1}$ \cite{libertiEDG}: Precisa-se conhecer a posição de $K$ vértices e as distâncias destes ao $(K+1)$-ésimo vértice, assim, pode-se realizar o $(K+1)$-ésimo vértice, em tempo linear, resolvendo um sistema de $K$ equações como acima.
@@ -273,6 +276,21 @@ Para qualquer $h\leq K$. seja $e_h$ a $h$-ésima equação no sistema de equaç�
 \end{equation}
 
 Note que o sistema de equações~\ref{eq:DGPsistemaEquacoes2} é um \textit{sistema linear} da forma $Ay = b$, onde $A = (2a_{ij})$ é uma matriz quadrada $(K-1) \times (K-1)$ com $a_{ij} = x_{ij} - x_{Kj}$ para todo $i,j < K$, e $b = (b_1, \dots, b_{K-1})^T$ com $b_i = \lVert x_i\rVert^2 - \lVert x_K\rVert^2 - d^2_{K,K+1}$ para todo $i<K$. 
+\\
+
+Diferentes métodos para solução de sistemas lineares como esse são encontrados na bibliografia \cite{AlgebraLinearElon, libertiEDG} --- no geral, a escolha do melhor depende de propriedades da matriz $A$, como sua esparsidade. 
+
+Em especial, se $A$ não é uma matriz singular, então ela possui uma inversa $A^{-1}$. Logo, podemos obter a posição do $(K+1)$-ésimo vértice da forma
+
+\begin{equation}
+	Ay = b \quad \Rightarrow \quad A^{-1}Ay = A^{-1}b \quad \Rightarrow \quad x_{K+1} = y = A^{-1}b.
+\end{equation}
+\\
+
+Porém, se A é singular, isso quer dizer que as linhas $a_i = x_i - x_K$ (para $i<K$) não são todas linearmente independentes \cite{AlgebraLinearElon}. Essa situação mostra algumas propriedades geométricas interessantes \cite{libertiEDG}. Por exemplo, se $K=2$, significa que $x_1 - x_2 = 0 \ \Rightarrow \  x_i = x_K$, ou seja, que o segmento entre $x_1$ e $x_2$ é um simples ponto. Se estamos imersos no $\mathbb{R}^{K-1} = \mathbb{R}$ (i.e., a reta real), geometricamente, a situação é que $x_3$ está posicionado ou a direita ou a esquerda de $x_1 = x_2$, mas não se pode escolher.
+
+Também, se $K = 3$, a singularidade de $A$ implica que o triangulo definido por $x_1$, $x_2$ e $x_3$ é um apenas um segmento no plano (caso o rank de $A$ é 1) ou um simples ponto (caso o rank for 0). Nesse primeiro caso, $x_4$ pode estar posicionado em ambos os lados da linha que contém o segmento e, no segundo caso, $x_4$ pode estar em qualquer um dos pontos formados pela circunferência com centro $x_1 = x_2 = x_3$ e raio $d_{14} = d_{24} = d_{34}$. Essa característica geométrica vale para valores maiores de $K$ \cite{libertiEDG}: a singularidade de $A$ implica que há sempre múltiplas soluções para $x_{K+1}$.
+
 
 
 Note que um $K$-simplex é uma realização de um $(K+1)$-clique em $\mathbb{R}^K$. No geral, 

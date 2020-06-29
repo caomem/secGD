@@ -179,33 +179,38 @@ Infelizmente, essa abordagem via otimização é custosa do ponto de vista compu
 \subsubsection{A Quantidade de Soluções do Problema}
 Pode-se verificar que, dada uma solução de um DGP, obtêm-se facilmente uma quantidade infinita (não enumerável!) de outras realizações válidas, distintas, através de rotações e translações desta solução inicial \cite{carlileBook31Coloquio} --- infelizmente, essas costumam não serem soluções de interesse.
 
-Contudo, se for desconsiderado essas soluções advindas de translações e rotações, a quantidade de soluções do DGP depende da estrutura geométrica do grafo que a define: podem não haver nenhuma realização; uma única realização; uma quantidade finita (não única) de realizações; ou, um número incontável de realizações \cite{libertiEDG}. Perceba que o conjunto solução de um DGP, curiosamente, somente não pode ser um número infinito enumerável --- resultado obtido através da \textit{Geometria Algébrica Real} \cite{benedettireal}.\\
+Contudo, se for desconsiderado essas soluções advindas de translações e rotações, a quantidade de soluções do DGP depende da estrutura geométrica do grafo que a define: (i) podem não haver nenhuma realização; (ii) uma única realização; (iii) uma quantidade finita (não única) de realizações; ou, (iv) um número incontável de realizações \cite{libertiEDG}. Perceba que, curiosamente, a quantidade de soluções de um DGP somente não pode ser um número infinito e enumerável --- sabe-se isso através de estudos em \textit{Geometria Algébrica Real} \cite{benedettireal}.\\
  
-Por tanto, supondo que o conjunto solução de um DGP seja não vazio, sabe-se que ele é não enumerável ou finito. Se for finito, além de aplicar os métodos de Otimização Global --- já definidos como custosos coputacionalmente ---, pode-se explorar outras abordagens, como a Otimização Combinatória \cite{carlileBook31Coloquio}. 
+Por tanto, supondo que o conjunto solução de um DGP seja não vazio, sabe-se que ele é não enumerável ou finito. Se for finito (normalmente o caso desejado), além de aplicar os métodos de Otimização Global --- já definidos como custosos computacionalmente ---, pode-se explorar outras abordagens, como a Otimização Combinatória \cite{carlileBook31Coloquio}. 
 
 \subsection{Combinatória do DGP}
 
-Nesta seção, analisando o espaço de busca por uma solução, faz-se um estudo sobre as condições que garantem a finitude do conjunto solução do problema. 
-
-Em particular, para um DGP definido em um espaço de dimensão $K$, a classe de problemas mais simples de resolver são dos grafos $(K+1)$-cliques, isto é, dos grafos completos com $K+1$ vértices \cite{libertiEDG}.
+Nesta seção, estuda-se sobre as condições que garantem a finitude do conjunto solução do problema ao analisar o espaço de busca por uma solução. Em particular, para um DGP definido em um espaço de dimensão $K$, mostra-se o estudo de uma classe de grafos com propriedades muito interessantes: dos $(K+1)$-cliques, ou seja, dos grafos completos com um vértice a mais do que o número de dimensões do seu espaço \cite{libertiEDG}.
 
 \subsubsection{Realização de Grafos Completos}
 
-Em um espaço unidimensional, i.e., uma reta, tem-se $K+1 = 2$. O grafo completo em dois vértices é $K_2 = (\{v_1,v_2\}, \{\{v_1,v_2\}\})$, ou seja, o grafo é dois vértices com uma ares entre eles --- uma linha (veja a Figura~\ref{fig:grafoCompleto}). No espaço bidimensional, o grafo completo é um triangulo e, no tridimensional, um tetraedro.
+Em um espaço unidimensional ($K = 1$, uma reta) tem-se $K+1 = 2$ e, nesse espaço, a $2$-clique de interesse é $G_2 = (\{v_1,v_2\}, \{\{v_1,v_2\}\})$, isto é, um grafo completo com dois vértices e uma aresta (conforme o primeiro grafo da Figura~\ref{fig:grafoCompleto}, uma linha). No espaço bidimensional ($K=2$), o grafo completo é um triangulo e, no tridimensional ($K=3$), um tetraedro (respectivamente, segundo e terceiro grafo da Figura~\ref{fig:grafoCompleto}). Perceba que se remover o vértice $v_4$ do tetraedro formado pela $4$-clique, recaímos no triangulo formado pela $3$-clique. O mesmo acontece com o vértice $v_3$ do triangulo, onde voltamos a ter a linha $2$-clique. 
 
 \begin{figure}[H]
 	\begin{center}
 		\includegraphics[width=0.55\linewidth]{secGD/figures/grafoCompleto.png}
 	\end{center}
-	\caption{Em ordem: 2-clique; 3-clique; 4-clique.}
+	\caption{Em ordem: (2)-clique; (3)-clique; (4)-clique.}
 	\label{fig:grafoCompleto}
 \end{figure}
 
-No geral, se um $(K+1)$-clique tem uma realização em $\mathbb{R}^{K-1}$, ela é única a menos de rotações e translações \cite{libertiEDG}. É trivial, por tanto, que um $(K+2)$-clique tem, no máximo, uma realização no espaço $\mathbb{R}^K$ --- caracterizado como solução do DGP. Por tanto, dependendo da geometria do grafo que define um DGP --- isto é, se ele possuir cliques suficientes ---, pode-se utilizar estas estruturas como ``blocos básicos de construção'' para planejar uma realização interativa do grafo como um todo \cite{libertiEDG}.
+Essa estrutura recursiva dos grafos completos se mantém para o caso geral: Sejam $G_{K+1} = \{V_G, E_G\}$ uma $(K+1)$-clique e $v \in V_G$ um vértice qualquer de $G_{K+1}$, sempre pode-se gerar uma $K$-clique a partir do subgrafo induzido $\langle V_G \setminus \{v\}\rangle$. Além disso, dado uma $(K+1)$-clique com vértices não coincidentes (essa condição ficará mais clara ao decorrer desta seção), sabe-se que \textit{se existe} uma realização desta em $\mathbb{R}^{K-1}$, \textit{ela é única} a menos de rotações e translações \cite{libertiEDG}. Porém, visto que para solucionar um DGP interessa uma solução em $\mathbb{R}^K$ ao invés de $\mathbb{R}^{K-1}$, pode-se usar um corolário um tanto óbvio da afirmação anterior: um $(K+2)$-clique com vértices não coincidentes tem, no máximo, uma realização única no espaço $\mathbb{R}^K$ (novamente, \textit{única} a menos de movimentos rígidos). 
+
+Por tanto, dependendo da estrutura do grafo que define um DGP (em especial, dependendo de sua rigidez \cite{eren2004rigidity, alfakihEuclideanDistanceMatricesApplicationsRigidity}), obter uma solução do problema pode garantir a unicidade desta solução. Vale lembrar que para algumas classes de problemas (como o WSNL, fundamental para esse trabalho), garantir que a realização do grafo seja única é parte fundamental da solução. 
+
+De qualquer forma, ainda é preciso apresentar um método para obter uma solução.  É o que se faz a seguir, baseado em \cite{libertiEDG} e \cite{trilaterationDong}. 
+\\
+
+Por exemplo, considere um 3-clique ponderado com $V = \{1,2,3\}$, onde $d_{12} = d_{23} = 1$ e $d_{13} = 2$. Então, uma possível realização sobre a reta real $\mathbb{R}$ que satisfaça todas as distâncias é $x_1 = 0$, $x_2 = 1$ e $x_3 = 2$. Uma forma de obter o valor de $x_3$ dado os valores de $x_1$ e $x_2$ e as distâncias $d_{13}$ e $d_{23}$ é a \textit{trilateração}.
 
 \subsubsection{Trilateração}
 
-Considere um 3-clique com $V = \{1,2,3\}$, onde $d_{12} = d_{23} = 1$ e $d_{13} = 2$. Então, uma possível realização sobre a linha real $\mathbb{R}$ que satisfaça todas as distâncias é $x_1 = 0$, $x_2 = 1$ e $x_3 = 2$. Uma forma de obter o valor de $x_3$ dado os valores de $x_1$ e $x_2$ e as distâncias $d_{13}$ e $d_{23}$ é a \textit{trilateração}: sabendo que $d_{13} = \lVert x_3 - x_1\rVert = 2$ e $d_{23} = \lVert x_3 - x_2 \rVert = 1$, tem-se
+ Sabendo que $d_{13} = \lVert x_3 - x_1\rVert = 2$ e $d_{23} = \lVert x_3 - x_2 \rVert = 1$ e que, usando a norma euclidiana\footnote{Ver Apendixe~\ref{ap:metric}}, $\lVert u-v\rVert^2 = (u-v)^2 = u^2 -2uv + v^2$, tem-se
 
 \begin{equation}
 	x_3^2 - 2x_1x_3 +x_1^2 = 4 \quad \textrm{e}
@@ -222,7 +227,7 @@ Subtraindo a equação~\ref{eq:trilateration2} da~\ref{eq:trilateration1}, obtê
 	2(x_1-x_2)x_3 = x_1^2 - x_2^2 - 3 \ \Rightarrow \ 2x_3 = 4 \ \Rightarrow \ x_3 = 2.
 \end{equation*}
 
-E pode-se generalizar esse exemplo facilmente para $(K+1)$-cliques em $\mathbb{R}^{K-1}$ \cite{libertiEDG}: Precisa-se conhecer a posição de $K$ vértices e as distâncias destes ao $(K+1)$-ésimo vértice, assim, pode-se realizar o $(K+1)$-ésimo vértice, em tempo linear, resolvendo um sistema de $K$ equações como acima.
+Pode-se generalizar esse exemplo facilmente para $(K+1)$-cliques em $\mathbb{R}^{K-1}$ \cite{libertiEDG}: Precisa-se conhecer a posição de $K$ vértices e as distâncias destes ao $(K+1)$-ésimo vértice, assim, pode-se realizar o $(K+1)$-ésimo vértice, em tempo linear, resolvendo um sistema de $K$ equações como acima.
 
 Isto é, sejam $x_1, \dots, x_k \in \mathbb{R}^{K-1}$ as posições para $K$ vértices de um $(K+1)$-clique e, para todo $j\leq K$, seja $d_{j,K+1}$ a distância associada com a aresta $\{j, K+1\}$. Seja $y \in \mathbb{R}^{K-1}$ a posição do $(K+1)$-ésimo vértice; então, $y$ deve respeitar as $K$ equações quadráticas $\forall j\leq K$, $\lVert y-x_j\rVert^2 = d_{j,K+1}^2$, com $K-1$ incógnitas  $y_1, \dots,y_{k-1}$:
 
@@ -269,27 +274,32 @@ Em especial, se $A$ não é uma matriz singular, então ela possui uma inversa $
 
 Porém, se A é singular, isso quer dizer que as linhas $a_i = x_i - x_K$ (para $i<K$) não são todas linearmente independentes \cite{AlgebraLinearElon}. Essa situação mostra algumas propriedades geométricas interessantes \cite{libertiEDG}. Por exemplo, se $K=2$, significa que $x_1 - x_2 = 0 \ \Rightarrow \  x_1 = x_K$, ou seja, que o segmento entre $x_1$ e $x_2$ é um simples ponto. Se estamos imersos no $\mathbb{R}^{K-1} = \mathbb{R}$ (i.e., a reta real), geometricamente, a situação é que $x_3$ está posicionado ou a direita ou a esquerda de $x_1 = x_2$, mas não se pode escolher.
 
-Também, se $K = 3$, a singularidade de $A$ implica que o triangulo definido por $x_1$, $x_2$ e $x_3$ é um apenas um segmento no plano (caso o rank de $A$ é 1) ou um simples ponto (caso o rank for 0). Nesse primeiro caso, $x_4$ pode estar posicionado em ambos os lados da linha que contém o segmento e, no segundo caso, $x_4$ pode estar em qualquer um dos pontos formados pela circunferência com centro $x_1 = x_2 = x_3$ e raio $d_{14} = d_{24} = d_{34}$. Essa característica geométrica vale para valores maiores de $K$ \cite{libertiEDG}: a singularidade de $A$ implica que há sempre múltiplas soluções para $x_{K+1}$.\\
+Também, se $K = 3$, a singularidade de $A$ implica que o triangulo definido por $x_1$, $x_2$ e $x_3$ é apenas um segmento no plano (caso o rank de $A$ é 1) ou um simples ponto (caso o rank for 0). Nesse primeiro caso, $x_4$ pode estar posicionado em ambos os lados da linha que contém o segmento e, no segundo caso, $x_4$ pode estar em qualquer um dos pontos formados pela circunferência com centro $x_1 = x_2 = x_3$ e raio $d_{14} = d_{24} = d_{34}$. Essa característica geométrica vale para valores maiores de $K$ \cite{libertiEDG}: a singularidade de $A$ implica que há sempre múltiplas soluções para $x_{K+1}$.\\
 
-Deve-se mencionar que, a partir da equação~\ref{eq:DGPsistemaEquacoes1}, podemos chegar no sistema linear~\ref{eq:DGPLinearSystem}, mas a volta não é verdadeira \cite{libertiEDG}. Em particular, se o sistema~\ref{eq:DGPsistemaEquacoes1} tem uma solução, então o sistema~\ref{eq:DGPLinearSystem} tem a mesma solução. Porém, mesmo que o sistema~\ref{eq:DGPsistemaEquacoes1} não tenha solução, o sistema~\ref{eq:DGPLinearSystem} sempre terá uma solução única --- desde que $A$ não seja singular. Por tanto, para verificar a factibilidade de uma solução $x_{K+1}$ advinda do sistema linear~\ref{eq:DGPLinearSystem}, deve ser verificar se as distâncias aos $K$ vértices foram respeitadas --- ou seja, se $\lVert x_{K+1} - x_i\rVert = d_{i,(K+1)}$, para todo $i\leq K$. 
+Deve-se mencionar que, a partir da equação~\ref{eq:DGPsistemaEquacoes1}, podemos chegar no sistema linear~\ref{eq:DGPLinearSystem}, mas a volta não é verdadeira. Em particular, se o sistema~\ref{eq:DGPsistemaEquacoes1} tem uma solução, então o sistema~\ref{eq:DGPLinearSystem} tem a mesma solução. Porém, mesmo que o sistema~\ref{eq:DGPsistemaEquacoes1} não tenha solução, o sistema~\ref{eq:DGPLinearSystem} sempre terá uma solução única --- desde que $A$ não seja singular \cite{libertiEDG}. Por tanto, para verificar a factibilidade de uma solução $x_{K+1}$ advinda do sistema linear~\ref{eq:DGPLinearSystem}, deve ser verificar se as distâncias aos $K$ vértices foram respeitadas --- ou seja, se $\lVert x_{K+1} - x_i\rVert = d_{i,(K+1)}$, para todo $i\leq K$. 
+\\
+
+Utilizando o método da trilateração acima, é possível descobrir a posição de apenas um vértice de um grafo completo. Porém, como mostrado no início dessa seção, uma característica interessante nos grafos completos é que, se $(V,E)$ é um grafo completo, dado qualquer grafo induzido $\langle V'\rangle$ com $V'\subset V$, o subgrafo $\langle V' \rangle$ também é completo. Por isso, pode-se utilizar estas estruturas como ``blocos básicos de construção'' para planejar uma realização iterativa (usando a trilateração em cada iteração) do grafo como um todo. 
+
 
 \subsubsection{Realização Iterativa de Grafos Completos}
 
-Uma característica interessante nos grafos completos é que, se $(V,E)$ é um grafo completo, dado qualquer grafo induzido $\langle V'\rangle$ com $V'\subset V$, o subgrafo $\langle V' \rangle$ também é completo. Unindo esse princípio com a trilateração, nessa seção apresenta-se um algorítimo adaptado de \cite{libertiEDG} para a realização de grafos completos.\\
+A seguir, apresenta-se um algorítimo para realizar todos os vértices de um grafo completo, tendo como entrada a localização dos $(K+1)$ primeiros vértices, em $\mathbb{R}^{K-1}$.
+\\
 
-Primeiro, assume-se que exista um $(K+1)$-clique $K(G)$ em $G$, chamada clique inicial, que conhecemos a realização --- em WSNL, por exemplo, comumente se utiliza nós ancoras como clique inicial \cite{libertiEDG}. Sem perda de generalidade, seja $\{1,\dots,K+1\}$ o conjunto dos vértices os que formam a clique inicial, com realização $\{x_1, \dots,x_{K+1}\}$. Seja, também, $N(i)$ o conjunto de vértices adjacentes ao $i$-ésimo vértice. 
+Seja $G$ um grafo completo de $n$ vértices. Primeiro, assume-se que exista um $(K+1)$-clique $G_o \subset G$, chamada clique inicial, que conhecemos a realização --- em WSNL, por exemplo, comumente se utiliza nós ancoras como clique inicial \cite{eren2004rigidity, savvides2001dynamic}. Sem perda de generalidade, seja $\{1,\dots,K+1\}$ o conjunto dos vértices que formam a clique inicial $G_o$, com realizações $\{x_1, \dots,x_{K+1}\}$. Seja, também, $N(i)$ o conjunto de vértices adjacentes ao $i$-ésimo vértice. 
 \\
 
 \begin{algorithm}[H]
 	\label{alg:realizacaoIterativa}
 	\tcp{Realize os próximos vértices iterativamente}
 	\For{$i\in \{K+2,\dots,n\}$}{
-		\tcc{Utilize a $(K+1)$-clique dos $(K+1)$ antecessores imediatos de $i$ para calcular a realização $x_i$. Trilateracao() deve retornar $\emptyset$ caso o sistema não tenha solução}
+		\tcc{Utilize a $(K+1)$-clique dos $(K+1)$ antecessores imediatos de $i$ para calcular a realização $x_i$. Caso não haja solução, atribuir $\emptyset$}
 		$x_i =$ Trilateracao$(x_{i-K-1},\dots,x_{i-1})$\;
 		\tcp{verifique se $x_i$ é factível com relação as outras distâncias}
 		\For{$\{j\in N(i)\ ; \ j<i\}$}{
 			\If{$\lVert x_i - x_j\rVert \ne d_{ij}$}{
-				\tcp{Se não, marcar como não factível e sair do loop}
+				\tcp{Mrcar como não factível e sair do loop}
 				$x_i = \emptyset$\;
 				\textbf{break}\;
 			}
@@ -298,12 +308,15 @@ Primeiro, assume-se que exista um $(K+1)$-clique $K(G)$ em $G$, chamada clique i
 			\tcp{Retornar que não foi possível concluir a realização}
 			\textbf{return} $\emptyset$\;
 		}
-		\tcp{Retornar a realização factível}
-		\textbf{return} $x$\;
 	}
+	\tcp{Retornar a realização factível}
+	\textbf{return} $x$\;
 	\caption{$x =$ RealizacaoIterativa$(G,d, K, x)$ \cite{libertiEDG}}
 \end{algorithm}
 \vspace{0.5cm}
-Uma informação muito importante sobre o Algorítimo~\ref{alg:realizacaoIterativa} é que a complexidade de seu pior caso é $O(K^3n)$ --- para cada $n$ vértices, deve-se resolver um sistema linear $K\times K$. Se não existir realização factível para $G$ em $\mathbb{R}^K$, Algorítimo~\ref{alg:realizacaoIterativa} retorna $\emptyset$.
+Uma informação muito importante sobre o Algorítimo~\ref{alg:realizacaoIterativa} é que a complexidade de seu pior caso é $O(K^3n)$ --- para todos os $n$ vértices, deve-se resolver um sistema linear $K\times K$. Se não existir realização factível para $G$ em $\mathbb{R}^K$, Algorítimo~\ref{alg:realizacaoIterativa} retorna $\emptyset$.
 
 Esse processo de trilateração em $\mathbb{R}^K$ é chamado $K$-\textit{lateração} \cite{eren2004rigidity, libertiEDG}.
+
+
+

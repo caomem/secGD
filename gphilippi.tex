@@ -185,28 +185,16 @@ Por tanto, supondo que o conjunto solução de um DGP seja não vazio, sabe-se q
 
 \subsection{Combinatória do DGP}
 
-Nesta seção, estuda-se sobre as condições que garantem a finitude do conjunto solução do problema ao analisar o espaço de busca por uma solução. Em particular, para um DGP definido em um espaço de dimensão $K$, mostra-se o estudo de uma classe de grafos com propriedades muito interessantes: dos $(K+1)$-cliques, ou seja, dos grafos completos com um vértice a mais do que o número de dimensões do seu espaço \cite{libertiEDG}.
+Nesta seção, estuda-se sobre as condições que garantem a finitude do conjunto solução do problema ao analisar o espaço de busca por uma solução. Em particular, para um DGP definido em um espaço de dimensão $K$, mostra-se o estudo de uma classe de grafos com propriedades muito interessantes: dos $(K+2)$-cliques, ou seja, dos grafos completos com dois vértices a mais do que o número de dimensões do seu espaço.
 
 \subsubsection{Realização de Grafos Completos}
 
-Em um espaço unidimensional ($K = 1$, uma reta) tem-se $K+1 = 2$ e, nesse espaço, a $2$-clique de interesse é $G_2 = (\{v_1,v_2\}, \{\{v_1,v_2\}\})$, isto é, um grafo completo com dois vértices e uma aresta (conforme o primeiro grafo da Figura~\ref{fig:grafoCompleto}, uma linha). No espaço bidimensional ($K=2$), o grafo completo é um triangulo e, no tridimensional ($K=3$), um tetraedro (respectivamente, segundo e terceiro grafo da Figura~\ref{fig:grafoCompleto}). Perceba que se remover o vértice $v_4$ do tetraedro formado pela $4$-clique, recaímos no triangulo formado pela $3$-clique. O mesmo acontece com o vértice $v_3$ do triangulo, onde voltamos a ter a linha $2$-clique. 
+ Dado um $(K+1)$-clique com vértices não coincidentes (essa condição ficará mais clara ao decorrer desta seção), sabe-se que \textit{se ele possui} uma realização em $\mathbb{R}^{K-1}$, \textit{ela é única} a menos de rotações e translações \cite{libertiEDG}. Porém, visto que para solucionar um DGP interessa uma solução em $\mathbb{R}^K$ ao invés de $\mathbb{R}^{K-1}$, pode-se usar um corolário um tanto óbvio da afirmação anterior: um $(K+2)$-clique com vértices não coincidentes tem, no máximo, uma realização única no espaço $\mathbb{R}^K$ (novamente, \textit{única} a menos de movimentos rígidos). 
 
-\begin{figure}[H]
-	\begin{center}
-		\includegraphics[width=0.55\linewidth]{secGD/figures/grafoCompleto.png}
-	\end{center}
-	\caption{Em ordem: (2)-clique; (3)-clique; (4)-clique.}
-	\label{fig:grafoCompleto}
-\end{figure}
-
-Essa estrutura recursiva dos grafos completos se mantém para o caso geral: Sejam $G_{K+1} = \{V_G, E_G\}$ uma $(K+1)$-clique e $v \in V_G$ um vértice qualquer de $G_{K+1}$, sempre pode-se gerar uma $K$-clique a partir do subgrafo induzido $\langle V_G \setminus \{v\}\rangle$. Além disso, dado uma $(K+1)$-clique com vértices não coincidentes (essa condição ficará mais clara ao decorrer desta seção), sabe-se que \textit{se existe} uma realização desta em $\mathbb{R}^{K-1}$, \textit{ela é única} a menos de rotações e translações \cite{libertiEDG}. Porém, visto que para solucionar um DGP interessa uma solução em $\mathbb{R}^K$ ao invés de $\mathbb{R}^{K-1}$, pode-se usar um corolário um tanto óbvio da afirmação anterior: um $(K+2)$-clique com vértices não coincidentes tem, no máximo, uma realização única no espaço $\mathbb{R}^K$ (novamente, \textit{única} a menos de movimentos rígidos). 
-
-Por tanto, dependendo da estrutura do grafo que define um DGP (em especial, dependendo de sua rigidez \cite{eren2004rigidity, alfakihEuclideanDistanceMatricesApplicationsRigidity}), obter uma solução do problema pode garantir a unicidade desta solução. Vale lembrar que para algumas classes de problemas (como o WSNL, fundamental para esse trabalho), garantir que a realização do grafo seja única é parte fundamental da solução. 
-
-De qualquer forma, ainda é preciso apresentar um método para obter uma solução.  É o que se faz a seguir, baseado em \cite{libertiEDG} e \cite{trilaterationDong}. 
+Por tanto, dependendo da estrutura do grafo que define um DGP (em especial, dependendo de sua rigidez \cite{eren2004rigidity, alfakihEuclideanDistanceMatricesApplicationsRigidity}), obter uma solução do problema pode garantir a unicidade desta solução. Essa característica é de fundamental importância para algumas classes de problemas em DG, como o caso da WSNL, onde somente realizações únicas são consideradas como soluções. Ainda assim, é preciso apresentar um método para obter uma solução.  É o que se faz a seguir, baseado em \cite{libertiEDG} e \cite{trilaterationDong}. 
 \\
 
-Por exemplo, considere um 3-clique ponderado com $V = \{1,2,3\}$, onde $d_{12} = d_{23} = 1$ e $d_{13} = 2$. Então, uma possível realização sobre a reta real $\mathbb{R}$ que satisfaça todas as distâncias é $x_1 = 0$, $x_2 = 1$ e $x_3 = 2$. Uma forma de obter o valor de $x_3$ dado os valores de $x_1$ e $x_2$ e as distâncias $d_{13}$ e $d_{23}$ é a \textit{trilateração}.
+Considere um 3-clique ponderado com $V = \{1,2,3\}$, onde $d_{12} = d_{23} = 1$ e $d_{13} = 2$. Então, uma possível realização sobre a reta real $\mathbb{R}$ que satisfaça todas as distâncias é $x_1 = 0$, $x_2 = 1$ e $x_3 = 2$. Uma forma de obter o valor de $x_3$ dado os valores de $x_1$ e $x_2$ e as distâncias $d_{13}$ e $d_{23}$ é a \textit{trilateração}.
 
 \subsubsection{Trilateração}
 
@@ -227,30 +215,30 @@ Subtraindo a equação~\ref{eq:trilateration2} da~\ref{eq:trilateration1}, obtê
 	2(x_1-x_2)x_3 = x_1^2 - x_2^2 - 3 \ \Rightarrow \ 2x_3 = 4 \ \Rightarrow \ x_3 = 2.
 \end{equation*}
 
-Pode-se generalizar esse exemplo facilmente para $(K+1)$-cliques em $\mathbb{R}^{K-1}$ \cite{libertiEDG}: Precisa-se conhecer a posição de $K$ vértices e as distâncias destes ao $(K+1)$-ésimo vértice, assim, pode-se realizar o $(K+1)$-ésimo vértice, em tempo linear, resolvendo um sistema de $K$ equações como acima.
+Pode-se generalizar esse exemplo facilmente para $(K+2)$-cliques em $\mathbb{R}^{K}$ \cite{libertiEDG}: Precisa-se conhecer a posição de $K+1$ vértices e as distâncias destes ao $(K+2)$-ésimo vértice, assim, pode-se realizar o $(K+2)$-ésimo vértice, em tempo linear, resolvendo um sistema de $K+1$ equações como acima.
 
-Isto é, sejam $x_1, \dots, x_k \in \mathbb{R}^{K-1}$ as posições para $K$ vértices de um $(K+1)$-clique e, para todo $j\leq K$, seja $d_{j,K+1}$ a distância associada com a aresta $\{j, K+1\}$. Seja $y \in \mathbb{R}^{K-1}$ a posição do $(K+1)$-ésimo vértice; então, $y$ deve respeitar as $K$ equações quadráticas $\forall j\leq K$, $\lVert y-x_j\rVert^2 = d_{j,K+1}^2$, com $K-1$ incógnitas  $y_1, \dots,y_{k-1}$:
+Isto é, sejam $x_1, \dots, x_{k+1} \in \mathbb{R}^{K}$ as posições para $K+1$ vértices de um $(K+2)$-clique e, para todo $j\leq K+1$, seja $d_{j,K+2}$ a distância associada com a aresta $\{j, K+2\}$. Seja $y \in \mathbb{R}^{K}$ a posição do $(K+2)$-ésimo vértice; então, $y$ deve respeitar as $K+1$ equações quadráticas $\forall j\leq K+1$, $\lVert x_j-y\rVert^2 = d_{j,K+2}^2$, com $K$ incógnitas  $y_1, \dots,y_{K}$:
 
 \begin{equation}
 	\begin{cases} 
-		\lVert y \rVert^2 -2x_1y + \lVert x_1\rVert^2 \ = \ d^2_{1,K+1}
+		\lVert y \rVert^2 -2x_1y + \lVert x_1\rVert^2 \ = \ d^2_{1,K+2}
 		\\
 		\qquad\qquad\qquad\quad\qquad \!\vdots
 		\\
-		\lVert y \rVert^2 -2x_ky + \lVert x_k\rVert^2 \ = \ d^2_{K,K+1}
+		\lVert y \rVert^2 -2x_{K+1}y + \lVert x_{K+1}\rVert^2 \ = \ d^2_{K+1,K+2}
 	\end{cases}
 	\label{eq:DGPsistemaEquacoes1}
 \end{equation}
 
-Para qualquer $h\leq K$. seja $e_h$ a $h$-ésima equação no sistema de equações~\ref{eq:DGPsistemaEquacoes1}: pode-se tomas as diferenças e formar um novo sistema $\forall\; h<K$ $(e_h-e_K)$ contendo $K-1$ equações com $K-1$ incógnitas:
+Para qualquer $h\leq K+1$, seja $e_h$ a $h$-ésima equação no sistema de equações~\ref{eq:DGPsistemaEquacoes1}: tomando todo $h<K+1$, pode-se obter as $K$ diferenças $(e_h-e_{K+1})$ e formar um novo sistema,  contendo $K$ equações com $K$ incógnitas:
 
 \begin{equation}
 \begin{cases} 
-2(x_1-x_K) \quad\cdot y \ = \ \lVert x_1\rVert^2 - \lVert x_K\rVert^2 - d^2_{1,K+1} + d^2_{K,K+1} 
+2(x_1-x_{K+1}) \;\cdot y \ = \ \lVert x_1\rVert^2 - \lVert x_{K+1}\rVert^2 - d^2_{1,K+2} + d^2_{K+1,K+2} 
 \\
 \qquad\qquad\qquad\qquad\!\!\!\vdots
 \\
-2(x_{K-1}-x_K) \cdot y \ = \ \lVert x_{K-1}\rVert^2 - \lVert x_K\rVert^2 - d^2_{K-1,K+1} + d^2_{K,K+1} 
+2(x_{K}-x_{K+1}) \cdot y \ = \ \lVert x_{K}\rVert^2 - \lVert x_{K+1}\rVert^2 - d^2_{K,K+2} + d^2_{K+1,K+2} 
 \end{cases}
 \label{eq:DGPsistemaEquacoes2}
 \end{equation}
@@ -261,25 +249,36 @@ Note que o sistema de equações~\ref{eq:DGPsistemaEquacoes2} é um \textit{sist
 	Ay=b,
 	\label{eq:DGPLinearSystem}
 \end{equation}
-onde $A = (2a_{ij})$ é uma matriz quadrada $(K-1) \times (K-1)$ com $a_{ij} = x_{ij} - x_{Kj}$ para todo $i,j < K$, e $b = (b_1, \dots, b_{K-1})^T$ com $b_i = \lVert x_i\rVert^2 - \lVert x_K\rVert^2 - d^2_{K,K+1}$ para todo $i<K$. 
+onde $A = (2a_{ij})$ é uma matriz quadrada $(K) \times (K)$ com $a_{ij} = x_{ij} - x_{K+1j}$ para todo $i,j \leq K$, e $b = (b_1, \dots, b_{K})^T$ com $b_i = \lVert x_i\rVert^2 - \lVert x_{K+1}\rVert^2 - d^2_{i,K+2} + d^2_{K+1,K+2}$ para todo $i\leq K$. 
 \\
 
-Diferentes métodos para solução de sistemas lineares como esse são encontrados na bibliografia \cite{AlgebraLinearElon, libertiEDG} --- no geral, a escolha do melhor depende de propriedades da matriz $A$, como, por exemplo, quão esparsa ela é. 
-
-Em especial, se $A$ não é uma matriz singular, então ela possui uma inversa $A^{-1}$. Logo, podemos obter a posição do $(K+1)$-ésimo vértice da forma
+Diferentes métodos para solução de sistemas lineares como a equação~\ref{eq:DGPLinearSystem} são encontrados na bibliografia \cite{AlgebraLinearElon, libertiEDG} --- no geral, a escolha do melhor depende de propriedades da matriz $A$, como sobre sua esparsidade. Em especial, se $A$ não é uma matriz singular, então ela possui uma inversa $A^{-1}$. Pode-se, por tanto, obter a posição do $(K+2)$-ésimo vértice fazendo
 
 \begin{equation}
-	Ay = b \quad \Rightarrow \quad A^{-1}Ay = A^{-1}b \quad \Rightarrow \quad x_{K+1} = y = A^{-1}b.
+	Ay = b \quad \Rightarrow \quad A^{-1}Ay = A^{-1}b \quad \Rightarrow \quad y = A^{-1}b = x_{K+2}.
 \end{equation}
 
-Porém, se A é singular, isso quer dizer que as linhas $a_i = x_i - x_K$ (para $i<K$) não são todas linearmente independentes \cite{AlgebraLinearElon}. Essa situação mostra algumas propriedades geométricas interessantes \cite{libertiEDG}. Por exemplo, se $K=2$, significa que $x_1 - x_2 = 0 \ \Rightarrow \  x_1 = x_K$, ou seja, que o segmento entre $x_1$ e $x_2$ é um simples ponto. Se estamos imersos no $\mathbb{R}^{K-1} = \mathbb{R}$ (i.e., a reta real), geometricamente, a situação é que $x_3$ está posicionado ou a direita ou a esquerda de $x_1 = x_2$, mas não se pode escolher.
+Porém, se A é singular, isso quer dizer que as linhas $a_i = x_i - x_{K+1}$ (para $i\leq K$) não são todas linearmente independentes \cite{AlgebraLinearElon}. Essa situação mostra algumas propriedades geométricas interessantes \cite{libertiEDG}. Por exemplo, se $K=1$, significa que $x_1 - x_2 = 0 \ \Rightarrow \  x_1 = x_2$, ou seja, que o segmento entre $x_1$ e $x_2$ é um simples ponto. Como estamos imersos no $\mathbb{R}^{K} = \mathbb{R}$ (i.e., a reta real), geometricamente, a situação é que ou $x_3$ está posicionado a direita ou a esquerda de $x_1 = x_2$, mas não se pode escolher. Não obstante, se $K = 2$, a singularidade de $A$ implica que o triangulo definido por $x_1$, $x_2$ e $x_3$ é apenas um segmento no plano (caso o rank de $A$ é 1) ou um simples ponto (caso o rank for 0). No primeiro caso, $x_4$ pode estar posicionado em ambos os lados da linha que contém o segmento e, no segundo caso, $x_4$ pode estar em qualquer um dos pontos formados pela circunferência com centro $x_1 = x_2 = x_3$ e raio $d_{14} = d_{24} = d_{34}$. Essa característica geométrica vale para valores maiores de $K$ \cite{libertiEDG}: a singularidade de $A$ diz respeito a vértices coincidentes e implica que há sempre múltiplas soluções para $x_{K+2}$.\\
 
-Também, se $K = 3$, a singularidade de $A$ implica que o triangulo definido por $x_1$, $x_2$ e $x_3$ é apenas um segmento no plano (caso o rank de $A$ é 1) ou um simples ponto (caso o rank for 0). Nesse primeiro caso, $x_4$ pode estar posicionado em ambos os lados da linha que contém o segmento e, no segundo caso, $x_4$ pode estar em qualquer um dos pontos formados pela circunferência com centro $x_1 = x_2 = x_3$ e raio $d_{14} = d_{24} = d_{34}$. Essa característica geométrica vale para valores maiores de $K$ \cite{libertiEDG}: a singularidade de $A$ implica que há sempre múltiplas soluções para $x_{K+1}$.\\
-
-Deve-se mencionar que, a partir da equação~\ref{eq:DGPsistemaEquacoes1}, podemos chegar no sistema linear~\ref{eq:DGPLinearSystem}, mas a volta não é verdadeira. Em particular, se o sistema~\ref{eq:DGPsistemaEquacoes1} tem uma solução, então o sistema~\ref{eq:DGPLinearSystem} tem a mesma solução. Porém, mesmo que o sistema~\ref{eq:DGPsistemaEquacoes1} não tenha solução, o sistema~\ref{eq:DGPLinearSystem} sempre terá uma solução única --- desde que $A$ não seja singular \cite{libertiEDG}. Por tanto, para verificar a factibilidade de uma solução $x_{K+1}$ advinda do sistema linear~\ref{eq:DGPLinearSystem}, deve ser verificar se as distâncias aos $K$ vértices foram respeitadas --- ou seja, se $\lVert x_{K+1} - x_i\rVert = d_{i,(K+1)}$, para todo $i\leq K$. 
+Por fim, é importante mencionar que a partir da equação~\ref{eq:DGPsistemaEquacoes1} podemos chegar no sistema linear~\ref{eq:DGPLinearSystem}, mas a volta não é verdadeira. Em particular, se o sistema~\ref{eq:DGPsistemaEquacoes1} tem uma solução, então o sistema~\ref{eq:DGPLinearSystem} tem a mesma solução. Porém, mesmo que o sistema~\ref{eq:DGPsistemaEquacoes1} não tenha solução, o sistema~\ref{eq:DGPLinearSystem} sempre terá uma solução única --- desde que $A$ não seja singular \cite{libertiEDG}. Sendo assim, para verificar a factibilidade de uma solução $x_{K+2}$ advinda do sistema linear~\ref{eq:DGPLinearSystem}, deve ser verificar se as distâncias aos $K+1$ vértices foram respeitadas --- ou seja, se $\lVert x_i -x_{K+2} \rVert = d_{i,K+2}$, para todo $i\leq K+1$. 
 \\
 
-Utilizando o método da trilateração acima, é possível descobrir a posição de apenas um vértice de um grafo completo. Porém, como mostrado no início dessa seção, uma característica interessante nos grafos completos é que, se $(V,E)$ é um grafo completo, dado qualquer grafo induzido $\langle V'\rangle$ com $V'\subset V$, o subgrafo $\langle V' \rangle$ também é completo. Por isso, pode-se utilizar estas estruturas como ``blocos básicos de construção'' para planejar uma realização iterativa (usando a trilateração em cada iteração) do grafo como um todo. 
+\subsubsection{Devagar e Sempre}
+
+Utilizando o método da trilateração apresentado, é possível descobrir a posição de apenas um vértice de um grafo completo. No entanto, como o objetivo é uma realização total do grafo, a seguir relembra-se uma característica dos grafos completos que contorna essa limitação de uma forma engenhosa.
+\\
+
+Seja o primeiro grafo completo da Figura~\ref{fig:grafoCompleto} formado pelo conjunto de vértices $\{v_1,v_2,v_3,v_4\}$. Perceba que esse é um 4-clique e, ao removermos o vértice $v_4$, obtemos um $3$-clique formado pelo conjunto de vértices restantes $\{v_1,v_2,v_3\}$ (a direita, na Figura~\ref{fig:grafoCompleto}). Caso for retirado o vértice $v_3$ desse 3-clique, obtemos o 2-clique formado por $\{v_1, v_2\}$ (ultimo grafo da Figura~\ref{fig:grafoCompleto}). 
+
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=0.55\linewidth]{secGD/figures/grafoCompleto.png}
+	\end{center}
+	\caption{Em ordem: 4-clique; 3-clique; 2-clique.}
+	\label{fig:grafoCompleto}
+\end{figure}
+
+Essa estrutura recursiva dos grafos completos se mantém para o caso geral: Sejam $G_{K+1} = \{V_G, E_G\}$ uma $(K+1)$-clique e $v \in V_G$ um vértice qualquer de $G_{K+1}$, sempre pode-se gerar uma $K$-clique a partir do subgrafo induzido $\langle V_G \setminus \{v\}\rangle$.
 
 
 \subsubsection{Realização Iterativa de Grafos Completos}
@@ -318,5 +317,9 @@ Uma informação muito importante sobre o Algorítimo~\ref{alg:realizacaoIterati
 
 Esse processo de trilateração em $\mathbb{R}^K$ é chamado $K$-\textit{lateração} \cite{eren2004rigidity, libertiEDG}.
 
+\subsubsection{Realizações de $(K+1)$-cliques em $\mathbb{R}^{K-1}$ e $\mathbb{R}^{K}$}
 
+Em um primeiro momento, a ideia de necessitar previamente da realização de uma $(K+1)$-clique inicial $G_o$ pode parecer como roubar na solução do problema. Certamente, se o grafo que se está interessado em realizar possuir apenas $K+1$ vértices, essa solução não faz sentido. Por sorte, no caso geral, os problemas de estudo costumam ser bem maiores.
+
+Como o DGP é definido em
 

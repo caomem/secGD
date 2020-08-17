@@ -23,81 +23,59 @@ Nesse trabalho, quando não é especificado qual métrica se está usando, fica 
 
 O par ($\mathcal{X}, d$) é chamado \textit{espaço métrico}. A noção de métrica não depende de espaços vetoriais, donde pode ser facilmente generalizada fazendo $\mathcal{X}$ um conjunto qualquer.
 
-\section{Lei dos Cos e Ângulos Entre dois Vetores no $\mathbb{R}^3$}
-\label{ap:cos}
-A lei dos cossenos é uma propriedade trigonométrica válida para qualquer triângulo, permitindo encontrar o valor de um dos seus lados conhecendo apenas os outros lados e um ângulo. Porém, aqui utilizaremos a ideia reversa, onde, nesse caso, saberemos os lados e queremos descobrir os ângulos.
-\begin{figure}[H]
-	\begin{center}
-		\includegraphics[width=0.50\linewidth]{secGD/figures/triangulo.png}
-	\end{center}
-	\caption{Triângulo para ilustrar a lei dos cossenos.}
-	\label{fig:coslaw}
-\end{figure}
-\begin{itemize}
-	\item \textbf{Demonstração Leis dos Cossenos:}
-	
-	Dado um triângulo qualquer, traça-se uma altura relativa ao lado $a$. Aplicando o \textit{Teorema de Pitágoras} no $\Delta ABD$:
-	
-	\begin{equation}
-	c^{2}=m^{2}+h^{2} \rightarrow h^{2}=c^{2}-m^{2}
-	\label{eq:tri1}
-	\end{equation}
-	
-	Aplicando novamente \textit{Pitágoras}, porém, em $\Delta ADC$, obtemos:
-	\begin{equation}
-	b^{2}=h^{2}+(a-m)^{2}
-	\label{eq:tri2}
-	\end{equation}
-	Substituindo na equação ~\ref{eq:tri2} o valor de $h^{2}$ obtido em ~\ref{eq:tri1}:
-	$$
-	b^{2}=c^{2}-m^{2}+a^{2}-2am+m^{2}
-	$$
-	$$
-	b^{2}=c^{2}+a^{2}-2am
-	$$
-	Analisando a 
-	Figura ~\ref{fig:coslaw}, pode-se perceber que $\frac{m}{c}=\cos\beta$, então:
-	$$
-	b^{2}=c^{2}+a^{2}-2ac\cos\beta
-	$$
-	Analogamente, obtém-se:
-	$$
-	c^{2}=a^{2}+b^{2}-2ab\cos\gamma
-	$$
-	$$
-	a^{2}=b^{2}+c^{2}-2bc\cos\alpha
-	$$
-	Note também que se o argumento dos cossenos for $\frac{\pi}{2}$ recaímos no Teorema de Pitágoras. $\hfill\blacksquare$
-	\item \textbf{Ângulos Entre 2 Vetores:}
-	
-	Sejam dois vetores $\overrightarrow{u}$ e $\overrightarrow{v} \in \mathbb{R}^2$, representados na Figura ~\ref{fig:diffbtvet}
-	\begin{figure}[H]
-		\begin{center}
-			\includegraphics[width=0.4\linewidth]{secGD/figures/Angulovetoresnovo.png}
-		\end{center}
-		\caption{Diferença entre vetores $u$ e $v$}
-		\label{fig:diffbtvet}
-	\end{figure}
-	Para encontrarmos o angulo $\theta$ utilizaremos a lei dos cossenos aplicada a $\Delta ABC$:
-	\begin{equation}
-	\|\overrightarrow{u}-\overrightarrow{v}\|^{2}=\|\overrightarrow{u}\|^{2} + \|\overrightarrow{v}\|^{2} - 2\|\overrightarrow{u}\|\|\overrightarrow{v}\|\cos\theta
-	\label{eq:ang1}
-	\end{equation}
-	Utilizando a definição do produto escalar \cite{GASteinbruch}
-	\begin{equation}
-	\|\overrightarrow{u}-\overrightarrow{v}\|^{2}=\|\overrightarrow{u}\|^{2} + \|\overrightarrow{v}\|^{2} - 2\overrightarrow{u}\overrightarrow{v}
-	\label{eq:ang2}
-	\end{equation}
-	Comparando a equação ~\ref{eq:ang1} com a ~\ref{eq:ang2}, obtemos trivialmente
-	$$
-	\|\overrightarrow{u}\|^{2} + \|\overrightarrow{v}\|^{2} - 2\|\overrightarrow{u}\|\|\overrightarrow{v}\|\cos\theta = \|\overrightarrow{u}\|^{2} + \|\overrightarrow{v}\|^{2} - 2\overrightarrow{u}\overrightarrow{v}
-	$$
-	$$
-	\overrightarrow{u}\overrightarrow{v} = \|\overrightarrow{u}\|\|\overrightarrow{v}\|\cos\theta
-	$$
-	Logo,
-	$$
-	\cos\theta = \frac{\overrightarrow{u}\overrightarrow{v}}{\|\overrightarrow{u}\|\|\overrightarrow{v}\|} 
-	$$
-	$\hfill\blacksquare$
-\end{itemize}
+\section{Rigidez}
+\label{ap:rigid}
+
+O conceito de rigidez em grafos é pouco simples e suficientemente extenso para que não nos caiba abordá-lo completamente nesse texto. Em contrapartida, visto que o objeto central desse texto (soluções de instâncias WSNL) tem estreita relação com a definição de \textit{rigidez global}, no que segue, apresentar-se-á satisfatoriamente esta definição. 
+
+Para um maior aprofundamento, recomenda-se \cite{libertiEDG, rigidezGrafosEAplicacoesAnaCarlile}.
+\\
+
+O conceito de \textit{rigidez} está associado com a ideia de \textit{movimento rígido} entre as possíveis realizações de um grafo.
+\begin{center}
+	\begin{minipage}{0.93 \linewidth}
+		\textbf{Definição:} Um \textit{framework} $\mathcal{F}$ em $\mathbb{R}^K$ é um par $(G,x)$, onde $x$ é uma realização de $G$ em $\mathbb{R}^K$.
+	\end{minipage}
+\end{center}
+
+\begin{center}
+	\begin{minipage}{0.93 \linewidth}
+		\textbf{Definição:} Um \textit{movimento do framework} $(G,x)$ é uma função contínua $y : [0,1]\longrightarrow \mathbb{R}^{nK}$, tal que:
+		\begin{itemize}
+			\item $y(0) = x$;
+			\item $y(t)$ é uma realização válida de $G$ para todo $t \in [0,1]$.
+		\end{itemize}
+	\end{minipage}
+\end{center}
+
+\begin{center}
+	\begin{minipage}{0.93 \linewidth}
+		\textbf{Definição:} Duas realizações $x,y$ de um grafo $G=(V,E)$ são ditos \textit{congruentes} se, para todo $u,v\in V$, tem-se $\| x_u - x_v\| = \|y_u - y_v\|$. Se $x,y$ não são congruentes, então eles são \textit{incongruentes}.
+	\end{minipage}
+\end{center}
+
+\begin{center}
+	\begin{minipage}{0.93 \linewidth}
+		\textbf{Definição:} Uma \textit{flexão} de um framework $(G,x)$ é um deslocamento $y$ de $x$ tal que $y(t)$ é incongruente a $x$ para qualquer $t\in(0,1]$.
+	\end{minipage}
+\end{center}
+
+\begin{center}
+	\begin{minipage}{0.93 \linewidth}
+		\textbf{Definição:} Um framework é \textit{flexível} se possuir uma flexão; do contrário, é dito \textit{rígido}.
+	\end{minipage}
+\end{center}
+
+\begin{center}
+	\begin{minipage}{0.93 \linewidth}
+		\textbf{Definição:} Dois frameworks $\mathcal{F} = (V,E,x)$ e $\mathcal{F'} = (V',E',x')$ são \textit{equivalentes} em $\mathbb{R}^K$ se há uma bijeção entre os conjuntos de vértices $V$ e $V'$ que preservem os comprimentos das arestas associados a esses.
+	\end{minipage}
+\end{center}
+
+\begin{center}
+	\begin{minipage}{0.93 \linewidth}
+		\textbf{Definição:} Um framework $\mathcal{F} = (G,x)$ é \textit{globalmente rígido em $\mathbb{R}^K$} se, quando $\mathcal{F}$ é equivalente a $\mathcal{F}' = (G,x')$, então $x$ é congruente a $x'$.
+	\end{minipage}
+\end{center}
+
+

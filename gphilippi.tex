@@ -1,4 +1,4 @@
-\section{Geometria de Distâncias Euclidianas}
+\section{Geometria de Distâncias Euclidianas\label{sec:GD}}
 Apresenta-se nesta seção uma introdução a \textit{Geometria de Distâncias Euclidianas}. O nome ``Geometria de Distâncias'' diz respeito ao conceito desta geometria basear-se em distâncias ao invés de pontos. A palavra ``Euclidiana'' é importante para caracterizar as arestas --- elementos fundamentais associados as distâncias --- como segmentos, sem restringir seus ângulos de incidência \cite{libertiEDG}.
 
 \subsection{Como tudo Começou}
@@ -111,7 +111,7 @@ Proteínas são constituídas por um grande conjunto de átomos e, alguns pares 
 \begin{itemize}
 	\item O conjunto de ligações $\{u,v\}$, onde $u,v$ são átomos em $\{1,\dots,n\}$;
 	\item A distância entre $u$ e $v$ (para cara par ligado);
-	\item O ângulo interno $\theta_v$ definido por duas ligações $\{u,v\}$ e $\{v,w\}$, com um átomo $v$ em comum. (veja o Apêndice~\ref{ap:cos})
+	\item O ângulo interno $\theta_v$ definido por duas ligações $\{u,v\}$ e $\{v,w\}$, com um átomo $v$ em comum.
 \end{itemize} 
 
 Além desses dados, também é possível obter informações a partir de experimentos mais sofisticados, como a \textit{Ressonância Magnética Nuclear} (RMN). Neste experimento é escolhida uma faixa de radiofrequência para bombardear uma amostra que está imersa em um campo magnético bastante intenso. Dependendo da radiofrequência utilizada (costuma-se usar a do hidrogênio), alguns núcleos atômicos irão absorver energia e outros não. Caso atinja-se uma frequência exata de ressonância dentro destes núcleos atômicos, é possível medir essa ressonância como um sinal de radiofrequência enviado dos núcleos atômicos --- para calcular distâncias entre átomos próximos, com distâncias menores que 5\AA.
@@ -194,7 +194,7 @@ Por tanto, dependendo da estrutura do grafo que define um DGP (em especial, depe
 
 Considere um 3-clique ponderado com $V = \{1,2,3\}$, onde $d_{12} = d_{23} = 1$ e $d_{13} = 2$. Então, uma possível realização sobre a reta real $\mathbb{R}$ que satisfaça todas as distâncias é $x_1 = 0$, $x_2 = 1$ e $x_3 = 2$. Uma forma de obter o valor de $x_3$, dado os valores de $x_1$ e $x_2$ e as distâncias $d_{13}$ e $d_{23}$, é a \textit{trilateração}.
 
-\subsubsection{Trilateração}
+\subsubsection{Trilateração\label{sec:trilateration}}
 
  Sabendo que $d_{13} = \lVert x_3 - x_1\rVert = 2$ e $d_{23} = \lVert x_3 - x_2 \rVert = 1$ e que, usando a norma euclidiana\footnote{Ver Apendixe~\ref{ap:metric}}, $\lVert u-v\rVert^2 = (u-v)^2 = u^2 -2uv + v^2$, tem-se
 
@@ -320,7 +320,7 @@ Note que o Algorítimo~\ref{alg:realizacaoIterativa} tem a complexidade de seu p
 
 Esse processo de trilateração em $\mathbb{R}^K$ é chamado $K$-\textit{lateração} \cite{eren2004rigidity, libertiEDG}.
 
-\subsubsection{Sobre o clique inicial $G_o$}
+\subsubsection{Sobre o clique inicial $G_o$ e unicidade \label{sec:go}}
 O Sistema de Posicionamento Global (GPS,  \cite{gps}) é um exemplo de WSNL que utiliza da trilateração para descobrir a localização dos aparelhos de GPS (sensores móveis). Como o objetivo é encontrar posições no $\mathbb{R}^3$, precisa-se de 4 vértices âncoras para compor o clique inicial $G_o$, que, no caso, é formado por um conjunto de satélites com posições bem conhecidas. Fica claro que, em algumas aplicações, a quantidade de vértices necessários no clique inicial pode significar um projeto de engenharia bastante custoso.
 
 Além disso, em um primeiro momento pode parecer pouco razoável necessitar da realização prévia do clique inicial $G_o$. De fato, se o problema possuir apenas $K+1$ vértices, essa solução não faz sentido. Felizmente, em geral, os problemas de estudo costumam ser maiores \cite{carlileGDandAplications}. 
@@ -336,7 +336,9 @@ Bem, como dito anteriormente, na trilateração, a necessidade de se usar um vé
 	\label{fig:flatsimplices}
 \end{figure}
 
-\subsubsection{Realizando grafos $K$-laterativos em $\mathbb{R}^K$}
+Em particular, a noção que estuda a unicidade de uma realização é a de rigidez: diz-se que um grafo é \textit{globalmente rígido} se ele tem uma realização genérica $x$ e, para todas todas as outras realizações $x'$, $x$ é \textit{congruente} a $x'$ (veja Apêndice~\ref{ap:rigid}). Um grafo globalmente rígido tem solução única \cite{carlileGDandAplications, rigidezGrafosEAplicacoesAnaCarlile}.
+
+\subsubsection{Realizando grafos $K$-laterativos em $\mathbb{R}^K$ \label{sec:oi}}
 
 No Algorítimo~\ref{alg:realizacaoIterativa}, fica implícita a existência de uma ordem no conjunto de vértices $V$ do grafo $G$. Se $G$ é completo, de fato, qualquer ordem $(v_1,\dots,v_n)$ em $V$ é tal que $v_i$ é adjacente a todos os seus predecessores --- isto é, para todo $i>K+1$, tem-se no mínimo os $K+1$ predecessores necessários para a trilateração. Por outro lado, $G$ não precisa ser necessariamente completo para garantir isso \cite{libertiEDG}.
 
@@ -352,10 +354,13 @@ No Algorítimo~\ref{alg:realizacaoIterativa}, fica implícita a existência de u
 	\end{minipage}
 \end{center}
 
-Um grafo $G = (V,E)$ é dito \textit{$K$-laterativo} se há uma ordem de $K$-lateração sobre $V$ associada a $G$. Perceba que um grafo $K$-laterativo não precisa ser completo e, mesmo assim, ainda é possível aplicar a trilateração em todo vértice $v \in V$, com $\rho(v) >K+1$ seguindo a ordem de $K$-lateração, pois esta garante que sempre existirá um $(K+1)$-clique realizado adjacente a $v$.
+Um grafo $G = (V,E)$ é dito \textit{$K$-laterativo} se há uma ordem de $K$-lateração sobre $V$ associada a $G$. Perceba que um grafo $K$-laterativo não precisa ser completo e, mesmo assim, ainda é possível aplicar a trilateração em todo vértice $v \in V$, com $\rho(v) >K+1$ seguindo a ordem de $K$-lateração, pois esta garante que sempre existirá um $(K+1)$-clique realizado adjacente a $v$. O que nos leva ao enunciado principal dessa seção:
 
-A definição de um grafo $K$-laterativo claramente não limita a quantidade de arestas existentes no grafo, podendo haver mais arestas do que as necessárias para garantir a existência da ordem de $K$-lateração. No entanto, um grafo $K$-laterativo é dito \textit{minimo} se possuir tão poucas arestas quanto possível.
-\\
+\begin{center}
+	\begin{minipage}{0.93 \linewidth}
+		\textbf{Teorema:} Um grafo $K$-laterativo em $\mathbb{R}^K$ é genericamente globalmente rígido em $\mathbb{R}^K$ \cite{eren2004rigidity,carlileGDandAplications}. Ou seja, se possuir realização, ela é única.
+	\end{minipage}
+\end{center}
 
 A partir desses conceitos, no que se segue define-se uma subclasse do problema central e uma adaptação do Algorítimo~\ref{alg:realizacaoIterativa} para solucioná-lo.
 \begin{center}
@@ -390,13 +395,5 @@ Dado um TDGP $(G,d,K)$, seja $\{x_1, \dots,x_{K+1}\}$ o conjunto de realizaçõe
 \end{algorithm}
 \vspace{0.4cm}
 
-Perceba que há três características que fazem desta uma boa solução para instâncias WSNL: (i) O $(K+1)$-clique inicial necessita de uma realização dada a priori; (ii) sempre possuirá ou nenhuma (se não existe realização em $\mathbb{R}^K$), ou exatamente uma solução \cite{carlileGDandAplications}; (iii) é resolvido em tempo polinomial \cite{libertiEDG}.
-
-%Condição suficiente para um grafo ser globalmente rigido: possuir uma ordenação k-laterativa (edg and aplications, sec 4.1.1).
-
-%\subsubsection{Tamanho da clique inicial}
-
-%Em um primeiro momento, a ideia de necessitar previamente da realização de uma $(K+1)$-clique inicial $G_o$ pode parecer como roubar na solução do problema. Certamente, se o grafo que se está interessado em realizar possuir apenas $K+1$ vértices, essa solução não faz sentido. Felizmente, em geral, os problemas de estudo costumam ser maiores \cite{carlileGDandAplications}. Perceba que, se o problema está imerso no espaço $\mathbb{R}^2$, precisa-se de 3 posições iniciais --- o que, pelo que parece, deu origem ao termo ``triangulação de antenas'', referenciado na cultura pop, normalmente em filmes de Hollywood, onde encontra-se a posição de algo ao utilizar a distância deste a três diferentes antenas.  
-
-%O sistema de posicionamento global (GPS), por exemplo, utiliza da trilateração para descobrir a localização dos aparelhos de GPS (sensores móveis) imersos no espaço $\mathbb{R}^3$. Como, nesse caso, $K =3$, precisa-se de 4 vértices para compor a clique inicial. Esses quatro vértices são satélites com posições fixas (em órbitas geoestacionárias), previamente conhecidas. Note que essas são características que definem um WSNL, onde esses satélites são as ancoras que compõem o problema. Perceba também que lançar e manter um satélite no espaço tem um custo elevado, onde faz sentido perguntar se é possível diminuir essa quantidade de vértices que compõem a clique inicial.
+Perceba que há três características que fazem desta uma boa solução para instâncias WSNL: (i) O $(K+1)$-clique inicial necessita de uma realização dada a priori; (ii) sempre possuirá ou nenhuma (se não existe realização em $\mathbb{R}^K$), ou exatamente uma solução; (iii) é resolvido em tempo polinomial \cite{libertiEDG}.
 

@@ -1,42 +1,50 @@
 \section{Geometria de Distâncias Euclidianas\label{sec:GD}}
-Apresenta-se nesta seção uma introdução a \textit{Geometria de Distâncias Euclidianas}. O nome ``Geometria de Distâncias'' diz respeito ao conceito desta geometria basear-se em distâncias ao invés de pontos. A palavra ``Euclidiana'' é importante para caracterizar as arestas --- elementos fundamentais associados as distâncias --- como segmentos, sem restringir seus ângulos de incidência \cite{libertiEDG}.
+Apresenta-se nesta seção uma introdução a \textit{Geometria de Distâncias Euclidianas}. O nome ``Geometria de Distâncias'' diz respeito ao fato desta geometria basear-se em distâncias ao invés de pontos. A palavra ``Euclidiana'' é importante para caracterizar as arestas --- elementos fundamentais associados as distâncias --- como segmentos de reta, sem restringir seus ângulos de incidência \cite{libertiEDG}.
 
 \subsection{Como tudo Começou}
 
-Por volta de 300 AC, Euclides de Alexandria organizou o conhecimento de sua época acerca da Geometria em uma obra composta por treze volumes, onde construiu, a partir de um pequeno conjunto de axiomas fortemente baseado nos conceitos de pontos e linhas, a chamada \textit{Geometria Euclidiana} \cite{elementosEuclides}. Em contraponto a visão original de Euclides, os primeiros conceitos geométricos usando \textit{apenas distâncias} costumam estar associados aos trabalhos de Heron de Alexandria (10 a 80 DC) \cite{libertiEDG}, com o desenvolvimento de um teorema que leva seu nome, como segue: 
+Por volta de 300 AC, Euclides de Alexandria organizou o conhecimento de sua época acerca da Geometria em uma obra composta por treze volumes, onde construiu, a partir de um pequeno conjunto de axiomas fortemente baseado nos conceitos de pontos e linhas, a chamada \textit{Geometria Euclidiana} \cite{elementosEuclides}. Em contraponto à visão original de Euclides, os primeiros conceitos geométricos usando \textit{apenas distâncias} costumam estar associados aos trabalhos de Herão de Alexandria (10 a 80 d.C.) \cite{libertiEDG}, com o desenvolvimento de um teorema que leva seu nome, como segue: 
 \begin{center}
 	\begin{minipage}{0.9 \linewidth}
-		\textbf{\textit{Teorema de Heron}:} Sejam $s$ o \textit{semiperímetro} de um triângulo (se $p$ é o perímetro, $s = \frac{p}{2}$) e $a$, $b$ e $c$ os comprimentos dos três lados deste triangulo. Então, a área $A$ do triângulo é
+		\textbf{\textit{Teorema de Herão}:} Sejam $s$ o \textit{semiperímetro} de um triângulo (se $p$ é o perímetro, $s = \frac{p}{2}$) e $a$, $b$ e $c$ os comprimentos dos três lados deste triangulo. Então, a área $A$ do triângulo é
 		
-		\begin{equation}\tag{Fórmula de Heron}
+		\begin{equation}\tag{Fórmula de Herão}
 		A = \sqrt{s(s-a)(s-b)(s-c)}.
-		\label{eq:heron}
+		\label{eq:Herão}
 		\end{equation}
 	\end{minipage}
 \end{center} 
 Pode-se dizer que esse foi o nascimento da \textit{Geometria de Distâncias} (\textit{Distance Geometry}, ou DG).
 
-Algumas centenas de anos depois, em 1841, Arthur Cayley (1821 a 1895) generalizou a~\ref{eq:heron} através da construção de um determinante que calcula o conteúdo (volume $n$-dimensional) de um \textit{simplex}\footnote{Um simplex é uma generalização do conceito de triangulo a outras dimensões, i.e.: O \textit{0-simples} é um ponto, \textit{1-simplex} é um segmento de reta, \textit{2-simplex} é um triangulo e o \textit{3-simplex} é um tetraedro.} em qualquer dimensão \cite{cayley1841HaronGD}. Um século depois, em 1928, o matemático austríaco Karl Menger (1902 a 1985) re-organizou as ideias de Cayley e trabalhou em uma construção axiomática da geometria através de distâncias \cite{mengerDeterminante} --- donde a alteração no nome do determinante de Cayley para como é conhecido hoje: ``\textit{Determinante de Cayley-Menger}''.  
+Algumas centenas de anos depois, em 1841, Arthur Cayley (1821 a 1895) generalizou a~\ref{eq:Herão} através da construção de um determinante que calcula o conteúdo (volume $n$-dimensional) de um \textit{simplex}\footnote{Um simplex é uma generalização do conceito de triangulo a outras dimensões, i.e., é a envoltória convexa ao redor dos pontos: O \textit{0-simples} é um ponto, \textit{1-simplex} é um segmento de reta, \textit{2-simplex} é um triangulo e o \textit{3-simplex} é um tetraedro.} em qualquer dimensão \cite{cayley1841HaronGD, douglasGD}. Um século depois, em 1928, o matemático austríaco Karl Menger (1902 a 1985) re-organizou as ideias de Cayley e trabalhou em uma construção axiomática da geometria através de distâncias \cite{mengerDeterminante} --- originando a alteração no nome do determinante de Cayley para como é conhecido hoje: ``\textit{Determinante de Cayley-Menger}''.  
 
 \begin{center}
 	\begin{minipage}{0.9 \linewidth}
-		\textbf{Definição:} Sejam $A_0, A_1, \dots, A_n$ $n + 1$ pontos que definem os vértices de um $n$-simplex em um espaço euclidiano $K$-dimensional, onde $n\leq K$, e seja $d_{ij}$ a distância entre os vértices $A_i$ e $A_j$, onde $0\leq i < j \leq n$. Então, o conteúdo $v_n$ desse $n$-simplex é
+		\textbf{Definição:} O \textit{Determinante de Cayley-Menger} de um conjunto de $n+1$ pontos $p_0,p_1,\dots,p_n$, onde $d_{ij}$ corresponde a distância entre os pontos $p_i$ e $p_j$, é dado por
 	\end{minipage}
 \end{center} 
 
-\vspace{-0.5cm}
-
 \begin{equation}\tag{Determinante de Cayley-Menger}
-v_n^2 = \frac{(-1)^{n+1}}{(n!)^22^n}
+D_{CM}(p_0,\dots,p_n) = 
 \begin{vmatrix}
-0 & d^2_{01} &  d^2_{02} & \ldots & d^2_{0n} & 1\\ 
-d^2_{01} & 0 & d^2_{12} & \ldots & d^2_{1n} & 1\\ 
-d^2_{02} & d^2_{12} &  0 & \ldots & d^2_{2n} & 1\\ 
-\vdots & \vdots &  \vdots & \ddots & \vdots & \vdots\\ 
-d^2_{0n} & d^2_{1n} & d^2_{2n}  & \ldots & 0 & 1\\ 
-1 & 1 & 1  & \ldots & 1 & 0\\ 
+0 & d^2_{01} & \ldots & d^2_{0n} & 1\\ 
+d^2_{01} & 0 & \ldots & d^2_{1n} & 1\\ 
+\vdots & \vdots & \ddots & \vdots & \vdots\\ 
+d^2_{0n} & d^2_{1n} & \ldots & 0 & 1\\ 
+1 & 1 & \ldots & 1 & 0\\ 
 \end{vmatrix}.
 \label{determinanteCayleyMenger}
+\end{equation}
+Com isso, pode-se enunciar o seguinte resultado:
+\begin{center}
+	\begin{minipage}{0.9 \linewidth}
+		\textbf{Teorema:} Considere os $n+1$ pontos $p_0, \dots, p_n$ que definem os vértices de um $n$-simplex em um espaço euclidiano $K$-dimensional, com $n\leq K$. Então, o quadrado do conteúdo $v_n$ desse $n$-simplex é
+	\end{minipage}
+\end{center} 
+
+\begin{equation}
+v_n^2(p_0, \dots, p_n) = \frac{(-1)^{n+1}}{(n!)^22^n} D_{CM}(p_0, \dots, p_n)
+\label{eq:volumeKdimensionalNSimplex}
 \end{equation}
 
 Mas foi só com Leonard Blumenthal (1901 a 1984) que, em 1953, o termo Geometria de Distâncias foi cunhado --- com a publicação de seu livro \textit{``Theory and Applications of Distance Geometry''} \cite{Blumenthal:53}.
@@ -79,7 +87,7 @@ Uma \textit{realização} é uma função que mapeia um conjunto de vértices de
 	\end{minipage}
 \end{center}
 
-Desde que uma realização seja encontrada, também dá-se a ela o nome de \textit{solução} do DGP. Por simplicidade --- claramente um abuso de notação ---, pode-se escrever $x_u$ e $d_{uv}$ no lugar de $x(u)$ e $d(u,v)$, respectivamente.
+Desde que uma realização seja encontrada, também dá-se a ela o nome de \textit{solução} do DGP. Por simplicidade --- claramente um abuso de notação --- pode-se escrever $x_u$ e $d_{uv}$ no lugar de $x(u)$ e $d(u,v)$, respectivamente.
 
 A principal diferença desta definição para o EDMP está acerca de que uma matriz de distância essencialmente representa um \textit{grafo ponderado completo}. Em contraponto, o DGP não empoe qualquer estrutura em $G$\footnote{A menos, é claro, no que diz respeito a seus vértices estarem conectados. Porém, caso $G$ não seja conectado, então ele consiste de um conjunto de diferentes subgrafos conectados, donde, a fim de solucionar o DGP, pode-se realizar cada subgrafo separadamente \cite{libertiEDG}.}, seguindo o conceito de matriz esparsa estabelecido por Yemini.
 
@@ -102,6 +110,13 @@ Em 2014, Leo Liberti \textit{et al.} publicaram um ótimo compendio sobre a \tex
 \\
 
 As principais aplicações em DG são no \textit{calculo de estruturas moleculares} \cite{crippen:DistancesAndMolecularConformation}, na \textit{localização de sensores em rede sem fio} (\textit{Wireless Sensor Network Localization}, ou WSNL) \cite{yemini1978positioning}, em \textit{cinemática inversa} (\textit{Inverse Kinematic}, ou IK) \cite{cinematicaInversa} e em \textit{escalonamento multidimensional} (\textit{Multidimensional Scaling}, ou MDS) \cite{multidimensionalScaling}.
+
+\subsubsection{Escalonamento Multidimensional}
+
+O problema de \textit{Escalonamento Multidimensional} (\textit{Multidimensional Scaling}, ou MDS)
+é definido como \cite{carlileGDandAplications}: Dado um conjunto $X$ de vetores, encontre um conjunto $Y$ de vetores com menor dimensão (com $|X| = |Y|$) tal que a distância entre cada $i$-ésimo e $j$-ésimo vetores de $Y$ tenham, aproximadamente, a mesma distância que seus pares de vetores correspondentes em $X$.
+
+Esse problema é muito aplicado na analise de dados em Big Data \cite{libertiEDG}. É um meio de facilitar a visualização do nível de similaridade entre casos individuais --- que não necessariamente precisam ter uma conexão aparente --- em um conjunto de dados. Pode-se usá-lo, por exemplo, para visualizar em uma escala bidimensional ($\mathbb{R}^2$) a evolução da locomoção de animais no espaço tridimensional utilizando dados de séries temporais (espaço em diferentes tempos, logo, dados em $\mathbb{R}^4$).
 
 \subsubsection{Conformações Moleculares}
 
@@ -141,23 +156,17 @@ Muito utilizada em robótica e animação computadorizada, a cinemática inversa
 
 Visando tal restrição mecânica, define-se o \textit{Problema de Cinemática Inversa} (\textit{Inverse Kinematic Problem}, ou IKP) como uma variação do WSNL --- logo, tem o objetivo de descobrir posições em relação a certos pontos previamente realizados --- com uma restrição no grafo que define o problema: deve ser um caminho simples com seus vértices finais sempre sendo âncoras \cite{carlileGDandAplications}.
 
-\subsubsection{Escalonamento Multidimensional}
-
-O problema de \textit{Escalonamento Multidimensional} (\textit{Multidimensional Scaling}, ou MDS)
-é definido como \cite{carlileGDandAplications}: Dado um conjunto $X$ de vetores, encontre um conjunto $Y$ de vetores com menor dimensão (com $|X| = |Y|$) tal que a distância entre cada $i$-ésimo e $j$-ésimo vetores de $Y$ tenham, aproximadamente, a mesma distância que seus pares de vetores correspondentes em $X$.
-
-Esse problema é muito aplicado na analise de dados em Big Data \cite{libertiEDG}. É um meio de facilitar a visualização do nível de similaridade entre casos individuais --- que não necessariamente precisam ter uma conexão aparente --- em um conjunto de dados. Pode-se usá-lo, por exemplo, para visualizar em uma escala bidimensional ($\mathbb{R}^2$) a evolução da locomoção de animais no espaço tridimensional utilizando dados de séries temporais (espaço em diferentes tempos, logo, dados em $\mathbb{R}^4$).
-
 \subsection{A Busca de uma Solução}
 
 A abordagem mais simples, pode-se pensar, para encontrar um conjunto de soluções que satisfação a equação~\ref{eq:DGPSistemaQuadratico} é resolver o sistema de equações diretamente \cite{carlileBook31Coloquio}. Infelizmente, para $K \geq 2$, há evidencias de que uma solução de forma fechada onde todo componente de $x$ é expresso por raízes, não é possível \cite{libertiEDG}. 
 
-No entanto, pode-se re-formular o problema como um problema de otimização global \cite{libertiEDG}, onde o objetivo é minimizar a soma dos \textit{erros}\footnote{Em otimização, vê-se a equação~\ref{eq:DGP} de forma não exata: $\lVert x_u - x_v \rVert = d_{uv} + \varepsilon$, onde $\varepsilon$ é chamado \textit{erro}. Ou seja, para minimizar o erro, precisa-se minimizar a expressão $f(x_u,x_v) = \lVert x_u - x_v \rVert - d_{uv}$.} entre as distâncias dadas a priori e as calculadas. Para isso, pode-se considerar uma única expressão que englobe todos os $n$ erros, da forma
+No entanto, pode-se reformular o problema como um Problema de Otimização Global \cite{libertiEDG}, onde o objetivo é minimizar a soma dos \textit{erros}\footnote{Em otimização, vê-se a equação~\ref{eq:DGP} de forma não exata: $\lVert x_u - x_v \rVert = d_{uv} + \varepsilon$, onde $\varepsilon$ é chamado \textit{erro}. Ou seja, para minimizar o erro, precisa-se minimizar a expressão $f(x_u,x_v) = \lVert x_u - x_v \rVert - d_{uv}$.} entre as distâncias dadas a priori e as calculadas. Para isso, pode-se considerar uma única expressão que englobe todos os $n$ erros, da forma
 \begin{equation}
-	f(x_1,\dots,x_n) = \sum_{(i,j)\in E} \left(\lVert x_i - x_j \rVert - d_{ij}\right)^2.
+	f(x_1,\dots,x_n) = \sum_{(i,j)\in E} \left(\lVert x_i - x_j \rVert^2 - d_{ij}^2\right)^2.
+		\label{eq:problemaOtimizacaoGlobal1}
 \end{equation}
 
-Fica claro que encontrar uma solução para o DGP é equivalente a encontrar realizações $x_i \in \mathbb{R}^3$, $i=1,\dots,n$, se e somente se $f(x_1,\dots,x_n) = 0$ \cite{libertiEDG}. Pela definição de métrica (vide Apêndice~\ref{ap:metric}), 0 é o menor valor possível para $f$, donde diz-se que deseja-se \textit{minimizar a função} $f: \mathbb{R}^n \longrightarrow \mathbb{R}$ \cite{carlileBook31Coloquio}. Ou seja,
+Fica claro que encontrar uma solução para o DGP é equivalente a encontrar realizações $x_i \in \mathbb{R}^3$, $i=1,\dots,n$, tal que $f(x_1,\dots,x_n) = 0$ \cite{libertiEDG}. Visto que esta função se trata de uma soma de quadrados e que não há restrições nesse Problema de Otimização Global, 0 é o valor mínimo de $f$. Deseja-se, por tanto, minimizar a função $f: \mathbb{R}^n \longrightarrow \mathbb{R}$ \cite{carlileBook31Coloquio}. Isto é,
 \begin{equation}
 	\min_{x_i \in \mathbb{R}^n} f(x_1,\dots,x_n).
 \end{equation}
@@ -169,7 +178,7 @@ E, no caso da métrica euclidiana (vide Apêndice~\ref{ap:metric}), temos
  \label{eq:DGPminEuclid}
 \end{equation}
 
-Por tanto, a equação~\ref{eq:DGPminEuclid} tem como objetivo a minimização de um polinômio de múltiplas variáveis de grau quatro. 
+Por tanto, a equação~\ref{eq:DGPminEuclid} tem como objetivo a minimização de um polinômio de múltiplas variáveis de grau quatro. Perceba também que a introdução dos quadrados nas distâncias na função~\ref{eq:problemaOtimizacaoGlobal1} possibilitou a eliminação de um calculo de uma raiz na minimização da Equação~\ref{eq:DGPminEuclid} --- o que ajuda muito na performance numérica, visto que, computacionalmente, calcular uma multiplicação tem um custo muito menor que o calculo de radiciação.
 \\
 
 Um dos desafios da Otimização Global é que muitos dos métodos existentes --- em especial, os mais eficientes --- não garantem que uma otimização \textit{global} será encontrada \cite{libertiEDG}. Isso se dá pois, dependendo do comportamento da função, existem muitos ótimos locais e os métodos não conseguem diferenciá-los de um global. %Em DG, a distribuição geométrica dos vértices do grafo está intimamente ligada com o comportamento da função objetivo --- donde, por exemplo, em WSNL, é interessante o estudo da distribuição geométrica dos sensores afim de melhorar a busca por ótimos globais \cite{eren2004rigidity}.

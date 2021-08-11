@@ -351,18 +351,18 @@ Esse problema é muito aplicado na analise de dados em Big Data \cite{libertiEDG
 
 Existe uma relação muito forte com a forma geométrica das moléculas e suas funções em organismos vivos \cite{bioquimicaLehninger}. Projetar drogas para curar uma doença específica se trata basicamente de conhecer o que uma certa proteína pode fazer em um organismo \cite{libertiEDG}. Proteínas se ligam em outras moléculas através do equilíbrio de forças agindo entre elas\footnote{Ou seja, o equilíbrio da energia potencial das moléculas, proporcional, principalmente, as variações nos comprimentos das ligações covalentes, as variações nos ângulos entre duas ligações covalentes consecutivas, as rotações sobre as ligações covalentes e as interações de van der Waals e interações eletrostáticas entre átomos \cite{carlileTese}.}, portanto, suas ligações dependem do seu formato. 
 
-Proteínas são constituídas por um grande conjunto de átomos e, alguns pares destes, trocam ligações químicas --- sabe-se quais são esses átomos através de experimentos de cristalografia \cite{ramachandran1974MolStructure}. Então, se os átomos de uma molécula forem rotulados da forma $1,3,4,\dots,n$, então é possível inferir: 
+Proteínas são constituídas por um grande conjunto de átomos e, alguns pares destes, trocam ligações químicas --- sabe-se quais são esses átomos através de experimentos de cristalografia \cite{ramachandran1974MolStructure}. Então, se os átomos de uma molécula forem rotulados da forma $1,3,4,\dots,n$, é possível inferir: 
 \begin{itemize}
 	\item O conjunto de ligações $\{u,v\}$, onde $u,v$ são átomos em $\{1,\dots,n\}$;
 	\item A distância entre $u$ e $v$ (para cara par ligado);
 	\item O ângulo interno $\theta_v$ definido por duas ligações $\{u,v\}$ e $\{v,w\}$, com um átomo $v$ em comum.
 \end{itemize} 
 
-Além desses dados, também é possível obter informações a partir de experimentos mais sofisticados, como a \textit{Ressonância Magnética Nuclear} (RMN). Neste experimento é escolhida uma faixa de radiofrequência para bombardear uma amostra que está imersa em um campo magnético bastante intenso. Dependendo da radiofrequência utilizada (costuma-se usar a do hidrogênio), alguns núcleos atômicos irão absorver energia e outros não. Caso atinja-se uma frequência exata de ressonância dentro destes núcleos atômicos, é possível medir essa ressonância como um sinal de radiofrequência enviado dos núcleos atômicos --- para calcular distâncias entre átomos próximos, com distâncias menores que 5\AA.
+Além desses dados, também é possível obter mais informações a partir de experimentos mais sofisticados, como a \textit{Ressonância Magnética Nuclear} (RMN). Neste experimento é escolhida uma faixa de radiofrequência para bombardear uma amostra que está imersa em um campo magnético bastante intenso. Dependendo da radiofrequência utilizada (costuma-se usar a do hidrogênio), alguns núcleos atômicos irão absorver energia e outros não. Caso atinja-se uma frequência exata de ressonância dentro destes núcleos atômicos, é possível medir essa ressonância como um sinal de radiofrequência enviado dos núcleos atômicos para calcular distâncias entre átomos próximos, com distâncias menores que 5\AA.
+\\
 
-De posse dessas informações, deseja-se realizar (localizar) todos os átomos da molécula. Esse problema, com todas as informações moleculares disponíveis, denomina-se \textit{Estrutura Proteica a Partir de Dados Brutos} (\textit{Protein Structure from Raw Data}, ou PSRD)
-
-Em particular, como as coordenadas atômicas pertencem ao $\mathbb{R}^3$, há uma particularização do DGP para o caso molecular, chamado \textit{Problema de Geometria de Distâncias Moleculares} (\textit{Molecular DGP}, ou MDGP). Trata-se do DGP com $K = 3$ fixo.
+De posse dessas informações, deseja-se realizar (localizar) todos os átomos da molécula. Esse problema, com todas as informações moleculares disponíveis, denomina-se \textit{Estrutura Proteica a Partir de Dados Brutos} (\textit{Protein Structure from Raw Data}, ou PSRD). 
+Em particular, como as coordenadas atômicas pertencem ao $\mathbb{R}^3$, há uma particularização do DGP para o caso molecular chamado \textit{Problema de Geometria de Distâncias Moleculares} (\textit{Molecular DGP}, ou MDGP). Trata-se do DGP com $K = 3$ fixo.
 
 \subsubsection{Localização de Sensores}
 
@@ -429,7 +429,7 @@ Seja $\bar{X} = \{x\; : \; V \rightarrow \mathbb{R}^K \; | \;x $ satisfaça (\re
 
 Mesmo que a definição da classe de equivalência acima possa remover uma quantidade não enumerável de soluções do problema, $|X|$ não é necessariamente finito. No geral, a quantidade de soluções do DGP depende da estrutura geométrica do grafo que a define: (i) podem não haver nenhuma realização; (ii) uma única realização; (iii) uma quantidade finita (não única) de realizações; ou, (iv) um número incontável de realizações. Perceba que, curiosamente, a quantidade de soluções de um DGP somente não pode ser um número infinito e enumerável --- sabe-se isso através de estudos em \textit{Geometria Algébrica Real} \cite{benedettireal}.\\
  
-Ou seja, supondo que o conjunto solução de um DGP seja não vazio, sabe-se que ele é não enumerável ou finito. Se for não enumerável, pode-se tentar fazer uma busca contínua no espaço euclidiano --- como o algorítimo \textit{spatial Branch-and-Bound} (sBB), que é faz uma $\epsilon$-aproximação para solucionar \textit{Nonlinear Programs} (NLPs) não convexos e \textit{Mixed-Integer NLPs} \cite{carlileGDandAplications}. Se for finito (normalmente o caso desejado), além de poder aplicar métodos de Otimização Global --- já definidos como custosos computacionalmente ---, pode-se explorar outras abordagens, como a Otimização Combinatória.
+Ou seja, supondo que o conjunto solução de um DGP seja não vazio, sabe-se que ele é não enumerável ou finito. Se for não enumerável, pode-se tentar fazer uma busca contínua no espaço euclidiano --- como o algorítimo \textit{spatial Branch-and-Bound} (sBB), que faz uma $\epsilon$-aproximação para solucionar \textit{Nonlinear Programs} (NLPs) não convexos e \textit{Mixed-Integer NLPs} \cite{carlileGDandAplications}. Se for finito (normalmente o caso desejado), além de poder aplicar métodos de Otimização Global --- já definidos como custosos computacionalmente ---, pode-se explorar outras abordagens, como a Otimização Combinatória.
 
 \subsection{Ferramentas Combinatórias na Solução do DGP}
 
@@ -439,7 +439,7 @@ Nesta seção, estuda-se sobre as condições que garantem a finitude do conjunt
 
 %Dado um $(K+1)$-clique com vértices não coincidentes (essa condição ficará mais clara ao decorrer desta seção), sabe-se que \textit{se ele possui} uma realização em $\mathbb{R}^{K-1}$, no geral, \textit{ela é única} a menos de rotações e translações \cite{libertiEDG, hendrickson1992conditions, connelly1991generic}. Porém, visto que para solucionar um DGP interessa uma solução em $\mathbb{R}^K$ ao invés de $\mathbb{R}^{K-1}$, pode-se usar um corolário um tanto óbvio da afirmação anterior: um $(K+2)$-clique com vértices não coincidentes tem, no máximo, uma realização única no espaço $\mathbb{R}^K$ (novamente, \textit{única} a menos de movimentos rígidos). 
 
-Dependendo da estrutura do grafo que define um DGP, obter uma solução do problema pode garantir a unicidade desta solução \cite{eren2004rigidity}. A noção que estuda a unicidade de uma realização é a de rigidez: diz-se que um grafo é \textit{Globalmente Rígido} se ele tem uma realização genérica $x$ e, para todas todas as outras realizações $x'$, $x$ é \textit{Congruente} a $x'$ (veja Apêndice~\ref{ap:rigid}). Um grafo globalmente rígido tem realização única \cite{rigidezGrafosEAplicacoesAnaCarlile}.
+Dependendo da estrutura do grafo que define um DGP, obter uma solução do problema pode garantir a unicidade desta solução \cite{eren2004rigidity}. A noção que estuda a unicidade de uma realização é a de rigidez: diz-se que um grafo é \textit{Globalmente Rígido} se ele tem uma realização genérica $x$ e, para todas todas as outras realizações $x'$, $x$ é \textit{Congruente} a $x'$. Um grafo globalmente rígido tem realização única \cite{rigidezGrafosEAplicacoesAnaCarlile}.
 Essa característica é de fundamental importância para algumas classes de problemas em DG, como o caso da WSNL, onde somente realizações únicas são consideradas como soluções. 
 
 A seguir, baseado em \cite{libertiEDG} e \cite{trilaterationDong}, apresenta-se um método para calcular uma realização de um $(K+2)$-clique em $\mathbb{R}^K$.
@@ -668,15 +668,8 @@ Um grafo $G = (V,E)$ é dito \textit{$K$-Laterativo} se há uma ordem de $K$-lat
 	\label{fig:klaterativegraph}
 \end{figure}
 
-Como a existência de uma ordem de $K$-lateração garante, por definição, que sempre haverá ao menos $K+1$ vértices já realizados antecessores a todo vértice $v \in V$, com $\rho(v) > K+1$, sempre será possível aplicar a $K$-lateração. O que nos leva ao enunciado principal dessa seção:
+Como a existência de uma ordem de $K$-lateração garante, por definição, que sempre haverá ao menos $K+1$ vértices já realizados antecessores a todo vértice $v \in V$, com $\rho(v) > K+1$, sempre será possível aplicar a $K$-lateração. Assim, um grafo $K$-laterativo possui no máximo uma solução.
 
-\begin{center}
-	\begin{minipage}{0.93 \linewidth}
-		\textbf{Teorema:} Um grafo $K$-laterativo em $\mathbb{R}^K$ é genericamente globalmente rígido em $\mathbb{R}^K$ \cite{eren2004rigidity}. Ou seja, se possuir realização, ela é única.
-	\end{minipage}
-\end{center}
-
-A partir desses conceitos, no que se segue define-se uma subclasse do problema central e uma adaptação do Algorítimo~\ref{alg:realizacaoIterativa} para solucioná-lo.
 \begin{center}
 	\begin{minipage}{0.93 \linewidth}
 		\textbf{O Trilaterativo DGP (TDGP):} Um DGP $(G,d,K)$ é chamado \textit{Trilaterativo} se uma ordem de $K$-lateração sobre $G$ for dada.
@@ -711,3 +704,360 @@ Dado um TDGP $(G,d,K)$, seja $\{x_1, \dots,x_{K+1}\}$ o conjunto de realizaçõe
 
 Há três características que fazem desta uma boa solução para instâncias WSNL: (i) O $(K+1)$-clique inicial necessita de uma realização dada a priori; (ii) sempre possuirá ou nenhuma (se não existe realização em $\mathbb{R}^K$), ou exatamente uma solução; (iii) é resolvido em tempo polinomial.
 
+\subsubsection{Realizando grafos $(K-1)$-laterativos em $\mathbb{R}^K$}
+
+Agora trataremos dos casos onde o grafo associado ao problema não possui vértices suficientes para a existência de uma ordem $K$-laterativa. Em particular, estudaremos o caso da busca de realização de um grafo $(K-1)$-laterativo no espaço $\mathbb{R}^K$, que possui uma grande correlação com a classe de problemas moleculares.
+
+Essa correlação vem da estrutura geométrica das proteínas. A cadeia principal de uma proteína é um conjunto $V = \{v_1,\dots,v_n\}$ de átomos com uma certa ordem conveniente induzida pelas ligações químicas da molécula (veja o Apêndice~\ref{ap:biomol}). Conhece-se distância de pares consecutivos $\{v_{i-1},v_i\}$, para todo $i\leq n$, e também conhece-se o ângulo de ligação entre três átomos consecutivos $(v_{i-2},v_{i-1}, v_i)$. Dessa forma, pode-se calcular a distância entre dois átomos separados por duas ligações, i.e., de pares ${v_{i-2},v_i}$, ao se construir o triângulo formado pelos dados de distâncias e ângulos. Então, se a distância de pares $\{v_{i-3},v_i\}$ separados por três ligações não puderem ser determinadas (usando, por exemplo dados de RMN), então acontece que existe uma ordem alternativa para os vértices de forma que $v_i$ seja sempre adjacente a pelo menos os últimos três predecessores \cite{libertiEDG}.
+
+Dessa forma, cadeias principais de proteínas podem ser modeladas por grafos $2$-laterativos (i.e., cada vértice é adjacente a pelo menos 3 antecessores), que precisam ser realizadas no espaço $\mathbb{R}^3$. Porém, encontrar essa ordem nos vértices da molécula pode não ser trivial. O problema de encontrar essa ordem é definido como Problema da Orderm de Discretização (ou DVOP) e está relacionado com encontrar uma ordem de $(K-1)$-lateração. É importante mencionar que o DVOP é um problema NP-Completo \cite{carlile:dvopComplexity}. Entretanto, uma ordem pode ser construída manualmente, assim como feito em \cite{carlile:MinimalOrder,douglasSideChainOrder}. Em particular, estudamos a chamada \textit{Hand-crafted vertex order} --- ou HC Order --- criada por Carlile Lavor e colaboradores, como segue.
+
+\subsubsection*{HC Order}
+Seja $G = (V, E, d)$ o grafo associado a cadeia principal de uma proteína $(\{N^k,\ $ $ C^{k}_\alpha,C^k\}$, para $k = 1,\dots,p)$, incluindo os átomos de oxigênio $O^k$, ligados ao $C^k$, e átomos de hidrogênio $H^k$ e $H^{k}_\alpha$, ligados ao $N^k$ e $C^{k}_\alpha$, respectivamente (conforme Figura ~\ref{fig:hcVO}, onde $p = 3$).
+
+
+Define-se a ordem HC como:
+
+\begin{minipage}{0.532\linewidth}
+	$$
+	hc = \{ N^1, H^1, H^{1'}, C_{\alpha}^1, N^1, H_{\alpha}^1, C^1, C_{\alpha}^1, \dots,
+	$$
+	
+\end{minipage}
+%\vspace{-0.1cm}
+$$
+H^i, C_{\alpha}^i, O^{i-1}, N^i, H^i, C^{i}_\alpha, N^i, H^{i}_\alpha, C^i, C_{\alpha}^i,\dots,
+$$
+
+\hspace{4.5cm}
+\begin{minipage}{0.532\linewidth}
+	\vspace{-0.7cm}
+	$$
+	H^p, C_{\alpha}^p, O^{p-1}, N^p, H^p, C^{p}_\alpha, N^p, H^{p}_\alpha, C^p, C_{\alpha}^p, O^p, C^p, O^{p'}\}
+	$$
+\end{minipage}
+\\
+
+Onde, como na Figura ~\ref{fig:hcVO}, $i = 2, \dots, p-1$, $H^{1'}$ é o segundo hidrogênio ligado ao $N^1$ e $O^{p'}$ é o segundo oxigênio ligado ao $C^p$.
+
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=1\linewidth]{figures/proteinsGroup-eps-converted-to.pdf}
+	\end{center}
+	\caption{A esquerda, o esboço da cadeia principal expandida. No centro, uma representação da ordem HC. A direita, uma representação do grafo associado a ordenação.}
+	\label{fig:hcVO}
+\end{figure}	
+
+Toda distância entre hidrogênios relativamente próximos (representados por vértices tracejados no grafo da Figura~\ref{fig:hcVO}) --- inclusive entre $H_\alpha^{i-1}$ e $H^{i}$ --- são dados pela RMN. Também, para respeitar termos ao menos um grafo 2-laterativo, no átomo $H^i$, precisamos ter conhecimento do plano mostrado na Figura ~\ref{fig:peptidica} (veja Apêndice~\ref{ap:biomol}), que diz que os átomos em torno da ligação peptídica são coplanares --- e, por tanto, pode-se descobrir a distância entre o $H^i$ e $C_\alpha^{i-1}$ através das leis de senos e cossenos. 
+
+A ordenação HC gera uma estrutura muitíssimo interessante para se trabalhar. De fato, por garantir que sempre tenhamos pelo menos um 3-clique em todo átomo com posto maior que três, ao tentarmos localizar o quarto átomo estamos realizando um 4-clique no $\mathbb{R}^3$ e, como vimos anteriormente, essa situação pode ter duas soluções (veja Figura~\ref{fig:flatsimplices}). A interpretação geométrica disso é que estamos calculando a realização do próximo átomo da sequência $v_i$ com $i \geq 4$, utilizando a interseção das 3 esferas centradas nos três átomos anteriores $v_{i-3}, v_{i-2}$ e $v_{i-1}$ (já realizados) e com os respectivos raios iguais as distâncias $d_{i,i-3}, d_{i,i-2}$ e $d_{i,i-1}$ para o átomo $i$ que se está tentando localizar. 
+Essas intersecções tem três possibilidades associadas (veja Figura ~\ref{fig:esferas}): Ou não temos nenhum ponto de interseção entre elas --- e isso não acontece, pois fere as hipóteses do problema, logo, só ocorre se existe alguma informação incorreta; Ou existe um ponto --- donde os átomos são colineares e isso também nunca acontece, devido aos ângulos típicos das ligações; ou existem dois pontos onde as esferas se interceptam --- este é o caso geral.
+
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=0.8\linewidth]{figures/esferas.png}
+	\end{center}
+	\caption{Interseção de três esferas \cite{carlileBook31Coloquio}.}
+	\label{fig:esferas}
+\end{figure}
+
+Perceba, então, que além da ordenação dos vértices garantir a finitude do conjunto solução do problema, ela também organiza o espaço onde devemos fazer a busca por uma solução. Na verdade, a ordem induz uma estrutura de \textit{árvore binária} no espaço de busca \cite{fidalgotese}. De fato, sempre temos duas possibilidades para posicionar o próximo átomo da molécula \cite{carlileGDandAplications}. Com isso, ganhamos uma discretização do problema (pois saímos espaço contínuo de soluções), nos permitindo definir uma nova variante para ele.
+
+\subsection{\textit{MDGP Discretizável}}
+Esse é o problema central desse texto. Trata-se do MDGP monido de uma ordenação conveniente que permite sua discretização, como segue formalmente definido.
+
+\begin{center}
+	\begin{minipage}{0.9 \linewidth}
+		\textbf{\textit{MDGP Discretizável (DMDGP):}} Dados um grafo ponderado e não-direcionado $G = (V,E,d)$ associado a um MDGP, onde $d: E \longrightarrow \mathbb{R}_{+}$, o subconjunto de vértices iniciais $U_{0} = \{v_{1},v_{2},v_{3} \}$ e uma relação de ordem total em $V$ que satisfaça a seguinte relação de axiomas:
+		\begin{enumerate}
+			\vspace{-0.2cm}
+			\item $G[U_{0}]$ é um clique em três vértices (iniciando a configuração);
+			\vspace{-0.2cm}
+			\item para todo vértice $v_{i}$ com posto $i = \rho(v_{i}) > 3$ nesta ordem, $G[U_{i}]$ é uma clique com quatro vértices (ordem de discretização, dada anteriormente) e
+			\vspace{-0.2cm}
+			\item para cada vértice $v_{i}$, com posto $i = \rho(v_{i}) > 3$, juntamente com $\{ v_{i-3}, v_{i-2} , v_{i-1} \}$, vale a desigualdade
+			\vspace{-0.25cm}
+			\begin{center}
+				$d_{i-3,i-1} < d_{i-3,i-2} + d_{i-2,i-1},$ \hspace{0.5cm} (Desigualdade Triangular Estrita)
+			\end{center}
+		\end{enumerate}
+		\vspace{-0.2cm}
+	\end{minipage}
+\end{center}
+
+
+\subsubsection{Representações de Átomos em Coordenadas Internas\label{sec:bi}}
+As coordenadas internas de uma proteína são definidas pela distância entre os átomos $d_{1,2}, ..., d_{n - 1,n}$, pelo ângulo planar $\theta_{1,3}, ...,\theta_{n - 2,n}$ (formados por 3 átomos consecutivos) e pelos ângulos de torção $\omega_{1,4}, ..., \omega_{n-3,n}$ (formado por 4 átomos consecutivos), conforme ilustrado na Figura ~\ref{fig:angulos}. O ângulo de torção é definido entre os planos formados pelos átomos $i-3,i-2,i-1$ e$i-2,i-1,i$, respectivamente. Assim, temos que $\omega$ varia no intervalo $[0,2\pi]$ e $\theta$ de $[0,\pi]$ --- assim como em um sistema de coordenadas esféricas. As distâncias entre os átomos unidos por ligações covalentes são da ordem de 1,5\AA. 
+
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=0.6\linewidth]{figures/genericConf-4Fidalgo.png}
+	\end{center}
+	\caption{Ângulos planos e de torção}
+	\label{fig:angulos}
+\end{figure}
+
+Pode-se obter facilmente os ângulos planos pela \textit{Lei dos Cossenos}, tendo em vista que conhece-se todas as distâncias que, por construção, representam os lados do triângulo. Porém, descobrir o ângulo de torção associado (também chamado de ângulo diedral) merece um pouco mais de atenção. 
+
+O cosseno de um ângulo diedral pode ser dado em função de distâncias euclidianas e ângulos planos \cite{carlileTese}. Sejam $x_i, x_j, x_k, x_l \in \mathbb{R}^3$ quaisquer quatro átomos consecutivos com coordenadas ($x_{i_1}, x_{i_2}, x_{i_3}$), ($x_{j_1}, x_{j_2}, x_{j_3}$), ($x_{k_1}, x_{k_2}, x_{k_3}$) e ($x_{l_1}, x_{l_2}, x_{l_3}$), respectivamente; Também $r_{ab}$, com $a,b \in \{i,j,k,l\}$ as distâncias entre os átomos $x_a$ e $x_b$; e por último $\theta_{ijk}$, o ângulo definido pelos átomos $x_i, x_j, x_k$ e $\theta_{kji}$, o ângulo definido pelos átomos $x_k, x_j, x_i$. Então, o cosseno do ângulo diedral $\omega_{ijkl}$ é dado por:
+
+\begin{equation}
+	\cos(\omega_{ijkl}) = \frac{r^2_{ij} + r^2_{jl} - 2r_{ij}r_{jl}\cos(\theta_{ijk})\cos(\theta_{kjl}-r^2_{il})}{2r_{ij}r_{jl}\mbox{sen}(\theta_{ijk})\mbox{sen}(\theta_{kjl})}. \label{eq:cosOmega}
+\end{equation}    
+
+Porém, não temos como definir exatamente o seno desse ângulo. Só podemos fazer $\mbox{sen}(\omega_{ijkl}) = \pm\sqrt{1 - \cos(\omega_{ijkl})^2} \label{eq:senOmega}$. Mas vamos deixar esse problema do ângulo de torção para depois --- por enquanto supomos que temos os valores exatos de $\omega_{ijkl}$.
+
+Por tanto, conseguimos definir todo o problema a partir das coordenadas internas. Como nosso objetivo é obter as posições tridimensionais de cada átomo, nosso problema se restringiu em transformar as coordenadas internas em cartesianas. Para isso, utiliza-se uma série de operações lineares que estão descritas pelas matrizes abaixo.
+
+Consideremos que as coordenadas do ponto $x_{i} \in\mathbb{R}^3,i= 1, ...,n $ são dadas por $(x_{i1},x_{i2},x_{i3})$, temos:
+
+$$
+\begin{bmatrix}
+	x_{i1}\\ 
+	x_{i2}\\ 
+	x_{i3}\\ 
+	1
+\end{bmatrix}
+= B_{1}B_{2}\cdots B_{i}\begin{bmatrix}
+	0\\ 
+	0\\ 
+	0\\ 
+	1
+\end{bmatrix},
+$$
+onde
+$$
+B_1\: =\:
+\begin{bmatrix}
+	1 & 0 & 0 & 0\\ 
+	0 & 1 & 0 & 0\\ 
+	0 & 0 & 1 & 0\\ 
+	0 & 0 & 0 & 1
+\end{bmatrix},\:\:\:
+\: B_2\: =\:
+\begin{bmatrix}
+	-1 & 0 & 0 & -d_{1,2}\\
+	0 & 1 & 0 & 0\\ 
+	0 & 0 & -1 & 0\\ 
+	0 & 0 & 0 & 1
+\end{bmatrix},
+$$
+$$
+B_3\:=\:
+\begin{bmatrix}
+	-\cos\theta_{1,3} & -\mbox{sen}\theta_{1,3} & 0 & -d_{2,3}\cos\theta_{1,3}\\ 
+	\mbox{sen}\theta_{1,3} & -\cos\theta_{1,3} & 0 & d_{2,3}\mbox{sen}\theta_{1,3}\\ 
+	0 & 0 & 1 & 0\\ 
+	0 & 0 & 0 & 1
+\end{bmatrix}
+$$
+e
+$$
+B_i\:=\:
+\begin{bmatrix}
+	-c_{\theta_{i}} & -s_{\theta_{i}} & 0 & -d_{i-1,i}c_{\theta_{i}}\\ 
+	s_{\theta_{i}}c_{\omega_{i}} & -c_{\theta_{i}}c_{\omega_{i}}
+	& -s_{\omega_{i}} & d_{i-1,i}s_{\theta_{i}}c_{\omega_{i}}\\ 
+	s_{\theta_{i}}s_{\omega_{i}} & -c_{\theta_{i}}s_{\omega_{i}} & c_{\omega_{i}} & d_{i-1,i}s_{\theta_{i}}s_{\omega_{i}}\\ 
+	0 & 0 & 0 & 1
+\end{bmatrix}
+$$
+dado $s_{\theta_{i}}=\mbox{sen} (\theta_{i-2, i}),\: c_{\theta_{i}}=\cos (\theta_{i-2, i}),\: s_{\omega_{i}}=\mbox{sen} (\omega_{i-3, i}),\: c_{\omega_{i}}=\cos (\omega_{i-3, i})$. Em $B_i$, $i=4, ..., n$.
+
+
+Perceba que $B_i$ (chamada \textit{Matriz de Torção}) é a matriz que engloba todas as operações necessárias para encontrar a i-ésima realização do i-ésimo átomo da molécula, tendo conhecimento de todas as matrizes $B_j$ $\forall j < i$. Como é de grande importância o entendimento de tais operações que formam a $B_i$, segue a separação das suas transformações em termos de matrizes de rotação e uma matriz de translação no espaço homogêneo:
+$$
+B_i=R_{x}(w_{i-3,i})\cdot R_{x}(\pi)\cdot R_{z}(\theta_{i-2,i})\cdot R_{y}(\pi)\cdot T_{x}(d_{i-1,i}),
+$$
+
+Note também que fixando os comprimentos das ligações covalentes $d_{1,2},d_{2,3}$ e o valor do ângulo plano $\theta_{1,3}$, os três primeiros átomos terão as coordenadas dadas por
+$$
+x_1\:=\:
+\begin{bmatrix}
+	0\\ 
+	0\\  
+	0
+\end{bmatrix},\:\:\:
+x_2\:=\:
+\begin{bmatrix}
+	-d_{1,2}\\ 
+	0\\  
+	0
+\end{bmatrix},\:\:\:
+x_3\:=\:
+\begin{bmatrix}
+	-d_{1,2}+d_{2,3}\cos\theta_{1,3}\\ 
+	d_{2,3}\mbox{sen}\theta_{1,3}\\  
+	0
+\end{bmatrix}.
+$$
+
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=0.6\linewidth]{figures/inicializationgray.eps}
+	\end{center}
+	\caption{Inicialização do BP}
+	\label{fig:inicializacao}
+\end{figure}
+
+
+Dadas essas três realizações dos primeiros átomos, fixamos a base do sistema, evitando estruturas obtidas por meio de rotações e translações a partir de uma mesma estrutura.	
+
+\subsubsection{Espaço de Busca por Soluções}
+Note que, usando os valores de distâncias das cliques $\{ v_{i-3}, v_{i-2} , v_{i-1}, v_i \}$ garantidas pelo DMDGP, temos gratuitamente todas as distâncias entre átomos consecutivos $d_{1,2}, \dots, d_{n-1, n}$, donde podemos obter facilmente os ângulos planos $\theta_{1,3}, \dots, \theta_{n-2, n}$.
+
+Logo, sabendo que só precisamos das coordenadas internas para definir a estrutura 3D das proteínas --- visto que podemos aplicar o conjunto de matrizes $B_i$ para realizar a conversão dos sistemas de coordenadas --- como temos todas as distâncias e ângulos planos, só nos falta verificar os ângulos de torção $\omega_{1,4}, \dots, \omega_{n-3, n}$, que, como vimos, sempre possuímos dois possíveis ângulos associados ($\omega_{i-3, i}^1$ e $\omega_{i-3,i}^2$). Isso induz uma estrutura binária de decisão que é ilustrado na Figura ~\ref{fig:torcao}, onde temos as duas posições possíveis ($i$ e $i^\prime$) para o último vértice.
+
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=0.45\linewidth]{figures/simetria.png}
+	\end{center}
+	\caption{Duas possibilidades para o ângulo de torção.}
+	\label{fig:torcao}
+\end{figure}
+
+\subsection{\textit{Branch-and-Prune} \label{sec:bp}}
+
+Apresentado em 2007 \cite{carlile:BP}, por Leo Liberti, Carlile Lavor e Nelson Maculan, este algorítimo (também chamado BP) consiste em uma estratégia numérica recursiva, que resolve o DMDGP eficientemente utilizando uma busca combinatória no espaço de busca de soluções, onde realiza-se vértice por vértice do sistema, seguindo a ordem dada, ``podando'' --- isto é, descartando --- todo sub-conjunto solução do sistema que não esteja de acordo com as informações pré-estabelecidas. Desde que ele foi publicado, tem se verificado tanto sua beleza matemática, quanto a sua eficiência numérica-computacional para resolver problemas em Geometria de Distâncias.
+
+Como todo algorítimo, esse possui um conjunto de entradas e saídas.
+\begin{description}
+	\item[Entradas:] O grafo $G(V, E, d)$ que define o DMDGP --- onde possuímos uma ordenação para $V$ --- e mais um escalar $\varepsilon \in \mathbb{R}$ que da a tolerância aceita no algoritmo (pois o BP não é um método exato, encontrando apenas soluções distantes a menos de $\varepsilon$ das reais).
+	
+	Para facilitar a utilização do algorítimo, também faremos uma distinção dos vértices que compõem o conjunto $E$: Sejam os subconjuntos $E_{d}, E_p \subset E$, tal que $E = E_{d} \cup E_{p}$ --- denominados como, respectivamente, \textit{arestas de discretização} e \textit{arestas de poda} ---, onde
+	
+	\begin{center}
+		$E_{d} = \{\{v_i,v_j\} \in E : |i-j|\leq 3\}$ e $E_{p} = E - E_d$.
+	\end{center}
+	
+	\item[Saídas:] Uma árvore binária $T$, onde cada nó de nível $i$ da árvore é uma realização possível do vértice $v_i \in V$, de tal forma que o caminho $C \subset T$ partindo da raiz (primeiro nó) até uma folha de nível $n = |V|$ da árvore seja uma solução para o problema, isto é, um conjunto de realizações de todos os átomos da molécula.
+\end{description}
+
+São três fases que definem o algoritmo: Inicialização, \textit{Branching} e \textit{Pruning} \cite{fidalgotese}.
+
+\subsubsection*{Inicialização}
+Esta etapa se preocupa com a inicialização da estrutura. Ela define a realização dos três primeiros átomos $v_1, v_2$ e $v_3 \in V$ da sequência, que são posicionados nas respectivas posições $x_1, x_2$ e $x_3 \in \mathbb{R}^3$, utilizando as operações contidas nas matrizes $B_1, B_2$ e $B_3$. 
+
+Essas três primeiras posições estão associados biunivocamente com os três primeiros nós da arvore de busca $T$ (representada por um grafo), que também é iniciada, conforme Figura ~\ref{fig:bp1}
+
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=0.035\linewidth]{figures/bp1.png}
+	\end{center}
+	\caption{Inicialização de T \cite{fidalgotese}.}
+	\label{fig:bp1}
+\end{figure}
+
+\subsubsection*{\textit{Branching}}
+Essa etapa está associada com o processo de ``ramificação'' de $T$ \cite{fidalgotese}. Ou seja, supondo que já foram realizados os vértices $v_1, \dots, v_{i-1}$ (onde $3 < i< |V|$), repeitando a ordenação em $V$, nosso objetivo é obter a realização $x_i = (x_{i1}, x_{i2}, x_{i3}) \in \mathbb{R}^3$ do vértice $v_i \in V$.
+
+Para isso, basta calcularmos o produto matricial
+$$
+\begin{bmatrix}
+	x_{i1}\\ 
+	x_{i2}\\ 
+	x_{i3}\\ 
+	1
+\end{bmatrix}
+= C_{i}\begin{bmatrix}
+	0\\ 
+	0\\ 
+	0\\ 
+	1
+\end{bmatrix},
+$$
+onde $C_i = C_{i-1}B_i = \prod_{j=1}^{i}B_j$ é dita o \textit{produto acumulado} das matrizes de torção $B_j$. O conceito de ramificação vem do fato de sempre temos duas matrizes de torção $B_j^1$ e $B_j^2$ associadas a cada vértice $v_j$ (por conta dos diferentes ângulos diedrais). A cada matriz de torção temos como resultado um novo conjunto de realizações, que se visualiza como um novo ramo de $T$.
+
+Ilustramos esse processo na Figura ~\ref{fig:ramificacoes}, que presume um DMDGP com $|V| = 6$. Ou seja, obtemos $2^{6-3} = 2^3 = 8$ possíveis soluções, dadas pelas suas 6 ramificações.
+
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=0.45\linewidth]{figures/ramificacoes.png}
+	\end{center}
+	\caption{Árvore $T$ completa de uma instância DMDGP com 6 vértices \cite{fidalgotese}.}
+	\label{fig:ramificacoes}
+\end{figure}
+
+Fica claro aqui que o processo de ramificação garante que, no máximo, existem $2^{n-3}$ soluções possíveis para o problema. Isso colabora com a enumerabilidade e finitude do conjunto solução do problema, porém, também mostra que o número de soluções cresce de uma forma exponencial com o crescimento da molécula.
+
+\subsubsection*{\textit{Pruning}}
+Essa etapa tem como função diminuir drasticamente o conjunto solução do problema. Conseguimos isso ao classificar os diferentes ramos de $T$ (gerados pelos diferentes ângulos de torção $\omega_{i-3,i}^1$ e $\omega_{i-3,i}^2$) como factíveis ou não e, então, ``podando'' os infactíveis.  
+
+Como já discutimos antes, para calcular as matrizes de torção da etapa anterior só precisamos dos dados do 3-clique garantido pelas hipóteses do DMDGP, ou seja, das distâncias $d_{i,i-3}, d_{i,i-2}$ e $d_{i,i-1}$ associadas aos elementos de $E_d$. Com isso, todas as distâncias associados aos elementos de $E_p$ podem ser consideradas como dados adicionais para o problema. 
+
+Perceba que, para todo $v_j$ tal que $\{v_i,v_j\} \in E_p$, se conhecemos a realização de $v_j$, a distância extra $d_{i,j}$ pode ser enxergada, do ponto de vista geométrico, como uma esfera extra àquelas outras três dadas pelo 3-clique. Isso gera a interseção de quatro esferas no $\mathbb{R}^3$, donde podemos ter apenas uma das duas possibilidades: Ou elas se interceptam em um único ponto (veja Figura ~\ref{fig:quatroesferas}) ou em nenhum. 
+
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=0.35\linewidth]{figures/quatroesferas.png}
+	\end{center}
+	\caption{Interseção de quatro esferas no $\mathbb{R}^3$ \cite{carlileBook31Coloquio}.}
+	\label{fig:quatroesferas}
+\end{figure}
+
+E é este o princípio da factibilidade de um ramo: Sempre que estamos na etapa de \textit{Branching} --- ou seja, calculando uma realização $x_i$ de $v_i$ a partir de uma matriz de torção ---, podemos verificar se existe uma distância extra, associada a algum elemento $\{v_i,v_j\} \in E_p$ tal que $j < i$ e, caso exista, podemos verificar se $|x_i - x_j| < \varepsilon$. Caso for, significa que o ramo é factível e, caso não for, podemos descartar (``podar'') todas as soluções associadas a sub-árvore definida por aquele ramo.
+
+A etapa de \textit{pruning} é ilustrada na Figura ~\ref{fig:poda} (adaptada de \cite{fidalgotese}). Dando continuidade ao exemplo da Figura ~\ref{fig:ramificacoes}, agora temos $E_p = \{\{v_1,v_5\},\{v_2,v_6\}\}$, o que nos permitiu testar a factibilidade dos ramos associados ao $v_5$ e ao $v_6$ e podar os infactíveis, diminuindo consideravelmente o conjunto solução.
+
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=0.45\linewidth]{figures/prune.png}
+	\end{center}
+	\caption{Árvore $T$ de um DMDGP de 6 vértices com a poda evidenciada.}
+	\label{fig:poda}
+\end{figure}
+
+Perceba que o crescimento exponencial de soluções ($2^{n-3}$) da etapa de \textit{branching} está associado com o DMDGP ser um problema NP-Difícil. Por conta disso é que esse algorítimo tem tanta beleza associada, isto é, apesar da grande complexidade de se resolver o problema original, o BP pode encontrar rapidamente essas soluções.
+
+Mas uma dúvida ainda é importante: O conjunto $E_p = \emptyset$? Neste caso, $E = E_d$ e, portanto, todas as posições finais são factíveis trivialmente. Dessa forma, todas as $2^{n-3}$ realizações encontradas durante a etapa de \textit{branching} representam soluções possíveis para o DMDGP, o que, é claro, é o nosso pior caso, pois o BP precisa continuar a exploração de todos os $2^{n-3}$ nós de $T$. 
+
+Por outro lado, se utilizarmos a ordenação hc como ordem que define o DMDGP, nós garantimos que $E_p \neq \emptyset$. Essa é uma das vantagens dessa ordenação. Na verdade, muito mais do que não vazio, graças as propriedades geométricas das proteínas estudadas em \cite{carlile:MinimalOrder} nós podemos enunciar o seguinte resultado (extraído de \cite{carlile:MinimalOrder}): 
+
+\begin{teorema}
+	Usando a ordenação hc, considerando que todos os ângulos e distâncias das ligações atômica estão fixadas nos seus valores de equilíbrio energético (essa é conhecida como \textit{hipótese de geometria rígida}), que os átomos ao redor das ligações peptídicas formam um plano, que as posições possíveis para $C_\alpha^1$ e $C^j$ (com $j = 1, \dots,p$) são únicas --- devido a propriedade quiral do tetraedro formado por $\{N^1, H^1, H^{1\prime}, C_\alpha^1\}$ e $\{C_\alpha^j, N^j, H^j_\alpha,C^j\}$ --- e, dado o conjunto de distâncias entre os pares de átomos de hidrogênio
+	$$\{H^{1\prime}, H^1_\alpha\}, \dots, \{H_\alpha^{i-1}, H^i\}, \{H^i, H^i_\alpha\}, \{H^i_\alpha, H^{i+1}\}, \dots, \{H^p, H^p_\alpha\}$$
+	(onde $i = 2, \dots, p-1$ e $p$ é o número de aminoácidos que compõem a proteína), as ramificações na árvore de busca só ocorrem em átomos de hidrogênio dados por
+	$$\{H_\alpha^1, \dots, H^i, H_\alpha^i, \dots, H^p, H_\alpha^p\}.$$	
+\end{teorema}
+
+\subsubsection{Algorítimo}
+Agora que a ideia por trás do BP está desenvolvida nos três passos anteriores (inicialização, \textit{branching} e \textit{pruning}) podemos apresenta-lo formalmente como um algorítimo de uma função recursiva, como segue.
+\\
+
+\begin{algorithm}[H]
+	BranchAndPrune($T,v,i$)\\
+	\uIf{$i\leq n-1$}{
+		Calcule as matrizes de torção $B_i^1$ e $B_i^2$;\\
+		Recupere a matriz de torção acumulada $C_{i-1}$ referente ao nó-pai $P(v)$;\\
+		Calcule as próximas matrizes de torção acumuladas $C_i = C_{i-1}B_i^1$ e $C_i^\prime=C_{i-1}B_i^2$;\\
+		Utilize-as para calcular as posições $x_i = C_iy$ e $x_i^\prime = C_i^\prime y$;\\
+		Seja $\lambda = 1, \rho = 1$;\\
+		\ForEach{$\{v_j,v_i\} \in E_p$ com $j<i$}{
+			\If{$(||x_j - x_i||^2 - d_{ij}^2)^2 > \varepsilon$}{
+				$\lambda = 0$;	
+			}	
+			\If{$(||x_j - x_i^\prime||^2 - d_{ij}^2)^2 > \varepsilon$}{
+				$\rho = 0$;	
+			}	
+		}
+		
+		\uIf{$\lambda = 1$}{
+			Crie um nó $z$, armazenando $C_i$ e $x_i$ e fazendo $P(z) = v$ e $L(v) = z$;\\
+			Faça $T \leftarrow T \cup \{z\}$;\\
+			BranchAndPrune($T,z,i+1$);
+		}\Else{
+			Faça $L(v) =$ PRUNED;
+		}
+		\uIf{$\rho = 1$}{
+			Crie um nó $z^\prime$, armazenando $C_i^\prime$ e $x_i^\prime$ e fazendo $P(z^\prime) = v$ e $R(v) = z^\prime$;\\
+			Faça $T \leftarrow T \cup \{z^\prime\}$;\\
+			BranchAndPrune($T,z^\prime,i+1$);
+		}\Else{
+			Faça $R(v) =$ PRUNED;			
+		}	
+	}
+	\Else{
+		Solução está armazenada nos nós-pais de $n$ a $1$, em busca retrocedida.
+	}
+	\caption{Algoritmo BP \cite{fidalgotese} \cite{carlile:BP}}
+\end{algorithm}
